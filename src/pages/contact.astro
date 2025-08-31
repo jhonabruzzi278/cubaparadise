@@ -1,0 +1,14 @@
+---
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+
+import HeaderStart from "../components/HeaderStart.astro";
+import ContactForm from "../components/Contact.astro";
+
+const page = "Contacto";
+const image = "/img/cubacalle2.jpg";
+---
+
+<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba">
+  <HeaderStart page={page} image={image} />
+  <ContactForm />
+</DefaultLayout>

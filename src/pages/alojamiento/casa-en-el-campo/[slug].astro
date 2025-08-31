@@ -1,0 +1,65 @@
+---
+import { getCollection } from "astro:content";
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+
+export async function getStaticPaths() {
+  const alojamientos = await getCollection("alojamiento");
+  const casasCampo = alojamientos.filter(
+    (a) => a.data.tipo === "casa-en-el-campo"
+  );
+  return casasCampo.map((alojamiento) => ({
+    params: { slug: alojamiento.slug },
+    props: { alojamiento },
+  }));
+}
+
+const { alojamiento } = Astro.props;
+---
+
+{
+  alojamiento ? (
+    <DefaultLayout
+      title={alojamiento.data?.title ?? "Alojamiento Cuba Paradise"}
+    >
+      <section class="container py-5">
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src={alojamiento.data?.img}
+              alt={alojamiento.data?.title}
+              class="img-fluid rounded mb-4"
+              style="max-height:340px;object-fit:cover;width:100%;"
+            />
+          </div>
+          <div class="col-md-6">
+            <h1 class="mb-3">{alojamiento.data?.title}</h1>
+            <p class="lead">{alojamiento.data?.descripcion}</p>
+            <ul class="list-unstyled mb-3">
+              <li>
+                <strong>Ubicación:</strong> {alojamiento.data?.ubicacion}
+              </li>
+              <li>
+                <strong>Capacidad:</strong> {alojamiento.data?.capacidad}{" "}
+                personas
+              </li>
+              <li>
+                <strong>Duración:</strong> {alojamiento.data?.duracion}
+              </li>
+              <li>
+                <strong>Precio:</strong> ${alojamiento.data?.precio}{" "}
+                {alojamiento.data?.moneda}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </DefaultLayout>
+  ) : (
+    <DefaultLayout title="Alojamiento no encontrado">
+      <section class="container py-5">
+        <h1>Alojamiento no encontrado</h1>
+        <p>No se encontró el alojamiento solicitado.</p>
+      </section>
+    </DefaultLayout>
+  )
+}

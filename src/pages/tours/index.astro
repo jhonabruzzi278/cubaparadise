@@ -1,0 +1,30 @@
+---
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+
+import PaquetesCard from "../../components/PaquetesCard.astro";
+import HeaderStart from "../../components/HeaderStart.astro";
+import FeatureStar from "../../components/FeatureStar.astro";
+import CatalogoCard from "../../components/CatalogoCard.astro";
+import { getCollection } from "astro:content";
+
+const tours = await getCollection("tours-paquetes");
+const catalogo = tours;
+
+const page = "Tours";
+const image = "/img/tour2.jpg";
+---
+
+<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba">
+  <HeaderStart page={page} image={image} />
+
+  <CatalogoCard titulo="Tours disponibles" catalogo={catalogo} />
+  <PaquetesCard
+    titulo="Tours Destacados"
+    subtitulo="Descubre Cuba con experiencias únicas"
+    ruta="/tours/paquetes"
+    icono="fa fa-suitcase-rolling"
+    descripcion="Elige entre nuestros paquetes de tours para conocer lo mejor de Cuba: cultura, historia, naturaleza y diversión, todo en una experiencia inolvidable. ¡Reserva tu aventura ahora!"
+  />
+
+  <FeatureStar />
+</DefaultLayout>

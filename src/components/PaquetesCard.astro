@@ -1,0 +1,27 @@
+---
+export interface Props {
+  titulo: string;
+  subtitulo: string;
+  ruta: string;
+  icono: string;
+  descripcion: string;
+}
+const { titulo, subtitulo, ruta, icono, descripcion } = Astro.props;
+---
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">{titulo}</h6>
+            <h1>{subtitulo}</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mx-auto">
+                <a href={ruta} class="service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
+                    <i class={icono + " mx-auto mb-4"}></i>
+                    <h3 class="mb-2">Paquetes</h3>
+                    <p class="m-0">{descripcion}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

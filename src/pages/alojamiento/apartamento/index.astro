@@ -1,0 +1,17 @@
+---
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import { getCollection } from "astro:content";
+import CatalogoCard from "../../../components/CatalogoCard.astro";
+import HeaderStart from "../../../components/HeaderStart.astro";
+
+const alojamientos = await getCollection("alojamiento");
+const catalogo = alojamientos.filter((a) => a.data.tipo === "apartamento");
+
+const page = "Apartamentos";
+const image = "/img/El_Capitolio_Havana_Cuba.jpg";
+---
+
+<DefaultLayout title="Apartamentos en Cuba">
+  <HeaderStart page={page} image={image} />
+  <CatalogoCard titulo="Apartamentos disponibles" catalogo={catalogo} />
+</DefaultLayout>

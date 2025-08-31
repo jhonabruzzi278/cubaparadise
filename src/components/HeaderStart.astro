@@ -1,0 +1,19 @@
+---
+export interface Props {
+    page: string;
+    image?: string;
+}
+const { page, image = '/img/Cuba.webp' } = Astro.props;
+---
+<div class="container-fluid page-header" style={`background: url('${image}') center center/cover no-repeat; min-height: 400px;`}>
+    <div class="container">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px; background: rgba(0,0,0,0.4); border-radius: 1rem;">
+            <h3 class="display-4 text-white text-uppercase">{page}</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="/">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">{page}</p>
+            </div>
+        </div>
+    </div>
+</div>

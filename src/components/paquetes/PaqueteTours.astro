@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+type PaqueteTour = {
+	title: string;
+	descripcion: string;
+	duracion: string;
+	incluye: string;
+	precio: number;
+	moneda: string;
+	img: string;
+};
+const paquetes = (await getCollection('tours-paquetes')) as Array<{ data: PaqueteTour; slug: string }>;
+---
+<section class="container py-5">
+	<h2 class="mb-4 text-center">Paquetes de Tours</h2>
+	<div class="row justify-content-center">
+		{paquetes.map(paquete => (
+			<div class="col-lg-4 col-md-6 mb-4" style="display:flex;">
+				<div class="card shadow-sm h-100 w-100">
+					<img src={paquete.data.img} class="card-img-top" alt={paquete.data.title} style="object-fit:cover;max-height:180px;" />
+					<div class="card-body">
+						<h5 class="card-title">{paquete.data.title}</h5>
+						<p class="card-text">{paquete.data.descripcion}</p>
+						<ul class="list-unstyled small mb-2">
+							<li><strong>Duración:</strong> {paquete.data.duracion}</li>
+							<li><strong>Incluye:</strong> {paquete.data.incluye}</li>
+							<li><strong>Precio:</strong> ${paquete.data.precio} {paquete.data.moneda}</li>
+						</ul>
+						<a href={`/tours/paquetes/${paquete.slug}`} class="btn btn-primary me-2">Ver detalles</a>
+						<a href="/contact" class="btn btn-success" style="background:#7AB730;border:none;">Solicitar información</a>
+					</div>
+				</div>
+			</div>
+		))}
+	</div>
+</section>

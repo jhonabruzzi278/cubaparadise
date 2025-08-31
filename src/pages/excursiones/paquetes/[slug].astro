@@ -1,0 +1,73 @@
+---
+import { getCollection } from "astro:content";
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+
+export async function getStaticPaths() {
+  const paquetes = await getCollection("excursiones-paquetes");
+  return paquetes.map((paquete) => ({
+    params: { slug: paquete.slug },
+    props: { paquete },
+  }));
+}
+
+const { paquete } = Astro.props;
+const { Content } = await paquete.render();
+---
+
+{
+  paquete ? (
+    <DefaultLayout title={paquete.data?.title ?? "Excursión Cuba Paradise"}>
+      <section class="container py-5">
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src={paquete.data?.img}
+              alt={paquete.data?.title}
+              class="img-fluid rounded mb-4"
+              style="max-height:340px;object-fit:cover;width:100%;"
+            />
+          </div>
+          <div class="col-md-6">
+            <h1 class="mb-3">{paquete.data?.title}</h1>
+            <p class="lead">{paquete.data?.descripcion}</p>
+            <ul class="list-unstyled mb-3">
+              <li>
+                <strong>Duración:</strong> {paquete.data?.duracion}
+              </li>
+              <li>
+                <strong>Incluye:</strong> {paquete.data?.incluye}
+              </li>
+              <li>
+                <strong>Precio:</strong> ${paquete.data?.precio}{" "}
+                {paquete.data?.moneda}
+              </li>
+            </ul>
+            <div class="mt-4">
+              <a
+                href="/contact"
+                class="btn btn-success btn-lg"
+                style="background:#7AB730;border:none;"
+              >
+                Solicitar información
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="content">
+              <Content />
+            </div>
+          </div>
+        </div>
+      </section>
+    </DefaultLayout>
+  ) : (
+    <DefaultLayout title="Excursión no encontrada">
+      <section class="container py-5">
+        <h1>Excursión no encontrada</h1>
+        <p>No se encontró la excursión solicitada.</p>
+      </section>
+    </DefaultLayout>
+  )
+}

@@ -1,0 +1,13 @@
+---
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import PaqueteExcursiones from "../../../components/paquetes/PaqueteExcursiones.astro";
+import HeaderStart from "../../../components/HeaderStart.astro";
+
+const page = "Paquetes de Excursiones";
+const image = "/img/canasi1.webp";
+---
+
+<DefaultLayout title="Paquetes de Excursiones en Cuba">
+  <HeaderStart page={page} image={image} />
+  <PaqueteExcursiones />
+</DefaultLayout>

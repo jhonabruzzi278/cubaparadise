@@ -12,6 +12,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.3",
     "astro-icon": "^1.1.5",
+    "bootstrap": "^5.3.8",
     "tailwindcss": "^4.1.12"
   }
 }

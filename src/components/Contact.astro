@@ -1,0 +1,84 @@
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="text-center mb-3 pb-3">
+      <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">
+        Contact
+      </h6>
+      <h1>Contact For Any Query</h1>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="contact-form bg-white" style="padding: 30px;">
+          <div id="success"></div>
+          <form id="contactForm">
+            <div class="control-group mb-3">
+              <input
+                type="text"
+                class="form-control p-4"
+                id="name"
+                placeholder="Tu Nombre"
+                required
+              />
+            </div>
+            <div class="control-group">
+              <input
+                type="text"
+                class="form-control p-4"
+                id="subject"
+                placeholder="Asunto"
+                required
+              />
+            </div>
+            <div class="control-group">
+              <textarea
+                class="form-control py-3 px-4"
+                rows="5"
+                id="message"
+                placeholder="Mensaje"
+                required></textarea>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary py-3 px-4" type="submit"
+                >Enviar por WhatsApp</button
+              >
+            </div>
+          </form>
+          <script is:inline>
+            document.addEventListener("DOMContentLoaded", function () {
+              const form = document.getElementById("contactForm");
+              if (form) {
+                form.addEventListener("submit", function (event) {
+                  event.preventDefault();
+                  const nameInput = document.getElementById("name");
+                  const subjectInput = document.getElementById("subject");
+                  const messageInput = document.getElementById("message");
+                  if (!nameInput || !subjectInput || !messageInput)
+                    return false;
+                  let name = "";
+                  let subject = "";
+                  let message = "";
+                  const nameElement = form.elements.namedItem("name");
+                  if (nameElement instanceof HTMLInputElement) {
+                    name = nameElement.value;
+                  }
+                  const subjectElement = form.elements.namedItem("subject");
+                  if (subjectElement instanceof HTMLInputElement) {
+                    subject = subjectElement.value;
+                  }
+                  const messageElement = form.elements.namedItem("message");
+                  if (messageElement instanceof HTMLInputElement) {
+                    message = messageElement.value;
+                  }
+                  const text = `Hola! Mi nombre es ${name}. Asunto: ${subject}. Mensaje: ${message}`;
+                  const url = `https://wa.me/56938980598?text=${encodeURIComponent(text)}`;
+                  window.open(url, "_blank");
+                  return false;
+                });
+              }
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

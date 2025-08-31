@@ -1,0 +1,23 @@
+---
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import HeaderStart from "../../components/HeaderStart.astro";
+import AlojamientoCard from '../../components/AlojamientoCard.astro';
+import FeatureStar from "../../components/FeatureStar.astro";
+import CatalogoCard from '../../components/CatalogoCard.astro';
+import { getCollection } from 'astro:content';
+
+const page = "Alojamiento";
+const image = "/img/callehabana.jpg";
+const alojamientos = await getCollection('alojamiento');
+const apartamento = alojamientos.find(a => a.data.tipo === 'apartamento');
+const campo = alojamientos.find(a => a.data.tipo === 'casa-en-el-campo');
+const playa = alojamientos.find(a => a.data.tipo === 'casa-en-la-playa');
+const catalogo = [apartamento, campo, playa].filter(Boolean);
+---
+
+<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba" >
+  <HeaderStart page={page} image={image} />
+  <AlojamientoCard />
+  <FeatureStar />
+  <CatalogoCard titulo="Conoce lo mejor de nuestro catálogo alojamiento" catalogo={catalogo} />
+</DefaultLayout>

@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+
+export async function getStaticPaths() {
+  const alojamientos = await getCollection("alojamiento");
+  const apartamentos = alojamientos.filter(
+    (a) => a.data.tipo === "apartamento"
+  );
+  return apartamentos.map((alojamiento) => ({
+    params: { slug: alojamiento.slug },
+    props: { alojamiento },
+  }));
+}
+
+const { alojamiento } = Astro.props;
+---
+
+<DefaultLayout title={alojamiento.data?.title ?? "Alojamiento Cuba Paradise"}>
+  <section class="container py-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img
+          src={alojamiento.data?.img}
+          alt={alojamiento.data?.title}
+          class="img-fluid rounded mb-4"
+          style="max-height:340px;object-fit:cover;width:100%;"
+        />
+      </div>
+      <div class="col-md-6">
+        <h1 class="mb-3">{alojamiento.data?.title}</h1>
+        <p class="lead">{alojamiento.data?.descripcion}</p>
+        <ul class="list-unstyled mb-3">
+          <li><strong>Ubicación:</strong> {alojamiento.data?.ubicacion}</li>
+          <li>
+            <strong>Capacidad:</strong>
+            {alojamiento.data?.capacidad} personas
+          </li>
+          <li><strong>Duración:</strong> {alojamiento.data?.duracion}</li>
+          <li>
+            <strong>Precio:</strong> ${alojamiento.data?.precio}
+            {alojamiento.data?.moneda}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>

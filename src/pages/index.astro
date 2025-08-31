@@ -1,28 +1,17 @@
 ---
-import Hero from "../components/Hero.astro";
 import DefaultLayout from "../layouts/DefaultLayout.astro";
-import { categories } from "../data/categories.js";
-import CAtegoryuCarl
+import Carousel from "../components/Carousel.astro";
+import AboutBanner from "../components/AboutBanner.astro";
+import Services from "../components/Services.astro";
+import FeatureStar from "../components/FeatureStar.astro";
 ---
 
-<DefaultLayout>
-  <div>
-    
-    <Hero />
-    <div class="flex justify-between p-3 bg-pink-400">
-        {
-            categories.map(category => (
-                <div key={category.id}>
-                    <h3 class="font-bold">{category.name}</h3>
-                    <ul>
-                        {category.subcategories.map(subcategory => (
-                            <li key={subcategory.id}>{subcategory.name}</li>
-                        ))}
-                    </ul>
-                </div>
-            ))
-        }
-
-    </div>
-  </div>
+<DefaultLayout
+  title="Cuba Paradise - Experiencias Auténticas en Cuba"
+  page="index"
+>
+  <Carousel />
+  <AboutBanner />
+  <Services />
+  <FeatureStar />
 </DefaultLayout>

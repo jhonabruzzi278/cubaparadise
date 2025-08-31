@@ -1,0 +1,15 @@
+---
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import AboutBanner from "../components/AboutBanner.astro";
+import FeatureAbout from "../components/FeatureAbout.astro";
+import HeaderStart from "../components/HeaderStart.astro";
+
+const page = "About";
+const image = "/img/lahabana1.jpg";
+---
+
+<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba">
+  <HeaderStart page={page} image={image} />
+  <AboutBanner />
+  <FeatureAbout />
+</DefaultLayout>

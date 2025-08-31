@@ -1,0 +1,28 @@
+---
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+
+import HeaderStart from "../../components/HeaderStart.astro";
+import FeatureStar from "../../components/FeatureStar.astro";
+import CatalogoCard from "../../components/CatalogoCard.astro";
+import { getCollection } from "astro:content";
+import PaquetesCard from "../../components/PaquetesCard.astro";
+
+const excursiones = await getCollection("excursiones-paquetes");
+const catalogo = excursiones;
+
+const page = "Excursiones";
+const image = "/img/canasi1.webp";
+---
+
+<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba">
+  <HeaderStart page={page} image={image} />
+  <PaquetesCard
+    titulo="Excursiones"
+    subtitulo="Vive aventuras inolvidables en Cuba"
+    ruta="/excursiones/paquetes"
+    icono="fa fa-suitcase-rolling"
+    descripcion="Descubre nuestros paquetes de excursiones cuidadosamente diseñados para que vivas lo mejor de Cuba: naturaleza, cultura, aventura y relax, todo en una sola experiencia. ¡Elige tu paquete y déjate sorprender!"
+  />
+  <CatalogoCard titulo="Excursiones disponibles" catalogo={catalogo} />
+  <FeatureStar />
+</DefaultLayout>

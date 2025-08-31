@@ -1,0 +1,12 @@
+---
+import DefaultLayout from '../../../layouts/DefaultLayout.astro';
+import PaqueteTours from '../../../components/paquetes/PaqueteTours.astro';
+import HeaderStart from '../../../components/HeaderStart.astro';
+
+const page = "Paquetes de Tours";
+const image = "/img/tour2.jpg";
+---
+<DefaultLayout title="Paquetes de Tours en Cuba">
+  <HeaderStart page={page} image={image} />
+  <PaqueteTours />
+</DefaultLayout>

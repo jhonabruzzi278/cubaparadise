@@ -1,0 +1,20 @@
+---
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+
+import HeaderStart from "../../components/HeaderStart.astro";
+import FeatureStar from "../../components/FeatureStar.astro";
+import CatalogoCard from "../../components/CatalogoCard.astro";
+import { getCollection } from "astro:content";
+
+const servicios = await getCollection("servicios");
+const catalogo = servicios;
+
+const page = "servicios";
+const image = "/img/El_Capitolio_Havana_Cuba.jpg";
+---
+
+<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba">
+  <HeaderStart page={page} image={image} />
+  <CatalogoCard titulo="Servicios disponibles" catalogo={catalogo} />
+  <FeatureStar />
+</DefaultLayout>
