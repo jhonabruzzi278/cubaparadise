@@ -10,20 +10,23 @@ import { getCollection } from "astro:content";
 const tours = await getCollection("tours-paquetes");
 const catalogo = tours;
 
-const page = "Tours";
+const page = "Tours Cuba";
 const image = "/img/tour2.jpg";
 ---
 
-<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba">
+<DefaultLayout 
+  title="Tours Cuba - La Habana, Trinidad, Viñales con Guías Locales"
+  description="Tours guiados en Cuba: La Habana Vieja, Trinidad colonial, Valle Viñales, cayos paradisíacos. Guías locales expertos y experiencias auténticas."
+>
   <HeaderStart page={page} image={image} />
 
-  <CatalogoCard titulo="Tours disponibles" catalogo={catalogo} />
+  <CatalogoCard titulo="Tours Cuba Disponibles" catalogo={catalogo} />
   <PaquetesCard
-    titulo="Tours Destacados"
-    subtitulo="Descubre Cuba con experiencias únicas"
+    titulo="Paquetes Tours Cuba"
+    subtitulo="Tours La Habana, Trinidad, Viñales y más destinos"
     ruta="/tours/paquetes"
     icono="fa fa-suitcase-rolling"
-    descripcion="Elige entre nuestros paquetes de tours para conocer lo mejor de Cuba: cultura, historia, naturaleza y diversión, todo en una experiencia inolvidable. ¡Reserva tu aventura ahora!"
+    descripcion="Tours por Cuba con guías locales: La Habana histórica, Trinidad colonial, Viñales natural y cayos paradisíacos. Cultura, historia, naturaleza y diversión en experiencias únicas."
   />
 
   <FeatureStar />

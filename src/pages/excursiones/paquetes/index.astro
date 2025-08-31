@@ -3,11 +3,14 @@ import DefaultLayout from "../../../layouts/DefaultLayout.astro";
 import PaqueteExcursiones from "../../../components/paquetes/PaqueteExcursiones.astro";
 import HeaderStart from "../../../components/HeaderStart.astro";
 
-const page = "Paquetes de Excursiones";
+const page = "Paquetes Excursiones Cuba";
 const image = "/img/canasi1.webp";
 ---
 
-<DefaultLayout title="Paquetes de Excursiones en Cuba">
+<DefaultLayout 
+  title="Paquetes Excursiones Cuba - Viñales, Soroa, Cayos, Naturaleza"
+  description="Paquetes excursiones aventura Cuba: Viñales + Soroa, Cayos + Trinidad, cascadas y naturaleza exuberante. Ecoturismo y aventura auténtica."
+>
   <HeaderStart page={page} image={image} />
   <PaqueteExcursiones />
 </DefaultLayout>

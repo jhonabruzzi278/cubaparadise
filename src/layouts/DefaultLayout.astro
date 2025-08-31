@@ -2,7 +2,8 @@
 import Footer from "../components/Footer.astro";
 import TopBar from "../components/TopBar.astro";
 import Navbar from "../components/Navbar.astro";
-
+import Analytics from '@vercel/analytics/astro';
+import { ClientRouter } from "astro:transitions";
 import "../styles/style.css";
 import "../styles/slider.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,13 +11,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export interface Props {
   title?: string;
   description?: string;
-  page?: string;
 }
 
-const {
-  title = "Cuba Paradise - Las mejores experiencias turísticas en Cuba",
-  description = "Descubre Cuba con nuestras experiencias únicas: alojamiento, renta de autos, tours guiados, excursiones y clases. ¡Tu aventura cubana comienza aquí!",
-  page = undefined,
+const { 
+  title = "Cuba Paradise - Tours y Alojamiento en Cuba",
+  description = "Descubre Cuba con nuestros tours, excursiones y alojamientos auténticos. Experiencias únicas en La Habana, Viñales y más destinos cubanos."
 } = Astro.props;
 ---
 
@@ -27,6 +26,8 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/img/Cuba.webp" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
 
@@ -35,7 +36,7 @@ const {
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -49,16 +50,17 @@ const {
       rel="stylesheet"
     />
 
-    <!-- Custom Travel Template Styles -->
+    <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col">
+    <Analytics />
     <TopBar />
-
     <Navbar />
 
     <main>
       <slot />
     </main>
+    
     <Footer />
   </body>
 </html>

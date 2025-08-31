@@ -7,11 +7,14 @@ import HeaderStart from "../../../components/HeaderStart.astro";
 const alojamientos = await getCollection("alojamiento");
 const catalogo = alojamientos.filter((a) => a.data.tipo === "casa-en-el-campo");
 
-const page = "Casas en el Campo";
+const page = "Casas Rurales Cuba";
 const image = "/img/naturaleza1.jpg";
 ---
 
-<DefaultLayout title="Casas en el campo en Cuba">
+<DefaultLayout 
+  title="Casas Rurales Cuba - Alojamiento Campo Viñales, Soroa"
+  description="Casas particulares en el campo cubano. Turismo rural auténtico en Viñales, Soroa y zonas naturales. Conecta con la naturaleza y cultura campesina."
+>
   <HeaderStart page={page} image={image} />
-  <CatalogoCard titulo="Casas en el campo disponibles" catalogo={catalogo} />
+  <CatalogoCard titulo="Casas Rurales Cuba - Alojamiento Campo" catalogo={catalogo} />
 </DefaultLayout>

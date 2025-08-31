@@ -9,12 +9,15 @@ import { getCollection } from "astro:content";
 const servicios = await getCollection("servicios");
 const catalogo = servicios;
 
-const page = "servicios";
+const page = "Servicios Cuba";
 const image = "/img/El_Capitolio_Havana_Cuba.jpg";
 ---
 
-<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba">
+<DefaultLayout 
+  title="Servicios Cuba - Renta Autos, Traslados, Asistencia Turística"
+  description="Servicios turísticos Cuba: renta de autos, traslados aeropuerto, clases salsa, asistencia local. Todo para tu viaje perfecto a Cuba."
+>
   <HeaderStart page={page} image={image} />
-  <CatalogoCard titulo="Servicios disponibles" catalogo={catalogo} />
+  <CatalogoCard titulo="Servicios Turísticos Cuba" catalogo={catalogo} />
   <FeatureStar />
 </DefaultLayout>

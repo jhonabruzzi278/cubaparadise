@@ -10,19 +10,22 @@ import PaquetesCard from "../../components/PaquetesCard.astro";
 const excursiones = await getCollection("excursiones-paquetes");
 const catalogo = excursiones;
 
-const page = "Excursiones";
+const page = "Excursiones Cuba";
 const image = "/img/canasi1.webp";
 ---
 
-<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba">
+<DefaultLayout 
+  title="Excursiones Cuba - Viñales, Soroa, Cayos y Aventura Natural"
+  description="Excursiones aventura en Cuba: Valle de Viñales, cascadas Soroa, cayos vírgenes, naturaleza exuberante. Ecoturismo y aventura con guías especializados."
+>
   <HeaderStart page={page} image={image} />
   <PaquetesCard
-    titulo="Excursiones"
-    subtitulo="Vive aventuras inolvidables en Cuba"
+    titulo="Excursiones Cuba"
+    subtitulo="Aventuras Viñales, Soroa, Cayos y Naturaleza"
     ruta="/excursiones/paquetes"
     icono="fa fa-suitcase-rolling"
-    descripcion="Descubre nuestros paquetes de excursiones cuidadosamente diseñados para que vivas lo mejor de Cuba: naturaleza, cultura, aventura y relax, todo en una sola experiencia. ¡Elige tu paquete y déjate sorprender!"
+    descripcion="Excursiones Cuba: Valle de Viñales, cascadas de Soroa, cayos paradisíacos, naturaleza exuberante. Aventura, ecoturismo y cultura en experiencias únicas."
   />
-  <CatalogoCard titulo="Excursiones disponibles" catalogo={catalogo} />
+  <CatalogoCard titulo="Excursiones Cuba Disponibles" catalogo={catalogo} />
   <FeatureStar />
 </DefaultLayout>

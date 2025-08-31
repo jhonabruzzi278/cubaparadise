@@ -7,11 +7,14 @@ import HeaderStart from '../../../components/HeaderStart.astro';
 const alojamientos = await getCollection('alojamiento');
 const catalogo = alojamientos.filter(a => a.data.tipo === 'casa-en-la-playa');
 
-const page = "Casas en la Playa";
+const page = "Casas Playa Cuba";
 const image = "/img/malecon.jpg";
 ---
 
-<DefaultLayout title="Casas en la playa en Cuba">
+<DefaultLayout 
+  title="Casas Playa Cuba - Alojamiento Varadero, Cayos, Costa"
+  description="Casas y villas frente al mar en Cuba. Playas Varadero, cayos paradisíacos y costas vírgenes. Alojamiento con vista al mar Caribe."
+>
   <HeaderStart page={page} image={image} />
-  <CatalogoCard titulo="Casas en la playa disponibles" catalogo={catalogo} />
+  <CatalogoCard titulo="Casas Playa Cuba - Alojamiento Frente al Mar" catalogo={catalogo} />
 </DefaultLayout>

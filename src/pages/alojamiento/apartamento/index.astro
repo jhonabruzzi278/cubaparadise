@@ -7,11 +7,14 @@ import HeaderStart from "../../../components/HeaderStart.astro";
 const alojamientos = await getCollection("alojamiento");
 const catalogo = alojamientos.filter((a) => a.data.tipo === "apartamento");
 
-const page = "Apartamentos";
+const page = "Apartamentos La Habana";
 const image = "/img/El_Capitolio_Havana_Cuba.jpg";
 ---
 
-<DefaultLayout title="Apartamentos en Cuba">
+<DefaultLayout 
+  title="Apartamentos La Habana Cuba - Alquiler Centro Histórico"
+  description="Apartamentos en La Habana, Trinidad y ciudades principales. Alojamiento urbano cómodo cerca de sitios históricos. Vive como un local en Cuba."
+>
   <HeaderStart page={page} image={image} />
-  <CatalogoCard titulo="Apartamentos disponibles" catalogo={catalogo} />
+  <CatalogoCard titulo="Apartamentos Cuba - La Habana y Ciudades" catalogo={catalogo} />
 </DefaultLayout>
