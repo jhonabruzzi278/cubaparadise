@@ -1,27 +1,316 @@
-<div class="container-fluid py-5">
+<section class="about-banner">
+    <div class="container-fluid py-5">
         <div class="container pt-5">
-            <div class="row">
-                <div class="col-lg-6" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="/img/cascada.jpg" style="object-fit: cover;">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-6 order-2 order-lg-1">
+                    <div class="image-container">
+                        <img class="main-image" src="/img/cascada.jpg" alt="Naturaleza Cuba - Cascadas">
+                        <div class="image-overlay"></div>
                     </div>
                 </div>
-                <div class="col-lg-6 pt-5 pb-lg-5">
-                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Sobre Cuba Paradise</h6>
-                        <h1 class="mb-3">Tours en Cuba y Alojamiento Auténtico</h1>
-                        <p>En <b>Cuba Paradise</b> organizamos tours por La Habana, excursiones a Viñales, alojamiento en casas particulares y experiencias únicas en Cuba. Descubre Trinidad, Santiago de Cuba y otros destinos con guías locales especializados. Ofrecemos tours culturales, excursiones de aventura, renta de autos y alojamiento auténtico para que vivas la verdadera Cuba.</p>
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <img class="img-fluid" src="/img/malecon.jpg" alt="Tours La Habana - Malecón">
+                <div class="col-12 col-lg-6 order-1 order-lg-2">
+                    <div class="about-content">
+                        <div class="badge-container">
+                            <span class="about-badge">Sobre Cuba Paradise</span>
+                        </div>
+                        <h1 class="about-title">Tours en Cuba y Alojamiento <span class="highlight">Auténtico</span></h1>
+                        <p class="about-lead">En <strong>Cuba Paradise</strong> organizamos tours por La Habana, excursiones a Viñales, alojamiento en casas particulares y experiencias únicas en Cuba.</p>
+                        <p class="about-description">Descubre Trinidad, Santiago de Cuba y otros destinos con guías locales especializados. Ofrecemos tours culturales, excursiones de aventura, renta de autos y alojamiento auténtico para que vivas la verdadera Cuba.</p>
+                        
+                        <div class="gallery-mini">
+                            <div class="gallery-item">
+                                <img src="/img/malecon.jpg" alt="Tours La Habana - Malecón">
+                                <div class="gallery-overlay">
+                                    <span>La Habana</span>
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <img class="img-fluid" src="/img/parque.jpg" alt="Excursiones Naturaleza Cuba">
+                            <div class="gallery-item">
+                                <img src="/img/parque.jpg" alt="Excursiones Naturaleza Cuba">
+                                <div class="gallery-overlay">
+                                    <span>Naturaleza</span>
+                                </div>
                             </div>
                         </div>
-                        <a href="/contact" class="btn btn-primary mt-1">Planifica tu Viaje a Cuba</a>
+                        
+                        <div class="cta-container">
+                            <a href="/alojamiento" class="cta-button">
+                                <i class="fa fa-calendar-alt"></i>
+                                <span>Planifica tu Viaje a Cuba</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+<style>
+.about-banner {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%237AB730' fill-opacity='0.02' fill-rule='evenodd'%3E%3Cpath d='m0 40l40-40h-40v40z'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.image-container {
+    position: relative;
+    min-height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.image-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.image-container:hover .main-image {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(122, 183, 48, 0.1), rgba(82, 122, 32, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.about-content {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-container {
+    margin-bottom: 1.5rem;
+}
+
+.about-badge {
+    display: inline-block;
+    background-color: #7AB730;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.about-badge:hover {
+    background-color: #527a20;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: #7AB730;
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #7AB730, #527a20);
+    border-radius: 2px;
+}
+
+.about-lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.about-description {
+    color: #6c757d;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.gallery-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay span {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.cta-container {
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #7AB730;
+    color: white;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.cta-button:hover {
+    background-color: #527a20;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.cta-button i {
+    font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+    .about-content {
+        padding: 2rem 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .about-title {
+        font-size: 2rem;
+    }
+    
+    .image-container {
+        min-height: 300px;
+    }
+    
+    .main-image {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 1.75rem;
+    }
+    
+    .about-lead {
+        font-size: 1.1rem;
+    }
+    
+    .about-content {
+        padding: 1.5rem;
+    }
+    
+    .gallery-mini {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .image-container,
+    .main-image {
+        min-height: 250px;
+    }
+    
+    .about-title {
+        font-size: 1.5rem;
+    }
+    
+    .about-content {
+        padding: 1.25rem;
+    }
+}
+</style>

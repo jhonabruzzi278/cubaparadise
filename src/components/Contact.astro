@@ -1,46 +1,58 @@
 <div class="container-fluid py-5">
   <div class="container py-5">
-    <div class="text-center mb-3 pb-3">
-      <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">
-        Contact
+    <div class="text-center mb-5 pb-3">
+      <h6 class="text-primary text-uppercase fw-bold" style="letter-spacing: 3px;">
+        Contacto
       </h6>
-      <h1>Contact For Any Query</h1>
+      <h1 class="display-5 fw-bold">Planifica tu Viaje a Cuba</h1>
+      <p class="lead text-muted">Contáctanos para organizar tu experiencia perfecta en Cuba</p>
     </div>
     <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="contact-form bg-white" style="padding: 30px;">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+        <div class="contact-form bg-white rounded shadow p-3 p-md-4 p-lg-5">
           <div id="success"></div>
           <form id="contactForm">
-            <div class="control-group mb-3">
-              <input
-                type="text"
-                class="form-control p-4"
-                id="name"
-                placeholder="Tu Nombre"
-                required
-              />
-            </div>
-            <div class="control-group">
-              <input
-                type="text"
-                class="form-control p-4"
-                id="subject"
-                placeholder="Asunto"
-                required
-              />
-            </div>
-            <div class="control-group">
-              <textarea
-                class="form-control py-3 px-4"
-                rows="5"
-                id="message"
-                placeholder="Mensaje"
-                required></textarea>
-            </div>
-            <div class="text-center">
-              <button class="btn btn-primary py-3 px-4" type="submit"
-                >Enviar por WhatsApp</button
-              >
+            <div class="row g-3">
+              <div class="col-12">
+                <label for="name" class="form-label fw-bold">Nombre Completo</label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="name"
+                  placeholder="Tu nombre completo"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <label for="subject" class="form-label fw-bold">Tipo de Viaje</label>
+                <select class="form-select form-select-lg" id="subject" required>
+                  <option value="">Selecciona el tipo de viaje</option>
+                  <option value="Tours La Habana">🏛️ Tours por La Habana</option>
+                  <option value="Excursiones Viñales">🌄 Excursiones a Viñales</option>
+                  <option value="Tours Viñales Especializado">⭐ Tour Viñales Especializado</option>
+                  <option value="Alojamiento Cuba">🏠 Alojamiento en Cuba</option>
+                  <option value="Renta Autos">🚗 Renta de Autos</option>
+                  <option value="Paquete Completo">📦 Paquete Completo</option>
+                  <option value="Otro">❓ Otro (especificar en mensaje)</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label fw-bold">Mensaje</label>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  id="message"
+                  placeholder="Cuéntanos sobre tu viaje ideal a Cuba: fechas, destinos de interés, número de personas, presupuesto aproximado, etc."
+                  required></textarea>
+              </div>
+              <div class="col-12 text-center pt-3">
+                <button class="btn btn-success btn-lg px-4 py-3 fw-bold w-100" type="submit" style="background:#25D366;border:none;max-width:400px;">
+                  <i class="fab fa-whatsapp me-2"></i>Enviar por WhatsApp
+                </button>
+                <p class="text-muted mt-3 mb-0">
+                  <small><i class="fa fa-clock me-1"></i>Respuesta rápida garantizada • <i class="fa fa-shield-alt me-1"></i>100% Seguro</small>
+                </p>
+              </div>
             </div>
           </form>
           <script is:inline>
@@ -62,15 +74,15 @@
                     name = nameElement.value;
                   }
                   const subjectElement = form.elements.namedItem("subject");
-                  if (subjectElement instanceof HTMLInputElement) {
+                  if (subjectElement instanceof HTMLSelectElement) {
                     subject = subjectElement.value;
                   }
                   const messageElement = form.elements.namedItem("message");
-                  if (messageElement instanceof HTMLInputElement) {
+                  if (messageElement instanceof HTMLTextAreaElement) {
                     message = messageElement.value;
                   }
-                  const text = `Hola! Mi nombre es ${name}. Asunto: ${subject}. Mensaje: ${message}`;
-                  const url = `https://wa.me/56938980598?text=${encodeURIComponent(text)}`;
+                  const text = `¡Hola Cuba Paradise! 🇨🇺\n\nMi nombre es: ${name}\nTipo de viaje: ${subject}\n\nMensaje:\n${message}\n\nGracias por su atención.`;
+                  const url = `https://wa.me/5356851846?text=${encodeURIComponent(text)}`;
                   window.open(url, "_blank");
                   return false;
                 });

@@ -72,9 +72,12 @@ const paquetesExcursiones = defineCollection({
     descripcion: z.string(),
     duracion: z.string(),
     incluye: z.string(),
-    precio: z.number(),
+    precio: z.union([z.number(), z.string()]),
     moneda: z.string(),
     img: z.string(),
+    idiomas: z.string().optional(),
+    notas_precio: z.string().optional(),
+    destacado: z.boolean().optional(),
   }),
 });
 
@@ -85,9 +88,12 @@ const paquetesTours = defineCollection({
     descripcion: z.string(),
     duracion: z.string(),
     incluye: z.string(),
-    precio: z.number(),
+    precio: z.union([z.number(), z.string()]), // Permite números o strings para rangos
     moneda: z.string(),
     img: z.string(),
+    idiomas: z.string().optional(),
+    notas_precio: z.string().optional(),
+    destacado: z.boolean().optional(),
   }),
 });
 

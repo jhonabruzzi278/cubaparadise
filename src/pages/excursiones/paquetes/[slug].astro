@@ -41,6 +41,8 @@ const { Content } = await paquete.render();
                 <strong>Precio:</strong> ${paquete.data?.precio}{" "}
                 {paquete.data?.moneda}
               </li>
+              {paquete.data?.idiomas && <li><strong>Idiomas disponibles:</strong> {paquete.data.idiomas}</li>}
+              {paquete.data?.notas_precio && <li class="text-muted small mt-2"><strong>Detalles de precios:</strong> {paquete.data.notas_precio}</li>}
             </ul>
             <div class="mt-4">
               <a

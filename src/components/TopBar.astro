@@ -1,32 +1,106 @@
+<!-- TopBar Start -->
 <div class="container-fluid bg-light pt-3 d-none d-lg-block">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-        <div class="d-inline-flex align-items-center">
-          <p><i class="fa fa-envelope mr-2"></i>info@cubaparadise.com</p>
-          <p class="text-body px-3">|</p>
-          <p><i class="fa fa-phone-alt mr-2"></i>+56 9 3898 0598</p>
-        </div>
-      </div>
-      <div class="col-lg-6 text-center text-lg-right">
-        <div class="d-inline-flex align-items-center">
-          <a class="text-primary px-3" href="">
-            <i class="fab fa-facebook-f"></i>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center mb-2 mb-lg-0">
+        <div class="d-inline-flex align-items-center justify-content-center flex-wrap">
+          <a href="mailto:marlonbett@icloud.com" class="contact-link mb-0 mr-3" title="Enviar email">
+            <i class="fa fa-envelope mr-2"></i>marlonbett@icloud.com
           </a>
-          <a class="text-primary px-3" href="">
-            <i class="fab fa-twitter"></i>
+          <p class="text-body px-2 mb-0">|</p>
+          <a href="tel:+5356851846" class="contact-link mb-0 mr-4" title="Llamar">
+            <i class="fab fa-whatsapp mr-2"></i>+53 56851846
           </a>
-          <a class="text-primary px-3" href="">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a class="text-primary px-3" href="">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a class="text-primary pl-3" href="">
-            <i class="fab fa-youtube"></i>
-          </a>
+          <div class="d-inline-flex align-items-center ml-3">
+            <a
+              class="text-primary px-2"
+              href="https://instagram.com"
+              target="_blank"
+              title="Instagram"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+            
+              class="text-primary pl-2"
+              href="https://wa.me/5356851846"
+              target="_blank"
+              title="WhatsApp"
+              aria-label="WhatsApp"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- TopBar End -->
+
+<style>
+.container-fluid.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.container-fluid.bg-light p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2c3e50 !important;
+}
+
+.container-fluid.bg-light i {
+  color: #7AB730 !important;
+}
+
+.container-fluid.bg-light .text-body {
+  color: #6c757d !important;
+  font-weight: bold;
+}
+
+.container-fluid.bg-light a {
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  color: #7AB730 !important;
+}
+
+.container-fluid.bg-light a:hover {
+  transform: scale(1.15);
+  text-decoration: none;
+  color: #527a20 !important;
+}
+
+.container-fluid.bg-light a:hover i {
+  color: #527a20 !important;
+}
+
+/* Efecto especial para WhatsApp */
+.container-fluid.bg-light a[href*="wa.me"]:hover i {
+  color: #25D366 !important;
+}
+
+/* Estilos para enlaces de contacto */
+.container-fluid.bg-light .contact-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2c3e50 !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.container-fluid.bg-light .contact-link:hover {
+  color: #7AB730 !important;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.container-fluid.bg-light .contact-link i {
+  color: #7AB730 !important;
+}
+
+.container-fluid.bg-light .contact-link:hover i {
+  color: #527a20 !important;
+}
+</style>

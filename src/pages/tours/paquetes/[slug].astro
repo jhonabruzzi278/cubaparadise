@@ -27,6 +27,8 @@ const { Content } = await paquete.render();
                     <li><strong>Duración:</strong> {paquete.data.duracion}</li>
                     <li><strong>Incluye:</strong> {paquete.data.incluye}</li>
                     <li><strong>Precio:</strong> ${paquete.data.precio} {paquete.data.moneda}</li>
+                    {paquete.data.idiomas && <li><strong>Idiomas disponibles:</strong> {paquete.data.idiomas}</li>}
+                    {paquete.data.notas_precio && <li class="text-muted small mt-2"><strong>Detalles de precios:</strong> {paquete.data.notas_precio}</li>}
                 </ul>
                 <div class="mt-4">
                     <a href="/contact" class="btn btn-success btn-lg" style="background:#7AB730;border:none;">Solicitar información</a>

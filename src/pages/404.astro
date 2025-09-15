@@ -1,0 +1,75 @@
+---
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import HeaderStart from "../components/HeaderStart.astro";
+import Services from "../components/Services.astro";
+
+const page = "Página No Encontrada";
+const image = "/img/Cuba.webp";
+---
+
+<DefaultLayout
+  title="Página No Encontrada - Cuba Paradise"
+  description="La página que buscas no existe. Regresa a Cuba Paradise para descubrir nuestros tours, excursiones y alojamientos en Cuba."
+>
+  <HeaderStart page={page} image={image} />
+
+  <!-- Error 404 Content -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 text-center">
+        <!-- Error Number -->
+        <div class="error-number mb-4">
+          <span class="number-4">4</span>
+          <span class="number-0">0</span>
+          <span class="number-4">4</span>
+        </div>
+
+        <!-- Error Message -->
+        <h2 class="mb-4">¡Oops! Te has perdido en el paraíso</h2>
+        <p class="lead mb-5">
+          La página que buscas no existe o ha sido movida. No te preocupes, te
+          ayudamos a encontrar tu camino de regreso a Cuba Paradise.
+        </p>
+
+        <!-- Main Action Button -->
+      </div>
+    </div>
+  </div>
+  
+  <Services />
+</DefaultLayout>
+
+<style>
+  /* Error Number Styling */
+  .error-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .number-4,
+  .number-0 {
+    font-size: 6rem;
+    font-weight: 900;
+    color: #7ab730;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .number-4,
+    .number-0 {
+      font-size: 4rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .number-4,
+    .number-0 {
+      font-size: 3rem;
+    }
+  }
+</style>

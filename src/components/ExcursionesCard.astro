@@ -1,19 +1,24 @@
- 
-<div class="container-fluid py-5">
-    <div class="container pt-5 pb-3">
-        <div class="text-center mb-3 pb-3">
-            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Excursiones</h6>
-            <h1>Vive aventuras inolvidables en Cuba</h1>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4 mx-auto">
-                <a href="/excursiones/paquetes" class="service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
-                    <i class="fa fa-2x fa-suitcase-rolling mx-auto mb-4"></i>
-                    <h3 class="mb-2">Paquetes</h3>
-                    <p class="m-0">Descubre nuestros paquetes de excursiones cuidadosamente diseñados para que vivas lo mejor de Cuba: naturaleza, cultura, aventura y relax, todo en una sola experiencia. ¡Elige tu paquete y déjate sorprender!</p>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+---
+import BaseCard from './BaseCard.astro';
+
+// Configurar datos para ExcursionesCard usando BaseCard
+const excursionesItems = [
+  {
+    title: "Paquetes",
+    description: "Descubre nuestros paquetes de excursiones cuidadosamente diseñados para que vivas lo mejor de Cuba: naturaleza, cultura, aventura y relax, todo en una sola experiencia. ¡Elige tu paquete y déjate sorprender!",
+    icon: "fa fa-2x fa-suitcase-rolling",
+    link: "/excursiones/paquetes"
+  }
+];
+---
+
+<BaseCard 
+  sectionTitle="Excursiones"
+  sectionSubtitle="Vive aventuras inolvidables en Cuba"
+  cardType="service"
+  items={excursionesItems}
+  columnsLg={3}
+  columnsMd={2}
+  columnsSm={1}
+/>
     

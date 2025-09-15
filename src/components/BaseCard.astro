@@ -1,0 +1,361 @@
+---
+import { generateContentRoute } from '../config/site.config';
+import type { BaseCardProps, CardItem } from '../config/types';
+
+/**
+ * BaseCard - Componente unificado para tarjetas reutilizables
+ * Elimina duplicación entre PaquetesCard, ExcursionesCard, AlojamientoCard y CatalogoCard
+ */
+
+const { 
+  sectionTitle,
+  sectionSubtitle,
+  cardType = 'service',
+  items = [],
+  showImages = false,
+  showBadges = false,
+  showMetadata = false,
+  columnsLg = 4,
+  columnsMd = 6,
+  columnsSm = 12
+} = Astro.props as BaseCardProps;
+
+// Generar clases de columna dinámicamente
+const colClasses = `col-lg-${12/columnsLg} col-md-${12/columnsMd} col-sm-${12/columnsSm}`;
+
+// Función para generar rutas dinámicamente usando configuración centralizada
+function generateRoute(item: CardItem): string {
+  if (item.link) return item.link;
+  
+  // Usar función centralizada para rutas automáticas
+  return generateContentRoute(item.categoria || '', item.tipo || '', item.title.toLowerCase().replace(/\s+/g, '-'));
+}
+---
+
+<section class="container-fluid py-5">
+  <div class="container pt-5 pb-3">
+    
+    <!-- Header de la sección -->
+    {(sectionTitle || sectionSubtitle) && (
+      <div class="text-center mb-3 pb-3">
+        {sectionTitle && (
+          <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">{sectionTitle}</h6>
+        )}
+        {sectionSubtitle && (
+          <h1>{sectionSubtitle}</h1>
+        )}
+      </div>
+    )}
+
+    <!-- Mensaje de no hay elementos -->
+    {items.length === 0 && (
+      <div class="alert alert-warning text-center rounded-3">
+        <i class="fa fa-exclamation-triangle me-2"></i>
+        No hay elementos para mostrar.
+      </div>
+    )}
+
+    <!-- Grid de tarjetas -->
+    <div class="row g-4">
+      {items.map((item) => {
+        const route = generateRoute(item);
+        return (
+          <div class={colClasses + (cardType === 'service' ? ' mx-auto' : ' mb-4')}>
+            
+            <!-- Card tipo Service (PaquetesCard/ExcursionesCard style) -->
+            {cardType === 'service' && (
+              <a href={route} class="base-card service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
+                {item.icon && <i class={item.icon + " fa-2x mx-auto mb-4"}></i>}
+                <h3 class="mb-2">{item.title}</h3>
+                <p class="m-0">{item.description}</p>
+              </a>
+            )}
+
+            <!-- Card tipo Accommodation (AlojamientoCard style) -->
+            {cardType === 'accommodation' && (
+              <a href={route} class="base-card accommodation-link">
+                <div class="accommodation-item bg-white text-center mb-2 py-5 px-4">
+                  {item.icon && <i class={`fa fa-2x ${item.icon} mx-auto mb-4`}></i>}
+                  <h5 class="mb-2">{item.title}</h5>
+                  <p class="m-0">{item.description}</p>
+                </div>
+              </a>
+            )}
+
+            <!-- Card tipo Catalog (CatalogoCard style) -->
+            {cardType === 'catalog' && (
+              <div class="base-card h-100">
+                <div class="card h-100 shadow-sm border-0 transition-hover">
+                  
+                  {/* Imagen del catálogo */}
+                  {showImages && item.image && (
+                    <div class="position-relative overflow-hidden">
+                      <img src={item.image} alt={item.title} class="card-img-top" style="height:250px;object-fit:cover;transition:transform 0.3s ease;" />
+                      {showBadges && item.destacado && (
+                        <div class="position-absolute top-0 end-0 m-3">
+                          <span class="badge bg-warning text-dark fw-bold">
+                            <i class="fa fa-star me-1"></i>Destacado
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  
+                  <div class="card-body d-flex flex-column p-4">
+                    <h5 class="card-title fw-bold mb-3">{item.title}</h5>
+                    <p class="card-text text-muted mb-4">{item.description}</p>
+                    
+                    {/* Metadata del catálogo */}
+                    {showMetadata && (
+                      <div class="row g-2 mb-4">
+                        {item.categoria && (
+                          <div class="col-12">
+                            <small class="text-muted">
+                              <i class="fa fa-tag me-2 text-primary"></i>
+                              <strong>Categoría:</strong> {item.categoria}
+                            </small>
+                          </div>
+                        )}
+                        {item.duracion && (
+                          <div class="col-12">
+                            <small class="text-muted">
+                              <i class="fa fa-clock me-2 text-primary"></i>
+                              <strong>Duración:</strong> {item.duracion}
+                            </small>
+                          </div>
+                        )}
+                        {item.precio && (
+                          <div class="col-12">
+                            <small class="text-primary fw-bold fs-6">
+                              <i class="fa fa-dollar-sign me-2"></i>
+                              {item.precio} {item.moneda}
+                            </small>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    
+                    <div class="mt-auto">
+                      <a href={route} class="btn btn-primary w-100 fw-bold py-3">
+                        <i class="fa fa-eye me-2"></i>Ver Detalles
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+/* ==============================================
+   ESTILOS BASE COMPARTIDOS
+   ============================================== */
+
+.base-card {
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.base-card:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==============================================
+   ESTILOS PARA SERVICE CARDS
+   ============================================== */
+
+.service-item {
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(122, 183, 48, 0.2);
+  border-color: #7AB730;
+}
+
+.service-item i {
+  color: #7AB730;
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover i {
+  transform: scale(1.1);
+}
+
+/* ==============================================
+   ESTILOS PARA ACCOMMODATION CARDS
+   ============================================== */
+
+.accommodation-link {
+  display: block;
+}
+
+.accommodation-item {
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #f0f0f0;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.accommodation-link:hover .accommodation-item {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(122, 183, 48, 0.15);
+  border-color: #7AB730;
+}
+
+.accommodation-item i {
+  color: #7AB730;
+  transition: all 0.3s ease;
+}
+
+.accommodation-link:hover .accommodation-item i {
+  transform: scale(1.2) rotateY(360deg);
+  color: #527a20;
+}
+
+.accommodation-item h5 {
+  transition: all 0.3s ease;
+  color: #2c3e50;
+}
+
+.accommodation-link:hover .accommodation-item h5 {
+  color: #7AB730;
+  transform: translateY(-2px);
+}
+
+.accommodation-item p {
+  transition: all 0.3s ease;
+  color: #6c757d;
+}
+
+.accommodation-link:hover .accommodation-item p {
+  color: #495057;
+}
+
+/* Efecto de brillo */
+.accommodation-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(122, 183, 48, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.accommodation-link:hover .accommodation-item::before {
+  left: 100%;
+}
+
+/* ==============================================
+   ESTILOS PARA CATALOG CARDS
+   ============================================== */
+
+.transition-hover {
+  transition: all 0.3s ease;
+}
+
+.transition-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-img-top:hover {
+  transform: scale(1.05);
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+@media (max-width: 768px) {
+  .accommodation-link:hover .accommodation-item {
+    transform: translateY(-5px) scale(1.01);
+  }
+  
+  .accommodation-item {
+    padding: 2rem 1rem;
+    height: 250px;
+  }
+  
+  .service-item {
+    padding: 3rem 2rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .accommodation-item {
+    height: 220px;
+    padding: 1.5rem 1rem;
+  }
+  
+  .accommodation-item h5 {
+    font-size: 1.1rem;
+  }
+  
+  .accommodation-item p {
+    font-size: 0.9rem;
+  }
+  
+  .service-item {
+    padding: 2rem 1rem !important;
+  }
+}
+
+/* ==============================================
+   ANIMACIONES DE ENTRADA
+   ============================================== */
+
+.base-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.base-card:nth-child(1) { animation-delay: 0.1s; }
+.base-card:nth-child(2) { animation-delay: 0.2s; }
+.base-card:nth-child(3) { animation-delay: 0.3s; }
+.base-card:nth-child(4) { animation-delay: 0.4s; }
+.base-card:nth-child(5) { animation-delay: 0.5s; }
+.base-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==============================================
+   ACCESIBILIDAD
+   ============================================== */
+
+.base-card:focus {
+  outline: 3px solid #7AB730;
+  outline-offset: 2px;
+}
+
+.base-card {
+  cursor: pointer;
+}
+</style>

@@ -1,57 +1,126 @@
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Servicios Turísticos</h6>
-                <h1>Tours Cuba, Alojamiento y Excursiones Auténticas</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="/alojamiento" class="service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
-                        <i class="fa fa-2x fa-home mx-auto mb-4"></i>
-                        <h5 class="mb-2">Alojamiento Cuba - Casas Particulares</h5>
-                        <p class="m-0">Reserva casas particulares en La Habana, Trinidad y Viñales. Alojamiento auténtico con familias cubanas.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="/excursiones" class="service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
-                        <i class="fa fa-2x fa-map-marked-alt mx-auto mb-4"></i>
-                        <h5 class="mb-2">Excursiones y Tours Guiados</h5>
-                        <p class="m-0">Tours por La Habana Vieja, excursiones Valle de Viñales, Trinidad tours y más destinos cubanos con guías locales.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="/servicios/renta-auto" class="service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
-                        <i class="fa fa-2x fa-car mx-auto mb-4"></i>
-                        <h5 class="mb-2">Renta de Autos Cuba</h5>
-                        <p class="m-0">Alquiler de carros en Cuba con entrega personal. Viaja por toda la isla con seguridad y libertad.</p>
-                        <span class="d-block mt-3">
-                            <a href="/servicios/renta-auto" class="btn btn-success" style="background:#25D366;border:none;">
-                                <i class="fa fa-info-circle mr-2"></i>Reservar Auto
-                            </a>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="/tours" class="service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
-                        <i class="fa fa-2x fa-umbrella-beach mx-auto mb-4"></i>
-                        <h5 class="mb-2">Tours Playas Cuba</h5>
-                        <p class="m-0">Excursiones a Varadero, Cayo Santa María, playas de Trinidad y cayos vírgenes. Descubre el Caribe cubano.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="/tours" class="service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
-                        <i class="fa fa-2x fa-users mx-auto mb-4"></i>
-                        <h5 class="mb-2">Guías Turísticos Cuba</h5>
-                        <p class="m-0">Guías locales especializados en historia, cultura y naturaleza cubana. Tours personalizados y experiencias auténticas.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="/contact" class="service-item bg-white text-center mb-2 py-5 px-4 d-block text-dark text-decoration-none">
-                        <i class="fa fa-2x fa-concierge-bell mx-auto mb-4"></i>
-                        <h5 class="mb-2">Planifica tu Viaje a Cuba</h5>
-                        <p class="m-0">Asesoría personalizada para organizar tu viaje a Cuba. Itinerarios, reservas y recomendaciones de expertos locales.</p>
-                    </a>
-                </div>
-            </div>
-        </div>
+---
+// Definición de servicios de forma dinámica
+const services = [
+    {
+        icon: "fa-route",
+        title: "Guías Turísticos",
+        description: "Explora Cuba con guías locales expertos en historia y cultura.",
+        link: "/servicios/guias-turisticos"
+    },
+    {
+        icon: "fa-calendar-check",
+        title: "Reservas de Tours",
+        description: "Reserva tours personalizados a los mejores destinos de Cuba.",
+        link: "/tours"
+    },
+    {
+        icon: "fa-home",
+        title: "Alojamiento",
+        description: "Encuentra casas particulares y hospedajes únicos en Cuba.",
+        link: "/alojamiento"
+    }
+];
+---
+
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h6 class="text-primary text-uppercase" style="letter-spacing: 2px;">Nuestros Servicios</h6>
+        <h2 class="fw-bold">Descubre lo que ofrecemos</h2>
     </div>
+    <div class="row justify-content-center g-4">
+        {services.map((service) => (
+            <div class="col-md-6 col-lg-4">
+                <a href={service.link} class="service-item d-flex flex-column align-items-center text-center p-4">
+                    <div class="icon-wrapper mb-3">
+                        <i class={`fa ${service.icon} fa-3x`}></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">{service.title}</h5>
+                    <p class="text-muted small">{service.description}</p>
+                </a>
+            </div>
+        ))}
+    </div>
+</div>
+
+<style>
+/* Contenedor principal */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Estilo de los servicios */
+.service-item {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Icono */
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7AB730;
+    border-radius: 50%;
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+.service-item:hover .icon-wrapper {
+    background: #527a20;
+}
+
+/* Títulos y descripciones */
+h5 {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .service-item {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.8rem;
+    }
+}
+</style>

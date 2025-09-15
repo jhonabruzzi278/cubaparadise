@@ -7,7 +7,7 @@ import CatalogoCard from '../../components/CatalogoCard.astro';
 import { getCollection } from 'astro:content';
 
 const page = "Alojamiento en Cuba";
-const image = "/img/callehabana.jpg";
+const image = "/img/cubacalle2.jpg ";
 const alojamientos = await getCollection('alojamiento');
 const apartamento = alojamientos.find(a => a.data.tipo === 'apartamento');
 const campo = alojamientos.find(a => a.data.tipo === 'casa-en-el-campo');

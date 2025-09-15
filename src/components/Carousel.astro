@@ -1,66 +1,732 @@
-<div class="carousel">
-    <div class="list">
-        <div class="item">
-            <img src="/img/5tamolinos.jpg" alt="5ta Molinos" />
-            <div class="content">
-                <div class="author">La Habana</div>
-                <div class="title">5ta Molinos</div>
-                <div class="topic">Arquitectura</div>
-                <div class="des">Antiguo complejo industrial convertido en símbolo arquitectónico y cultural de la ciudad.</div>
-                <div class="buttons">
-                    <button>Ver más</button>
+<section class="hero-carousel">
+    <div class="carousel-container">
+        <div class="slides-wrapper">
+            <div class="slide active">
+                <div class="slide-background">
+                    <img src="/img/Cuba.webp" alt="5ta Molinos" />
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="content-wrapper">
+                        <span class="location-badge">La Habana</span>
+                        <h1 class="slide-title">5ta Molinos</h1>
+                        <h2 class="slide-subtitle">Arquitectura</h2>
+                        <p class="slide-description">Antiguo complejo industrial convertido en símbolo arquitectónico y cultural de la ciudad.</p>
+                        <div class="slide-actions">
+                            <a href="/tours" class="cta-btn primary">
+                                <span>Explorar</span>
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                            <a href="/contact" class="cta-btn secondary">
+                                <span>Más info</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="item">
-            <img src="/img/El_Capitolio_Havana_Cuba.jpg" alt="El Capitolio" />
-            <div class="content">
-                <div class="author">La Habana</div>
-                <div class="title">El Capitolio</div>
-                <div class="topic">Monumento</div>
-                <div class="des">Majestuoso edificio neoclásico, uno de los íconos más reconocidos de Cuba.</div>
-                <div class="buttons">
-                    <button>Ver más</button>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <img src="/img/canasi1.webp" alt="Playa Canasí" />
-            <div class="content">
-                <div class="author">Mayabeque</div>
-                <div class="title">Playa Canasí</div>
-                <div class="topic">Naturaleza</div>
-                <div class="des">Playa virgen de aguas cristalinas y entorno natural, ideal para desconectar.</div>
-                <div class="buttons">
-                    <button>Ver más</button>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <img src="/img/hotelnacional.jpg" alt="Hotel Nacional" />
-            <div class="content">
-                <div class="author">La Habana</div>
-                <div class="title">Hotel Nacional</div>
-                <div class="topic">Historia</div>
-                <div class="des">Hotel emblemático con vistas al malecón, declarado Monumento Nacional.</div>
-                <div class="buttons">
-                    <button>Ver más</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="thumbnail">
-    <div class="item"><img src="/img/callehabana.jpg" alt="Miniatura Calle Habana" /><div class="content"><div class="title">Calle Habana</div><div class="description">Color y vida en la ciudad</div></div></div>
-    <div class="item"><img src="/img/malecon.jpg" alt="Miniatura Malecón" /><div class="content"><div class="title">Malecón</div><div class="description">Paseo icónico junto al mar</div></div></div>
-    <div class="item"><img src="/img/cascada.jpg" alt="Miniatura Cascada" /><div class="content"><div class="title">Cascada</div><div class="description">Belleza natural de Cuba</div></div></div>
-    <div class="item"><img src="/img/naturaleza1.jpg" alt="Miniatura Naturaleza" /><div class="content"><div class="title">Naturaleza</div><div class="description">Paisajes verdes y frescura</div></div></div>
-    </div>
-    <div class="arrows">
-        <button id="prev">&lt;</button>
-        <button id="next">&gt;</button>
-    </div>
-    <div class="time"></div>
-</div>
 
-<link rel="stylesheet" href="/styles/slider.css">
-<script type="module" src="/scripts/slider.js"></script>
+            <div class="slide">
+                <div class="slide-background">
+                    <img src="/img/El_Capitolio_Havana_Cuba.jpg" alt="El Capitolio" />
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="content-wrapper">
+                        <span class="location-badge">La Habana</span>
+                        <h1 class="slide-title">El Capitolio</h1>
+                        <h2 class="slide-subtitle">Monumento</h2>
+                        <p class="slide-description">Majestuoso edificio neoclásico, uno de los íconos más reconocidos de Cuba.</p>
+                        <div class="slide-actions">
+                            <a href="/tours" class="cta-btn primary">
+                                <span>Explorar</span>
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                            <a href="/contact" class="cta-btn secondary">
+                                <span>Más info</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-background">
+                    <img src="/img/Cuba.webp" alt="Playa Canasí" />
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="content-wrapper">
+                        <span class="location-badge">Mayabeque</span>
+                        <h1 class="slide-title">Playa Canasí</h1>
+                        <h2 class="slide-subtitle">Naturaleza</h2>
+                        <p class="slide-description">Playa virgen de aguas cristalinas y entorno natural, ideal para desconectar.</p>
+                        <div class="slide-actions">
+                            <a href="/tours" class="cta-btn primary">
+                                <span>Explorar</span>
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                            <a href="/contact" class="cta-btn secondary">
+                                <span>Más info</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-background">
+                    <img src="/img/hotelnacional.jpg" alt="Hotel Nacional" />
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="content-wrapper">
+                        <span class="location-badge">La Habana</span>
+                        <h1 class="slide-title">Hotel Nacional</h1>
+                        <h2 class="slide-subtitle">Historia</h2>
+                        <p class="slide-description">Hotel emblemático con vistas al malecón, declarado Monumento Nacional.</p>
+                        <div class="slide-actions">
+                            <a href="/tours" class="cta-btn primary">
+                                <span>Explorar</span>
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                            <a href="/contact" class="cta-btn secondary">
+                                <span>Más info</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación -->
+        <div class="carousel-navigation">
+            <button class="nav-btn prev" id="prevBtn" aria-label="Anterior">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn next" id="nextBtn" aria-label="Siguiente">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0" aria-label="Slide 1"></button>
+            <button class="indicator" data-slide="1" aria-label="Slide 2"></button>
+            <button class="indicator" data-slide="2" aria-label="Slide 3"></button>
+            <button class="indicator" data-slide="3" aria-label="Slide 4"></button>
+        </div>
+
+        <!-- Miniatura de slides (desktop) -->
+        <div class="slide-preview d-none d-lg-block">
+            <div class="preview-container">
+                <div class="preview-item active" data-slide="0">
+                    <img src="/img/Cuba.webp" alt="Preview 1" />
+                    <div class="preview-content">
+                        <h4>5ta Molinos</h4>
+                        <span>Arquitectura</span>
+                    </div>
+                </div>
+                <div class="preview-item" data-slide="1">
+                    <img src="/img/El_Capitolio_Havana_Cuba.jpg" alt="Preview 2" />
+                    <div class="preview-content">
+                        <h4>El Capitolio</h4>
+                        <span>Monumento</span>
+                    </div>
+                </div>
+                <div class="preview-item" data-slide="2">
+                    <img src="/img/Cuba.webp" alt="Preview 3" />
+                    <div class="preview-content">
+                        <h4>Playa Canasí</h4>
+                        <span>Naturaleza</span>
+                    </div>
+                </div>
+                <div class="preview-item" data-slide="3">
+                    <img src="/img/hotelnacional.jpg" alt="Preview 4" />
+                    <div class="preview-content">
+                        <h4>Hotel Nacional</h4>
+                        <span>Historia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* Hero Carousel Styles */
+.hero-carousel {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Slides */
+.slides-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.slide-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.slide.active .slide-background img {
+    transform: scale(1.05);
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
+}
+
+/* Contenido del slide */
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 3;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.content-wrapper {
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.8s ease 0.3s;
+}
+
+.slide.active .content-wrapper {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.location-badge {
+    display: inline-block;
+    background: rgba(122, 183, 48, 0.9);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.slide-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slide-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #7AB730;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.slide-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botones de acción */
+.slide-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.cta-btn.primary {
+    background: #7AB730;
+    color: white;
+    border: 2px solid #7AB730;
+}
+
+.cta-btn.primary:hover {
+    background: #527a20;
+    border-color: #527a20;
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+/* Navegación */
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    right: 2rem;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    pointer-events: auto;
+}
+
+.nav-btn:hover {
+    background: rgba(122, 183, 48, 0.8);
+    border-color: #7AB730;
+    transform: scale(1.1);
+}
+
+/* Indicadores */
+.carousel-indicators {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 4;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #7AB730;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(122, 183, 48, 0.8);
+}
+
+/* Preview de slides (desktop) */
+.slide-preview {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 4;
+}
+
+.preview-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.preview-item {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.preview-item.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.preview-content h4 {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.preview-content span {
+    font-size: 0.6rem;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide-title {
+        font-size: 2.5rem;
+    }
+    
+    .slide-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .slide-description {
+        font-size: 1rem;
+    }
+    
+    .slide-content {
+        padding: 0 1rem;
+    }
+    
+    .carousel-navigation {
+        left: 1rem;
+        right: 1rem;
+    }
+    
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .slide-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+        width: 200px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .slide-title {
+        font-size: 2rem;
+    }
+    
+    .slide-description {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-indicators {
+        bottom: 1rem;
+    }
+}
+</style>
+
+<script>
+// Carousel mejorado con transiciones suaves y tipos corregidos
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const previews = document.querySelectorAll('.preview-item');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentSlide = 0;
+    let autoplayInterval: string | number | NodeJS.Timeout | null | undefined = null;
+    let isTransitioning = false;
+    const autoplayDelay = 5000;
+
+    function showSlide(index: number, direction = 'next') {
+        if (isTransitioning || index === currentSlide) return;
+        
+        isTransitioning = true;
+        
+        // Remove active class from current slide
+        const currentSlideEl = slides[currentSlide];
+        if (currentSlideEl) {
+            currentSlideEl.classList.remove('active');
+        }
+        
+        // Remove active from indicators and previews
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        previews.forEach(preview => preview.classList.remove('active'));
+        
+        // Add active class to new slide
+        setTimeout(() => {
+            if (slides[index]) {
+                slides[index].classList.add('active');
+                
+                // Trigger content animation
+                const contentWrapper = slides[index].querySelector('.content-wrapper');
+                if (contentWrapper && contentWrapper instanceof HTMLElement) {
+                    contentWrapper.style.transform = 'translateY(50px)';
+                    contentWrapper.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        if (contentWrapper instanceof HTMLElement) {
+                            contentWrapper.style.transform = 'translateY(0)';
+                            contentWrapper.style.opacity = '1';
+                        }
+                    }, 100);
+                }
+            }
+            
+            if (indicators[index]) indicators[index].classList.add('active');
+            if (previews[index]) previews[index].classList.add('active');
+            
+            currentSlide = index;
+            isTransitioning = false;
+        }, 100);
+    }
+
+    function nextSlide() {
+        if (isTransitioning) return;
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next, 'next');
+    }
+
+    function prevSlide() {
+        if (isTransitioning) return;
+        const prev = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prev, 'prev');
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(() => {
+            if (!isTransitioning) {
+                nextSlide();
+            }
+        }, autoplayDelay);
+    }
+
+    function stopAutoplay() {
+        if (autoplayInterval !== null) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+    }
+
+    function restartAutoplay() {
+        stopAutoplay();
+        setTimeout(() => {
+            const carouselHovered = document.querySelector('.hero-carousel:hover');
+            if (!carouselHovered) {
+                startAutoplay();
+            }
+        }, 1000);
+    }
+
+    // Event listeners para botones de navegación
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            nextSlide();
+            restartAutoplay();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            prevSlide();
+            restartAutoplay();
+        });
+    }
+
+    // Event listeners para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (index !== currentSlide) {
+                showSlide(index);
+                restartAutoplay();
+            }
+        });
+    });
+
+    // Event listeners para previews
+    previews.forEach((preview, index) => {
+        preview.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (index !== currentSlide) {
+                showSlide(index);
+                restartAutoplay();
+            }
+        });
+    });
+
+    // Navegación por teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+            restartAutoplay();
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextSlide();
+            restartAutoplay();
+        }
+    });
+
+    // Pausar en hover
+    const carousel = document.querySelector('.hero-carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', () => {
+            stopAutoplay();
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            startAutoplay();
+        });
+
+        // Soporte táctil mejorado
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let isSwiping = false;
+
+        carousel.addEventListener('touchstart', (e) => {
+            const touchEvent = e as TouchEvent;
+            if (touchEvent.touches && touchEvent.touches[0]) {
+                touchStartX = touchEvent.touches[0].clientX;
+                isSwiping = true;
+                stopAutoplay();
+            }
+        }, { passive: true });
+
+        carousel.addEventListener('touchmove', (e) => {
+            const touchEvent = e as TouchEvent;
+            if (isSwiping && touchEvent.touches && touchEvent.touches[0]) {
+                touchEndX = touchEvent.touches[0].clientX;
+            }
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', (e) => {
+            if (isSwiping) {
+                isSwiping = false;
+                handleSwipe();
+                restartAutoplay();
+            }
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+    }
+
+    // Inicializar
+    console.log('Inicializando carousel con', slides.length, 'slides');
+    showSlide(0);
+    
+    // Iniciar autoplay después de un pequeño retraso
+    setTimeout(() => {
+        startAutoplay();
+    }, 1000);
+});
+</script>
