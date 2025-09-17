@@ -5,7 +5,7 @@ tipo: "apartamento"
 ubicacion: "Centro Habana, La Habana"
 destacado: true
 precio: 1
-moneda: 1
+moneda: USD
 duracion: "?"
 capacidad: 0
 descripcion: "muestra"
