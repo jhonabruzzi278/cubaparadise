@@ -9,6 +9,6 @@ moneda: USD
 duracion: "Flexible"
 capacidad: 5
 descripcion: "(muestra)"
-img: "/img/callehabana.jpg"
+img: "/img/playasdeleste.jpg"
 ---
 (muestra)

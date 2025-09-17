@@ -1,17 +1,15 @@
-<div class="container-fluid py-5">
+<section id="contacto" aria-labelledby="contacto-title" class="container-fluid py-5">
   <div class="container py-5">
     <div class="text-center mb-5 pb-3">
-      <h6 class="text-primary text-uppercase fw-bold" style="letter-spacing: 3px;">
-        Contacto
-      </h6>
+      <h6 class="text-primary text-uppercase fw-bold" id="contacto-title" style="letter-spacing: 3px;">Contacto</h6>
       <h1 class="display-5 fw-bold">Planifica tu Viaje a Cuba</h1>
       <p class="lead text-muted">Contáctanos para organizar tu experiencia perfecta en Cuba</p>
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8 col-xl-6">
         <div class="contact-form bg-white rounded shadow p-3 p-md-4 p-lg-5">
-          <div id="success"></div>
-          <form id="contactForm">
+          <div id="success" class="visually-hidden" aria-live="polite"></div>
+          <form id="contactForm" novalidate>
             <div class="row g-3">
               <div class="col-12">
                 <label for="name" class="form-label fw-bold">Nombre Completo</label>
@@ -19,13 +17,20 @@
                   type="text"
                   class="form-control form-control-lg"
                   id="name"
+                  name="name"
                   placeholder="Tu nombre completo"
+                  autocomplete="name"
+                  minlength="2"
+                  maxlength="80"
+                  aria-required="true"
+                  aria-describedby="nameHelp"
                   required
                 />
+                <div id="nameHelp" class="form-text text-danger d-none">Por favor, introduce tu nombre (mínimo 2 caracteres).</div>
               </div>
               <div class="col-12">
                 <label for="subject" class="form-label fw-bold">Tipo de Viaje</label>
-                <select class="form-select form-select-lg" id="subject" required>
+                <select class="form-select form-select-lg" id="subject" name="subject" aria-required="true" aria-describedby="subjectHelp" required>
                   <option value="">Selecciona el tipo de viaje</option>
                   <option value="Tours La Habana">🏛️ Tours por La Habana</option>
                   <option value="Excursiones Viñales">🌄 Excursiones a Viñales</option>
@@ -35,6 +40,7 @@
                   <option value="Paquete Completo">📦 Paquete Completo</option>
                   <option value="Otro">❓ Otro (especificar en mensaje)</option>
                 </select>
+                <div id="subjectHelp" class="form-text text-danger d-none">Selecciona una opción.</div>
               </div>
               <div class="col-12">
                 <label for="message" class="form-label fw-bold">Mensaje</label>
@@ -42,12 +48,18 @@
                   class="form-control"
                   rows="4"
                   id="message"
+                  name="message"
                   placeholder="Cuéntanos sobre tu viaje ideal a Cuba: fechas, destinos de interés, número de personas, presupuesto aproximado, etc."
+                  minlength="10"
+                  maxlength="1000"
+                  aria-required="true"
+                  aria-describedby="messageHelp"
                   required></textarea>
+                <div id="messageHelp" class="form-text text-danger d-none">Escribe un mensaje (mínimo 10 caracteres).</div>
               </div>
               <div class="col-12 text-center pt-3">
-                <button class="btn btn-success btn-lg px-4 py-3 fw-bold w-100" type="submit" style="background:#25D366;border:none;max-width:400px;">
-                  <i class="fab fa-whatsapp me-2"></i>Enviar por WhatsApp
+                <button id="sendBtn" class="btn btn-whatsapp btn-lg px-4 py-3 fw-bold w-100" type="submit">
+                  <i class="fab fa-whatsapp me-2" aria-hidden="true"></i>Enviar por WhatsApp
                 </button>
                 <p class="text-muted mt-3 mb-0">
                   <small><i class="fa fa-clock me-1"></i>Respuesta rápida garantizada • <i class="fa fa-shield-alt me-1"></i>100% Seguro</small>
@@ -56,41 +68,116 @@
             </div>
           </form>
           <script is:inline>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", () => {
               const form = document.getElementById("contactForm");
-              if (form) {
-                form.addEventListener("submit", function (event) {
-                  event.preventDefault();
-                  const nameInput = document.getElementById("name");
-                  const subjectInput = document.getElementById("subject");
-                  const messageInput = document.getElementById("message");
-                  if (!nameInput || !subjectInput || !messageInput)
-                    return false;
-                  let name = "";
-                  let subject = "";
-                  let message = "";
-                  const nameElement = form.elements.namedItem("name");
-                  if (nameElement instanceof HTMLInputElement) {
-                    name = nameElement.value;
-                  }
-                  const subjectElement = form.elements.namedItem("subject");
-                  if (subjectElement instanceof HTMLSelectElement) {
-                    subject = subjectElement.value;
-                  }
-                  const messageElement = form.elements.namedItem("message");
-                  if (messageElement instanceof HTMLTextAreaElement) {
-                    message = messageElement.value;
-                  }
-                  const text = `¡Hola Cuba Paradise! 🇨🇺\n\nMi nombre es: ${name}\nTipo de viaje: ${subject}\n\nMensaje:\n${message}\n\nGracias por su atención.`;
-                  const url = `https://wa.me/5356851846?text=${encodeURIComponent(text)}`;
-                  window.open(url, "_blank");
+              const btn = document.getElementById("sendBtn");
+              const phone = "5356851846"; // WhatsApp destino
+
+              if (!form || !btn) return;
+
+              const getEl = (id) => document.getElementById(id);
+              const nameEl = getEl("name");
+              const subjectEl = getEl("subject");
+              const messageEl = getEl("message");
+              const nameHelp = getEl("nameHelp");
+              const subjectHelp = getEl("subjectHelp");
+              const messageHelp = getEl("messageHelp");
+
+              const toggleError = (el, helpEl, show) => {
+                if (!el || !helpEl) return;
+                helpEl.classList.toggle("d-none", !show);
+                el.classList.toggle("is-invalid", show);
+                el.setAttribute("aria-invalid", show ? "true" : "false");
+              };
+
+              const validate = () => {
+                let valid = true;
+                const name = (nameEl?.value || "").trim();
+                const subject = (subjectEl?.value || "").trim();
+                const message = (messageEl?.value || "").trim();
+
+                const nameOk = name.length >= 2;
+                toggleError(nameEl, nameHelp, !nameOk);
+                valid = valid && nameOk;
+
+                const subjectOk = subject.length > 0;
+                toggleError(subjectEl, subjectHelp, !subjectOk);
+                valid = valid && subjectOk;
+
+                const messageOk = message.length >= 10;
+                toggleError(messageEl, messageHelp, !messageOk);
+                valid = valid && messageOk;
+
+                return { valid, name, subject, message };
+              };
+
+              [nameEl, subjectEl, messageEl].forEach((el) => {
+                el?.addEventListener("input", () => validate());
+              });
+
+              form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const { valid, name, subject, message } = validate();
+                if (!valid) {
+                  // Llevar foco al primer inválido
+                  if (nameEl?.classList.contains("is-invalid")) nameEl.focus();
+                  else if (subjectEl?.classList.contains("is-invalid")) subjectEl.focus();
+                  else if (messageEl?.classList.contains("is-invalid")) messageEl.focus();
+                  form.reportValidity?.();
                   return false;
-                });
-              }
+                }
+
+                const text = `¡Hola Cuba Paradise! \n\nMi nombre es: ${name}\nTipo de viaje: ${subject}\n\nMensaje:\n${message}\n\nGracias por su atención.`;
+                const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+                btn.setAttribute("disabled", "true");
+                btn.classList.add("disabled");
+                try {
+                  window.open(url, "_blank", "noopener,noreferrer");
+                } finally {
+                  setTimeout(() => {
+                    btn.removeAttribute("disabled");
+                    btn.classList.remove("disabled");
+                  }, 800);
+                }
+                return false;
+              });
             });
           </script>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<style>
+  /* Detalles visuales profesionales conservando el layout */
+  .contact-form {
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .form-control, .form-select {
+    border-radius: 0.75rem;
+    border-color: #e5e7eb;
+    padding: 0.9rem 1rem;
+  }
+  .form-control:focus, .form-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+  }
+  .is-invalid {
+    border-color: #dc3545 !important;
+  }
+  .form-text.text-danger { font-size: 0.85rem; }
+
+  .btn-whatsapp {
+    background: #25D366;
+    border: none;
+    max-width: 420px;
+    margin-inline: auto;
+    color: #0b3d2e;
+    transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .btn-whatsapp:hover { filter: brightness(0.95); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25); }
+  .btn-whatsapp:active { transform: translateY(0); box-shadow: none; }
+  .btn-whatsapp.disabled, .btn-whatsapp[disabled] { opacity: .7; cursor: not-allowed; }
+</style>

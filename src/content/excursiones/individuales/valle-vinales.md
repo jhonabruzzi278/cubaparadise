@@ -7,7 +7,7 @@ moneda: "USD"
 duracion: "6 horas"
 grupo: "Transporte incluido"
 descripcion: "(muestra)."
-img: "/img/Viñales.jpg"
+img: "/img/viñales.jpg"
 ---
 
 (muestra)

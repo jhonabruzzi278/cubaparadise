@@ -1,199 +1,420 @@
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-5 pb-3">
-                <h6 class="text-primary text-uppercase fw-bold" style="letter-spacing: 5px;">Lo más recomendado en </h6>
-                <h1 class="display-5 fw-bold">Alojamiento • Tours • Excursiones</h1>
-            </div>
-            <div class="row g-4">
-                <!-- Tour Habana Auténtica -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="package-item bg-white h-100 shadow-sm border-0 rounded-3 overflow-hidden transition-hover">
-                        <img class="img-fluid package-img-fixed" src="/img/Cuba.webp" alt="Tour Habana Auténtica">
-                        <div class="p-4 d-flex flex-column h-100">
-                            <div class="d-flex flex-wrap justify-content-between mb-3 gap-2">
-                                <small class="text-muted"><i class="fa fa-map-marker-alt text-primary me-2"></i>La Habana</small>
-                                <small class="text-muted"><i class="fa fa-calendar-alt text-primary me-2"></i>Flexible</small>
-                                <small class="text-muted"><i class="fa fa-user text-primary me-2"></i>Guía local nativo</small>
-                            </div>
-                            <a class="h5 text-decoration-none text-dark fw-bold mb-3 stretched-link" href="/tours/paquetes/tour-habana-autentica">Descubre la Habana real con un guía local nacido y criado en la ciudad. Experiencia auténtica más allá de los sitios turísticos.</a>
-                            <div class="border-top mt-auto pt-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0 text-warning"><i class="fa fa-star me-2"></i>5.0 <small class="text-muted">(+300)</small></h6>
-                                    <h5 class="m-0 text-primary fw-bold">$20-60</h5>
-                                </div>
-                                <div class="mt-2">
-                                    <small class="text-muted">*Precio según número de personas. <strong>Idiomas:</strong> Español, Inglés</small>
-                                </div>
+---
+// Importar las colecciones de contenido
+import { getCollection } from 'astro:content';
+
+// Obtener los elementos destacados de cada categoría
+const allAlojamiento = await getCollection('alojamiento');
+const allTours = await getCollection('tours');
+const allExcursiones = await getCollection('excursiones');
+const allServicios = await getCollection('servicios');
+
+const featuredAlojamiento = allAlojamiento.find(item => item.data.destacado) || allAlojamiento[0];
+const featuredTour = allTours.find(item => item.data.destacado) || allTours[0];
+const featuredExcursion = allExcursiones.find(item => item.data.destacado) || allExcursiones[0];
+const featuredService = allServicios.find(item => item.data.destacado) || allServicios[0];
+
+// Funciones auxiliares para construir URLs
+function getAlojamientoUrl(entry: any) {
+    const parts = entry.id.split('/');
+    if (parts.length >= 2) {
+        return `/alojamiento/${parts[0]}/${parts[1].replace('.md', '')}`;
+    }
+    return `/alojamiento/${entry.slug || entry.id.replace('.md', '')}`;
+}
+
+function getToursUrl(entry: any) {
+    const parts = entry.id.split('/');
+    if (parts.length >= 2) {
+        return `/tours/${parts[0]}/${parts[1].replace('.md', '')}`;
+    }
+    return `/tours/${entry.slug || entry.id.replace('.md', '')}`;
+}
+
+function getExcursionesUrl(entry: any) {
+    const parts = entry.id.split('/');
+    if (parts.length >= 2) {
+        return `/excursiones/${parts[0]}/${parts[1].replace('.md', '')}`;
+    }
+    return `/excursiones/${entry.slug || entry.id.replace('.md', '')}`;
+}
+
+function getServiciosUrl(entry: any) {
+    return `/servicios`;
+}
+---
+
+<div class="container-fluid py-5 bg-light">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-5 pb-3">
+            <h6 class="text-primary text-uppercase fw-bold" style="letter-spacing: 5px;">Lo Más Destacado</h6>
+            <h1 class="display-5 fw-bold">Experiencias Premium en Cuba</h1>
+            <p class="lead text-muted">Descubre nuestras mejores recomendaciones seleccionadas especialmente para ti</p>
+        </div>
+
+        
+        <div class="bento-grid">
+            
+            {featuredAlojamiento && (
+                <div class="bento-item div1">
+                    <div class="bento-card h-100">
+                        <div class="bento-image-container">
+                            <img src={featuredAlojamiento.data.img} alt={featuredAlojamiento.data.title} class="bento-image">
+                        </div>
+                        <div class="bento-content">
+                            <h3 class="bento-title">{featuredAlojamiento.data.title}</h3>
+                            <p class="bento-description">{featuredAlojamiento.data.descripcion || "Disfruta de un alojamiento único en Cuba con todas las comodidades que necesitas."}</p>
+                            
+                            <div class="bento-buttons">
+                                <span class="bento-category-btn bg-primary">Alojamiento</span>
+                                <a href={getAlojamientoUrl(featuredAlojamiento)} class="bento-details-btn">Detalles</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Excursión a Viñales -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="package-item bg-white h-100 shadow-sm border-0 rounded-3 overflow-hidden transition-hover">
-                        <img class="img-fluid package-img-fixed" src="/img/Cuba.webp" alt="Excursión a Viñales">
-                        <div class="p-4 d-flex flex-column h-100">
-                            <div class="d-flex flex-wrap justify-content-between mb-3 gap-2">
-                                <small class="text-muted"><i class="fa fa-map-marker-alt text-primary me-2"></i>Viñales</small>
-                                <small class="text-muted"><i class="fa fa-calendar-alt text-primary me-2"></i>1 día</small>
-                                <small class="text-muted"><i class="fa fa-user text-primary me-2"></i>Grupos reducidos</small>
-                            </div>
-                            <a class="h5 text-decoration-none text-dark fw-bold mb-3 stretched-link" href="/excursiones/paquetes/excursion-vinales">Explora el Valle de Viñales, sus mogotes y plantaciones de tabaco con actividades de senderismo y bicicleta.</a>
-                            <div class="border-top mt-auto pt-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0 text-warning"><i class="fa fa-star me-2"></i>4.9 <small class="text-muted">(+200)</small></h6>
-                                    <h5 class="m-0 text-primary fw-bold">Desde $55</h5>
-                                </div>
-                                <div class="mt-2">
-                                    <small class="text-muted">*Incluye transporte y almuerzo. <strong>Idiomas:</strong> Español, Inglés</small>
-                                </div>
+            )}
+
+            
+            {featuredTour && (
+                <div class="bento-item div2">
+                    <div class="bento-card h-100">
+                        <div class="bento-image-container">
+                            <img src={featuredTour.data.img} alt={featuredTour.data.title} class="bento-image">
+                        </div>
+                        <div class="bento-content">
+                            <h4 class="bento-title">{featuredTour.data.title}</h4>
+                            <p class="bento-description">{featuredTour.data.descripcion || "Descubre Cuba con este tour especialmente diseñado para ofrecerte una experiencia auténtica."}</p>
+                            
+                            <div class="bento-buttons">
+                                <span class="bento-category-btn bg-primary">Tour</span>
+                                <a href={getToursUrl(featuredTour)} class="bento-details-btn">Detalles</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Tour Viñales Especializado -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="package-item bg-white h-100 shadow-sm border-0 rounded-3 overflow-hidden transition-hover">
-                        <img class="img-fluid package-img-fixed" src="/img/viñales.jpg" alt="Tour Viñales Especializado">
-                        <div class="p-4 d-flex flex-column h-100">
-                            <div class="d-flex flex-wrap justify-content-between mb-3 gap-2">
-                                <small class="text-muted"><i class="fa fa-map-marker-alt text-primary me-2"></i>Viñales</small>
-                                <small class="text-muted"><i class="fa fa-calendar-alt text-primary me-2"></i>1 día completo</small>
-                                <small class="text-muted"><i class="fa fa-user text-primary me-2"></i>Guía especializado</small>
-                            </div>
-                            <a class="h5 text-decoration-none text-dark fw-bold mb-3 stretched-link" href="/tours/paquetes/tour-vinales-especializado">Tour especializado con guía experto local. Descubre secretos únicos de este Patrimonio de la Humanidad.</a>
-                            <div class="border-top mt-auto pt-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0 text-warning"><i class="fa fa-star me-2"></i>5.0 <small class="text-muted">(+150)</small></h6>
-                                    <h5 class="m-0 text-primary fw-bold">Desde $65</h5>
-                                </div>
-                                <div class="mt-2">
-                                    <small class="text-muted">*Incluye transporte y almuerzo. <strong>Idiomas:</strong> Español, Inglés</small>
-                                </div>
+            )}
+
+            
+            {featuredExcursion && (
+                <div class="bento-item div3">
+                    <div class="bento-card h-100">
+                        <div class="bento-image-container">
+                            <img src={featuredExcursion.data.img} alt={featuredExcursion.data.title} class="bento-image">
+                        </div>
+                        <div class="bento-content">
+                            <h4 class="bento-title">{featuredExcursion.data.title}</h4>
+                            <p class="bento-description">{featuredExcursion.data.descripcion || "Una excursión perfectamente organizada para descubrir los tesoros naturales de Cuba."}</p>
+                            
+                            <div class="bento-buttons">
+                                <span class="bento-category-btn bg-primary">Excursión</span>
+                                <a href={getExcursionesUrl(featuredExcursion)} class="bento-details-btn">Detalles</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Casa en la Playa -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="package-item bg-white h-100 shadow-sm border-0 rounded-3 overflow-hidden transition-hover">
-                        <img class="img-fluid package-img-fixed" src="/img/Cuba.webp" alt="Casa en la Playa">
-                        <div class="p-4 d-flex flex-column h-100">
-                            <div class="d-flex flex-wrap justify-content-between mb-3 gap-2">
-                                <small class="text-muted"><i class="fa fa-map-marker-alt text-primary me-2"></i>Playas del Este</small>
-                                <small class="text-muted"><i class="fa fa-calendar-alt text-primary me-2"></i>Flexible</small>
-                                <small class="text-muted"><i class="fa fa-user text-primary me-2"></i>Familias y parejas</small>
-                            </div>
-                            <a class="h5 text-decoration-none text-dark fw-bold mb-3 stretched-link" href="/alojamiento/casa-en-la-playa/casa-playa-este">Alojamiento frente al mar con todas las comodidades y acceso directo a la playa.</a>
-                            <div class="border-top mt-auto pt-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0 text-warning"><i class="fa fa-star me-2"></i>4.8 <small class="text-muted">(+180)</small></h6>
-                                    <h5 class="m-0 text-primary fw-bold">Desde $60/noche</h5>
-                                </div>
+            )}
+
+            
+            {featuredService && (
+                <div class="bento-item div4">
+                    <div class="bento-card h-100">
+                        <div class="bento-image-container">
+                            <img src={featuredService.data.img} alt={featuredService.data.title} class="bento-image">
+                        </div>
+                        <div class="bento-content">
+                            <h5 class="bento-title">{featuredService.data.title}</h5>
+                            <p class="bento-description">{featuredService.data.descripcion || "Servicio especializado para hacer tu experiencia en Cuba más cómoda y completa."}</p>
+                            
+                            <div class="bento-buttons">
+                                <span class="bento-category-btn bg-primary">Servicio</span>
+                                <a href={getServiciosUrl(featuredService)} class="bento-details-btn">Detalles</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Casa en el Campo -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="package-item bg-white h-100 shadow-sm border-0 rounded-3 overflow-hidden transition-hover">
-                        <img class="img-fluid package-img-fixed" src="/img/parque1.jpg" alt="Casa en el Campo">
-                        <div class="p-4 d-flex flex-column h-100">
-                            <div class="d-flex flex-wrap justify-content-between mb-3 gap-2">
-                                <small class="text-muted"><i class="fa fa-map-marker-alt text-primary me-2"></i>Valle de Yumurí</small>
-                                <small class="text-muted"><i class="fa fa-calendar-alt text-primary me-2"></i>Flexible</small>
-                                <small class="text-muted"><i class="fa fa-user text-primary me-2"></i>Experiencia rural</small>
-                            </div>
-                            <a class="h5 text-decoration-none text-dark fw-bold mb-3 stretched-link" href="/alojamiento/casa-en-el-campo/casa-campo-yumuri">Hospédate en una casa rural rodeada de naturaleza, ideal para desconectar y vivir la Cuba auténtica.</a>
-                            <div class="border-top mt-auto pt-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0 text-warning"><i class="fa fa-star me-2"></i>4.7 <small class="text-muted">(+120)</small></h6>
-                                    <h5 class="m-0 text-primary fw-bold">Desde $40/noche</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Apartamento en La Habana -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="package-item bg-white h-100 shadow-sm border-0 rounded-3 overflow-hidden transition-hover">
-                        <img class="img-fluid package-img-fixed" src="/img/El_Capitolio_Havana_Cuba.jpg" alt="Apartamento en La Habana">
-                        <div class="p-4 d-flex flex-column h-100">
-                            <div class="d-flex flex-wrap justify-content-between mb-3 gap-2">
-                                <small class="text-muted"><i class="fa fa-map-marker-alt text-primary me-2"></i>Centro Habana</small>
-                                <small class="text-muted"><i class="fa fa-calendar-alt text-primary me-2"></i>Flexible</small>
-                                <small class="text-muted"><i class="fa fa-user text-primary me-2"></i>Hasta 4 personas</small>
-                            </div>
-                            <a class="h5 text-decoration-none text-dark fw-bold mb-3 stretched-link" href="/alojamiento/apartamento/apartamento-habana">Apartamento moderno y céntrico, perfecto para explorar la ciudad y disfrutar de la vida habanera.</a>
-                            <div class="border-top mt-auto pt-4">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0 text-warning"><i class="fa fa-star me-2"></i>4.9 <small class="text-muted">(+90)</small></h6>
-                                    <h5 class="m-0 text-primary fw-bold">Desde $55/noche</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            )}
         </div>
     </div>
+</div>
 
 <style>
-    .package-img-fixed {
+    /* Grid Layout Simple */
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 0px;
+        max-width: 1200px;
+        margin: 0 auto;
+        min-height: 380px;
+    }
+
+    /* Grid Item Positions */
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 1 / 2 / 2 / 3; }
+    .div3 { grid-area: 1 / 3 / 2 / 4; }
+    .div4 { grid-area: 1 / 4 / 2 / 5; }
+
+    /* Bento Card Base */
+    .bento-card {
+        position: relative;
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: pointer;
+    }
+
+    .bento-card:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Image Container */
+    .bento-image-container {
+        position: relative;
+        height: 50%;
+        overflow: hidden;
+        border-radius: 24px 24px 0 0;
+    }
+
+    .bento-image {
         width: 100%;
-        height: 250px;
+        height: 100%;
         object-fit: cover;
-        transition: transform 0.3s ease;
+        transition: transform 0.6s ease;
     }
-    
-    .transition-hover {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .bento-card:hover .bento-image {
+        transform: scale(1.1);
     }
-    
-    .transition-hover:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.15)!important;
+
+    /* Content Area */
+    .bento-content {
+        padding: 1.2rem;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 0.5rem;
     }
-    
-    .transition-hover:hover .package-img-fixed {
-        transform: scale(1.05);
+
+    /* Typography */
+    .bento-title {
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 0 0 0.6rem 0;
+        line-height: 1.2;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-size: 1.1rem;
+        letter-spacing: -0.01em;
     }
-    
+
+    .bento-description {
+        color: #666;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 0 0 1rem 0;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        flex-grow: 1;
+    }
+
+    /* Buttons Section (Minimal) */
+    .bento-buttons {
+        display: flex;
+        align-items: stretch;
+        gap: 0.75rem;
+        margin-top: auto;
+        padding-top: 0.25rem;
+        width: 100%;
+    }
+
+    /* Category chip */
+    .bento-category-btn {
+        color: #0f172a;
+        background-color: #f8fafc;
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-transform: none;
+        border: 1px solid #e2e8f0;
+        flex: 1 1 0;
+        text-align: center;
+    }
+
+    .bento-category-btn:hover {
+        background-color: #f1f5f9;
+    }
+
+    /* Primary full-width button */
+    .bento-details-btn {
+        background: #f1f5f9; /* slate-100 */
+        color: #0f172a; /* slate-900 */
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.78rem;
+        font-weight: 600;
+        transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+        text-align: center;
+        border: 1px solid #e2e8f0; /* slate-200 */
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        flex: 1 1 0;
+    }
+
+    .bento-details-btn:hover {
+        background: #e2e8f0; /* slate-200 */
+        color: #0f172a;
+        border-color: #cbd5e1; /* slate-300 */
+        transform: translateY(-1px);
+        box-shadow: 0 6px 12px rgba(15, 23, 42, 0.10);
+        text-decoration: none;
+    }
+
+
+
+    /* Link Overlay */
+    .bento-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-row-gap: 1.5rem;
+            min-height: 340px;
+        }
+
+        .div1 { grid-area: 1 / 1 / 2 / 2; }
+        .div2 { grid-area: 1 / 2 / 2 / 3; }
+        .div3 { grid-area: 2 / 1 / 3 / 2; }
+        .div4 { grid-area: 2 / 2 / 3 / 3; }
+
+        .bento-content {
+            padding: 1rem;
+        }
+
+        .bento-title {
+            font-size: 1rem;
+        }
+
+        .bento-buttons {
+            gap: 0.75rem;
+            padding-top: 0.25rem;
+        }
+
+        .bento-category-btn,
+        .bento-details-btn {
+            font-size: 0.74rem;
+            padding: 0.5rem 0.9rem;
+        }
+    }
+
     @media (max-width: 768px) {
-        .package-img-fixed {
-            height: 200px;
+        .bento-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            grid-row-gap: 1rem;
+            grid-column-gap: 0;
+            min-height: 320px;
         }
-        
-        .d-flex.flex-wrap.justify-content-between {
-            flex-direction: column;
-            gap: 0.5rem !important;
+
+        .div1 { grid-area: 1 / 1 / 2 / 2; }
+        .div2 { grid-area: 2 / 1 / 3 / 2; }
+        .div3 { grid-area: 3 / 1 / 4 / 2; }
+        .div4 { grid-area: 4 / 1 / 5 / 2; }
+
+        .bento-content {
+            padding: 1rem;
+            gap: 0.4rem;
         }
-        
-        .d-flex.flex-wrap.justify-content-between small {
-            text-align: center;
+
+        .bento-title {
+            font-size: 1rem !important;
+            margin-bottom: 0.5rem !important;
+            -webkit-line-clamp: 1;
         }
-        
-        .h5.text-decoration-none {
-            font-size: 1.1rem !important;
-            line-height: 1.3;
+
+        .bento-description {
+            font-size: 0.8rem !important;
+            margin-bottom: 0.6rem !important;
+            -webkit-line-clamp: 2;
         }
-        
-        .mt-2 small {
-            font-size: 0.8rem;
+
+        .bento-buttons {
+            gap: 0.6rem;
+            padding-top: 0.2rem;
+        }
+
+        .bento-category-btn,
+        .bento-details-btn {
+            font-size: 0.74rem;
+            padding: 0.48rem 0.85rem;
         }
     }
-    
-    @media (max-width: 576px) {
-        .package-img-fixed {
-            height: 180px;
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
-        .p-4 {
-            padding: 1rem !important;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .h5.text-decoration-none {
-            font-size: 1rem !important;
+    }
+
+    .bento-item {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .bento-item:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .bento-item:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .bento-item:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .bento-item:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    /* Loading state */
+    @keyframes shimmer {
+        0% {
+            background-position: -468px 0;
         }
+        100% {
+            background-position: 468px 0;
+        }
+    }
+
+    .bento-card.loading {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 400% 100%;
+        animation: shimmer 1.2s ease-in-out infinite;
     }
 </style>

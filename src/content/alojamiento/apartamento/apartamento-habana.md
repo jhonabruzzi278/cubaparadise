@@ -2,7 +2,7 @@
 title: "Apartamento moderno en La Habana (muestra)"
 slug: "apartamento-habana"
 tipo: "apartamento"
-ubicacion: "Centro Habana, La Habana"
+ubicacion: ""
 destacado: true
 precio: 1
 moneda: USD

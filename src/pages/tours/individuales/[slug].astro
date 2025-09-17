@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from 'astro:content';
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+
+export const getStaticPaths = (async () => {
+  const tours = await getCollection('tours');
+  return tours.map((tour) => ({
+    params: { slug: tour.id.split('/')[1]?.replace('.md', '') || tour.id.replace('.md', '') },
+    props: { tour },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  tour: CollectionEntry<'tours'>;
+}
+
+const { tour } = Astro.props;
+const { Content } = await tour.render();
+---
+
+<DefaultLayout 
+  title={`${tour.data.title} - Cuba Paradise`}
+  description={tour.data.descripcion}
+>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <img src={tour.data.img} alt={tour.data.title} class="img-fluid rounded mb-4" />
+        
+        <h1 class="display-4 mb-3">{tour.data.title}</h1>
+        
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <h6 class="text-muted">Duración</h6>
+            <p>{tour.data.duracion}</p>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-muted">Categoría</h6>
+            <p class="text-capitalize">{tour.data.categoria}</p>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-muted">Precio</h6>
+            <p class="text-primary fw-bold">${tour.data.precio} {tour.data.moneda}</p>
+          </div>
+          {tour.data.guia && (
+            <div class="col-md-3">
+              <h6 class="text-muted">Guía</h6>
+              <p>{tour.data.guia}</p>
+            </div>
+          )}
+        </div>
+        
+        <div class="content">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </div>
+</DefaultLayout>
