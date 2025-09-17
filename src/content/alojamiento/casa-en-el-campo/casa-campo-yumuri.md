@@ -1,5 +1,5 @@
 ---
-title: "Casa en el campo Valle de Yumurí"
+title: "Casa en el campo Valle de Yumurí (muestra)"
 slug: "casa-campo-yumuri"
 tipo: "casa-en-el-campo"
 ubicacion: "Valle de Yumurí, Matanzas"
@@ -8,8 +8,8 @@ precio: 40
 moneda: USD
 duracion: "Flexible"
 capacidad: 6
-descripcion: "Hospédate en una casa rural rodeada de naturaleza, ideal para desconectar y vivir la Cuba auténtica."
+descripcion: "(muestra)"
 img: "/img/parque1.jpg"
 ---
 
-Vive la experiencia rural cubana, rodeado de paisajes naturales y tranquilidad.
+(muestra)
