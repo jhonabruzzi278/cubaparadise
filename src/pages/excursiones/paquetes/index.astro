@@ -1,7 +1,11 @@
 ---
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
-import PaqueteExcursiones from "../../../components/paquetes/PaqueteExcursiones.astro";
 import HeaderStart from "../../../components/HeaderStart.astro";
+import CatalogoCard from "../../../components/CatalogoCard.astro";
+import { getCollection } from "astro:content";
+import FeatureStar from "../../../components/FeatureStar.astro";
+
+const excursionesPaquetes = await getCollection("excursiones-paquetes");
 
 const page = "Paquetes Excursiones Cuba";
 const image = "/img/viñales.jpg";
@@ -12,5 +16,6 @@ const image = "/img/viñales.jpg";
   description="Paquetes excursiones aventura Cuba: Viñales + Soroa, Cayos + Trinidad, cascadas y naturaleza exuberante. Ecoturismo y aventura auténtica."
 >
   <HeaderStart page={page} image={image} />
-  <PaqueteExcursiones />
+  <CatalogoCard titulo="Catálogo de Paquetes Excursiones" catalogo={excursionesPaquetes} />
+  <FeatureStar />
 </DefaultLayout>

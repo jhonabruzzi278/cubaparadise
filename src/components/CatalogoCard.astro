@@ -9,24 +9,51 @@ export interface Props {
 const { titulo = 'Catálogo completo de experiencias', catalogo = [] } = Astro.props;
 
 // Transformar el catálogo al formato esperado por BaseCard
-const catalogoItems = catalogo.map((item) => ({
-  title: item.data.title,
-  description: item.data.descripcion,
-  image: item.data.img,
-  categoria: item.data.categoria,
-  duracion: item.data.duracion,
-  precio: item.data.precio,
-  moneda: item.data.moneda,
-  destacado: item.data.destacado,
-  tipo: item.data.tipo,
-  link: item.data.categoria === 'tours' ? `/tours/paquetes/${item.slug}` :
-        item.data.categoria === 'excursiones' ? `/excursiones/paquetes/${item.slug}` :
-        item.data.tipo === 'apartamento' ? `/alojamiento/apartamento/${item.slug}` :
-        item.data.tipo === 'casa-en-el-campo' ? `/alojamiento/casa-en-el-campo/${item.slug}` :
-        item.data.tipo === 'casa-en-la-playa' ? `/alojamiento/casa-en-la-playa/${item.slug}` :
-        item.data.tipo === 'servicio' ? `/servicios/${item.slug}` :
-        '#'
-}));
+const catalogoItems = catalogo.map((item) => {
+  // Determinar la ruta basándose en la colección de origen
+  let link = '#';
+  
+  // Verificar si el item pertenece a tours-paquetes
+  if (item.collection === 'tours-paquetes') {
+    link = `/tours/paquetes/${item.slug}`;
+  }
+  // Verificar si el item pertenece a excursiones-paquetes  
+  else if (item.collection === 'excursiones-paquetes') {
+    link = `/excursiones/paquetes/${item.slug}`;
+  }
+  // Para otros tipos, usar la lógica anterior
+  else if (item.data.categoria === 'tours') {
+    link = `/tours/paquetes/${item.slug}`;
+  }
+  else if (item.data.categoria === 'excursiones') {
+    link = `/excursiones/paquetes/${item.slug}`;
+  }
+  else if (item.data.tipo === 'apartamento') {
+    link = `/alojamiento/apartamento/${item.slug}`;
+  }
+  else if (item.data.tipo === 'casa-en-el-campo') {
+    link = `/alojamiento/casa-en-el-campo/${item.slug}`;
+  }
+  else if (item.data.tipo === 'casa-en-la-playa') {
+    link = `/alojamiento/casa-en-la-playa/${item.slug}`;
+  }
+  else if (item.data.tipo === 'servicio') {
+    link = `/servicios/${item.slug}`;
+  }
+
+  return {
+    title: item.data.title,
+    description: item.data.descripcion,
+    image: item.data.img,
+    categoria: item.data.categoria,
+    duracion: item.data.duracion,
+    precio: item.data.precio,
+    moneda: item.data.moneda,
+    destacado: item.data.destacado,
+    tipo: item.data.tipo,
+    link: link
+  };
+});
 ---
 
 <BaseCard 

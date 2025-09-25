@@ -1,12 +1,12 @@
 ---
-title: "Tour Especializado Viñales (muestra)"
-slug: "tour-vinales-especializado"
-descripcion: "(muestra)"
-duracion: "(muestra)"
-incluye: "(muestra)"
+title: "Tour Paquete Cayo Coco  "
+slug: "tour-cayococo"
+descripcion: "Tour por Cayo Coco"
+duracion: "24 hrs"
+incluye: "aguita"
 
-img: "/img/viñales.jpg"
-idiomas: "Español, Inglés (muestra)"
+img: "/img/cayococo.jpg"
+idiomas: "Español, Inglés "
 destacado: true
 ---
 

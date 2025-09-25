@@ -1,7 +1,7 @@
 ---
 title: "Tour Habana Vieja (muestra)"
 categoria: "histórico"
-destacado: true
+destacado: false
 
 duracion: "4 horas"
 guia: "(muestra)"
