@@ -2,19 +2,19 @@
 // Definición de servicios de forma dinámica
 const services = [
     {
-        icon: "fa-route",
+        icon: "hiking",
         title: "Guías Turísticos",
         description: "Explora Cuba con guías locales expertos en historia y cultura.",
-        link: "/servicios/guias-turisticos"
+        link: "/excursiones"
     },
     {
-        icon: "fa-calendar-check",
+        icon: "support_agent",
         title: "Reservas de Tours",
         description: "Reserva tours personalizados a los mejores destinos de Cuba.",
         link: "/tours"
     },
     {
-        icon: "fa-home",
+        icon: "house",
         title: "Alojamiento",
         description: "Encuentra casas particulares y hospedajes únicos en Cuba.",
         link: "/alojamiento"
@@ -32,7 +32,9 @@ const services = [
             <div class="col-md-6 col-lg-4">
                 <a href={service.link} class="service-item d-flex flex-column align-items-center text-center p-4">
                     <div class="icon-wrapper mb-3">
-                        <i class={`fa ${service.icon} fa-3x`}></i>
+                        <span class="material-symbols-outlined">
+                            {service.icon}
+                        </span>
                     </div>
                     <h5 class="fw-bold mb-2">{service.title}</h5>
                     <p class="text-muted small">{service.description}</p>
@@ -72,14 +74,17 @@ const services = [
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #7AB730;
-    border-radius: 50%;
-    color: #fff;
-    transition: background 0.3s ease;
+    color: #7AB730;
+    transition: color 0.3s ease;
+}
+
+.icon-wrapper .material-symbols-outlined {
+    font-size: 3rem;
+    color: inherit;
 }
 
 .service-item:hover .icon-wrapper {
-    background: #527a20;
+    color: #527a20;
 }
 
 /* Títulos y descripciones */

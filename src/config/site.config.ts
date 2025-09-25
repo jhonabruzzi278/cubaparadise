@@ -13,5 +13,6 @@ export function generateContentRoute(category: string, type: string, slug: strin
   if (type === 'apartamento') return `/alojamiento/apartamento/${slug}`;
   if (type === 'casa-en-el-campo') return `/alojamiento/casa-en-el-campo/${slug}`;
   if (type === 'casa-en-la-playa') return `/alojamiento/casa-en-la-playa/${slug}`;
+  if (type === 'servicio') return `/servicios/${slug}`;
   return '#';
 }

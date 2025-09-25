@@ -24,6 +24,7 @@ const catalogoItems = catalogo.map((item) => ({
         item.data.tipo === 'apartamento' ? `/alojamiento/apartamento/${item.slug}` :
         item.data.tipo === 'casa-en-el-campo' ? `/alojamiento/casa-en-el-campo/${item.slug}` :
         item.data.tipo === 'casa-en-la-playa' ? `/alojamiento/casa-en-la-playa/${item.slug}` :
+        item.data.tipo === 'servicio' ? `/servicios/${item.slug}` :
         '#'
 }));
 ---

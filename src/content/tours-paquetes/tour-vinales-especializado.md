@@ -23,5 +23,4 @@ destacado: true
 **Lo que hace especial este tour:**
 (muestra)
 
-*Precio todo incluido con transporte y almuerzo para excursiones de un día a otras provincias.*
-(muestra)
+

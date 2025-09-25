@@ -14,52 +14,75 @@ export async function getStaticPaths() {
 }
 
 const { alojamiento } = Astro.props;
+const { Content } = await alojamiento.render();
 ---
 
 {
   alojamiento ? (
     <DefaultLayout
-      title={alojamiento.data?.title ?? "Alojamiento Cuba Paradise"}
+      title={`${alojamiento.data?.title} - Cuba Paradise`}
+      description={alojamiento.data?.descripcion}
     >
-      <section class="container py-5">
+      <div class="container py-5">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-lg-8 mx-auto">
             <img
               src={alojamiento.data?.img}
               alt={alojamiento.data?.title}
               class="img-fluid rounded mb-4"
-              style="max-height:340px;object-fit:cover;width:100%;"
             />
-          </div>
-          <div class="col-md-6">
-            <h1 class="mb-3">{alojamiento.data?.title}</h1>
-            <p class="lead">{alojamiento.data?.descripcion}</p>
-            <ul class="list-unstyled mb-3">
-              <li>
-                <strong>Ubicación:</strong> {alojamiento.data?.ubicacion}
-              </li>
-              <li>
-                <strong>Capacidad:</strong> {alojamiento.data?.capacidad}{" "}
-                personas
-              </li>
-              <li>
-                <strong>Duración:</strong> {alojamiento.data?.duracion}
-              </li>
-              <li>
-                <strong>Precio:</strong> ${alojamiento.data?.precio}{" "}
-                {alojamiento.data?.moneda}
-              </li>
-            </ul>
+            
+            <h1 class="display-4 mb-3">{alojamiento.data?.title}</h1>
+            
+            <div class="row mb-4">
+              <div class="col-md-4">
+                <h6 class="text-muted">Ubicación</h6>
+                <p>{alojamiento.data?.ubicacion}</p>
+              </div>
+              <div class="col-md-4">
+                <h6 class="text-muted">Capacidad</h6>
+                <p>{alojamiento.data?.capacidad} personas</p>
+              </div>
+              <div class="col-md-4">
+                <h6 class="text-muted">Duración</h6>
+                <p>{alojamiento.data?.duracion}</p>
+              </div>
+              {alojamiento.data?.destacado && (
+                <div class="col-md-4">
+                  <h6 class="text-muted">Estado</h6>
+                  <p><span class="badge bg-warning text-dark"><i class="fa fa-star me-1"></i>Destacado</span></p>
+                </div>
+              )}
+            </div>
+            
+            <div class="content">
+              <Content />
+            </div>
+            
+            <div class="mt-5">
+              <div class="alert alert-info">
+                <h5><i class="fa fa-info-circle me-2"></i>¿Interesado en este alojamiento?</h5>
+                <p class="mb-3">Contáctanos para más información y reservas.</p>
+                <a href="/contact" class="btn btn-success" style="background:#7AB730;border:none;">
+                  <i class="fab fa-whatsapp me-2"></i>Contactar ahora
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </DefaultLayout>
   ) : (
     <DefaultLayout title="Alojamiento no encontrado">
-      <section class="container py-5">
-        <h1>Alojamiento no encontrado</h1>
-        <p>No se encontró el alojamiento solicitado.</p>
-      </section>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1>Alojamiento no encontrado</h1>
+            <p>No se encontró el alojamiento solicitado.</p>
+            <a href="/alojamiento" class="btn btn-primary">Volver a alojamientos</a>
+          </div>
+        </div>
+      </div>
     </DefaultLayout>
   )
 }

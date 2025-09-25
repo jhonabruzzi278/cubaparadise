@@ -5,8 +5,7 @@ type PaqueteExcursion = {
 	descripcion: string;
 	duracion: string;
 	incluye: string;
-	precio: number;
-	moneda: string;
+	
 	img: string;
 };
 const paquetes = (await getCollection('excursiones-paquetes')) as Array<{ data: PaqueteExcursion; slug: string }>;
@@ -24,7 +23,7 @@ const paquetes = (await getCollection('excursiones-paquetes')) as Array<{ data: 
 						<ul class="list-unstyled small mb-2">
 							<li><strong>Duración:</strong> {paquete.data.duracion}</li>
 							<li><strong>Incluye:</strong> {paquete.data.incluye}</li>
-							<li><strong>Precio:</strong> ${paquete.data.precio} {paquete.data.moneda}</li>
+							
 						</ul>
 						<a href={`/excursiones/paquetes/${paquete.slug}`} class="btn btn-primary me-2">Ver detalles</a>
 						<a href="/contact" class="btn btn-success" style="background:#7AB730;border:none;">Solicitar información</a>

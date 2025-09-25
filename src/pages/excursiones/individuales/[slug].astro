@@ -31,25 +31,40 @@ const { Content } = await excursion.render();
         <h1 class="display-4 mb-3">{excursion.data.title}</h1>
         
         <div class="row mb-4">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <h6 class="text-muted">Duración</h6>
             <p>{excursion.data.duracion}</p>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <h6 class="text-muted">Categoría</h6>
             <p class="text-capitalize">{excursion.data.categoria}</p>
           </div>
-          
           {excursion.data.grupo && (
-            <div class="col-md-3">
+            <div class="col-md-4">
               <h6 class="text-muted">Grupo</h6>
               <p>{excursion.data.grupo}</p>
+            </div>
+          )}
+          {excursion.data.destacado && (
+            <div class="col-md-4">
+              <h6 class="text-muted">Estado</h6>
+              <p><span class="badge bg-warning text-dark"><i class="fa fa-star me-1"></i>Destacado</span></p>
             </div>
           )}
         </div>
         
         <div class="content">
           <Content />
+        </div>
+        
+        <div class="mt-5">
+          <div class="alert alert-info">
+            <h5><i class="fa fa-info-circle me-2"></i>¿Interesado en esta excursión?</h5>
+            <p class="mb-3">Contáctanos para más información y reservas.</p>
+            <a href="/contact" class="btn btn-success" style="background:#7AB730;border:none;">
+              <i class="fab fa-whatsapp me-2"></i>Contactar ahora
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -16,60 +16,72 @@ const { Content } = await paquete.render();
 
 {
   paquete ? (
-    <DefaultLayout title={paquete.data?.title ?? "Excursión Cuba Paradise"}>
-      <section class="container py-5">
+    <DefaultLayout 
+      title={`${paquete.data?.title} - Cuba Paradise`}
+      description={paquete.data?.descripcion}
+    >
+      <div class="container py-5">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-lg-8 mx-auto">
             <img
               src={paquete.data?.img}
               alt={paquete.data?.title}
               class="img-fluid rounded mb-4"
-              style="max-height:340px;object-fit:cover;width:100%;"
             />
-          </div>
-          <div class="col-md-6">
-            <h1 class="mb-3">{paquete.data?.title}</h1>
-            <p class="lead">{paquete.data?.descripcion}</p>
-            <ul class="list-unstyled mb-3">
-              <li>
-                <strong>Duración:</strong> {paquete.data?.duracion}
-              </li>
-              <li>
-                <strong>Incluye:</strong> {paquete.data?.incluye}
-              </li>
-              <li>
-                <strong>Precio:</strong> ${paquete.data?.precio}{" "}
-                {paquete.data?.moneda}
-              </li>
-              {paquete.data?.idiomas && <li><strong>Idiomas disponibles:</strong> {paquete.data.idiomas}</li>}
-              {paquete.data?.notas_precio && <li class="text-muted small mt-2"><strong>Detalles de precios:</strong> {paquete.data.notas_precio}</li>}
-            </ul>
-            <div class="mt-4">
-              <a
-                href="/contact"
-                class="btn btn-success btn-lg"
-                style="background:#7AB730;border:none;"
-              >
-                Solicitar información
-              </a>
+            
+            <h1 class="display-4 mb-3">{paquete.data?.title}</h1>
+            
+            <div class="row mb-4">
+              <div class="col-md-4">
+                <h6 class="text-muted">Duración</h6>
+                <p>{paquete.data?.duracion}</p>
+              </div>
+              <div class="col-md-4">
+                <h6 class="text-muted">Incluye</h6>
+                <p>{paquete.data?.incluye}</p>
+              </div>
+              {paquete.data?.idiomas && (
+                <div class="col-md-4">
+                  <h6 class="text-muted">Idiomas</h6>
+                  <p>{paquete.data.idiomas}</p>
+                </div>
+              )}
+              {paquete.data?.destacado && (
+                <div class="col-md-4">
+                  <h6 class="text-muted">Estado</h6>
+                  <p><span class="badge bg-warning text-dark"><i class="fa fa-star me-1"></i>Destacado</span></p>
+                </div>
+              )}
             </div>
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col-12">
+            
             <div class="content">
               <Content />
             </div>
+            
+            <div class="mt-5">
+              <div class="alert alert-info">
+                <h5><i class="fa fa-info-circle me-2"></i>¿Interesado en este paquete?</h5>
+                <p class="mb-3">Contáctanos para más información y reservas.</p>
+                <a href="/contact" class="btn btn-success" style="background:#7AB730;border:none;">
+                  <i class="fab fa-whatsapp me-2"></i>Contactar ahora
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </DefaultLayout>
   ) : (
     <DefaultLayout title="Excursión no encontrada">
-      <section class="container py-5">
-        <h1>Excursión no encontrada</h1>
-        <p>No se encontró la excursión solicitada.</p>
-      </section>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1>Excursión no encontrada</h1>
+            <p>No se encontró la excursión solicitada.</p>
+            <a href="/excursiones" class="btn btn-primary">Volver a excursiones</a>
+          </div>
+        </div>
+      </div>
     </DefaultLayout>
   )
 }

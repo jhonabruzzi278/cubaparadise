@@ -1,10 +1,72 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from 'astro:content';
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
 
-export const getStaticPaths = (() => {
-  return [];
+export const getStaticPaths = (async () => {
+  const servicios = await getCollection('servicios');
+  return servicios.map((servicio) => ({
+    params: { slug: servicio.id.replace('.md', '') },
+    props: { servicio },
+  }));
 }) satisfies GetStaticPaths;
+
+interface Props {
+  servicio: CollectionEntry<'servicios'>;
+}
+
+const { servicio } = Astro.props;
+const { Content } = await servicio.render();
 ---
 
-<DefaultLayout title="Cuba Paradise - Experiencias Auténticas en Cuba" />
+<DefaultLayout 
+  title={`${servicio.data.title} - Cuba Paradise`}
+  description={servicio.data.descripcion}
+>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        {servicio.data.img && (
+          <img src={servicio.data.img} alt={servicio.data.title} class="img-fluid rounded mb-4" />
+        )}
+        
+        <h1 class="display-4 mb-3">{servicio.data.title}</h1>
+        
+        <div class="row mb-4">
+          {servicio.data.duracion && (
+            <div class="col-md-3">
+              <h6 class="text-muted">Duración</h6>
+              <p>{servicio.data.duracion}</p>
+            </div>
+          )}
+          {servicio.data.tipo && (
+            <div class="col-md-3">
+              <h6 class="text-muted">Tipo</h6>
+              <p class="text-capitalize">{servicio.data.tipo}</p>
+            </div>
+          )}
+          {servicio.data.destacado && (
+            <div class="col-md-3">
+              <h6 class="text-muted">Estado</h6>
+              <p><span class="badge bg-warning text-dark"><i class="fa fa-star me-1"></i>Destacado</span></p>
+            </div>
+          )}
+        </div>
+        
+        <div class="content">
+          <Content />
+        </div>
+        
+        <div class="mt-5">
+          <div class="alert alert-info">
+            <h5><i class="fa fa-info-circle me-2"></i>¿Interesado en este servicio?</h5>
+            <p class="mb-3">Contáctanos para más información y reservas.</p>
+            <a href="/contact" class="btn btn-success" style="background:#7AB730;border:none;">
+              <i class="fab fa-whatsapp me-2"></i>Contactar ahora
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DefaultLayout>
