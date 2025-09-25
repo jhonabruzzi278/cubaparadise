@@ -3,7 +3,7 @@ import DefaultLayout from "../layouts/DefaultLayout.astro";
 import AboutBanner from "../components/AboutBanner.astro";
 import FeatureAbout from "../components/FeatureAbout.astro";
 import HeaderStart from "../components/HeaderStart.astro";
-
+import FeatureStar from "../components/FeatureStar.astro";
 const page = "About";
 const image = "/img/lahabana1.jpg";
 ---
@@ -15,4 +15,5 @@ const image = "/img/lahabana1.jpg";
   <HeaderStart page={page} image={image} />
   <AboutBanner />
   <FeatureAbout />
+  <FeatureStar />
 </DefaultLayout>
