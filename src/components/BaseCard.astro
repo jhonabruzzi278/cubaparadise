@@ -105,35 +105,8 @@ function generateRoute(item: CardItem): string {
                     <h5 class="card-title fw-bold mb-3">{item.title}</h5>
                     <p class="card-text text-muted mb-4">{item.description}</p>
                     
-                    {/* Metadata del catálogo */}
-                    {showMetadata && (
-                      <div class="row g-2 mb-4">
-                        {item.categoria && (
-                          <div class="col-12">
-                            <small class="text-muted">
-                              <i class="fa fa-tag me-2 text-primary"></i>
-                              <strong>Categoría:</strong> {item.categoria}
-                            </small>
-                          </div>
-                        )}
-                        {item.duracion && (
-                          <div class="col-12">
-                            <small class="text-muted">
-                              <i class="fa fa-clock me-2 text-primary"></i>
-                              <strong>Duración:</strong> {item.duracion}
-                            </small>
-                          </div>
-                        )}
-                        {item.precio && (
-                          <div class="col-12">
-                            <small class="text-primary fw-bold fs-6">
-                              <i class="fa fa-dollar-sign me-2"></i>
-                              {item.precio} {item.moneda}
-                            </small>
-                          </div>
-                        )}
-                      </div>
-                    )}
+                    
+                    
                     
                     <div class="mt-auto">
                       <a href={route} class="btn btn-primary w-100 fw-bold py-3">

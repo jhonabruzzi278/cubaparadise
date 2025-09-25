@@ -4,8 +4,7 @@ slug: "tour-vinales-especializado"
 descripcion: "(muestra)"
 duracion: "(muestra)"
 incluye: "(muestra)"
-precio: 65
-moneda: "USD"
+
 img: "/img/viñales.jpg"
 idiomas: "Español, Inglés (muestra)"
 destacado: true

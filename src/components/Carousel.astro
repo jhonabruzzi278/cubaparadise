@@ -519,8 +519,8 @@
 }
 </style>
 
-<script>
-// Carousel mejorado con transiciones suaves y tipos corregidos
+<script is:inline>
+// Carousel mejorado con JavaScript vanilla
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.slide');
     const indicators = document.querySelectorAll('.indicator');
@@ -529,11 +529,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('nextBtn');
     
     let currentSlide = 0;
-    let autoplayInterval: string | number | NodeJS.Timeout | null | undefined = null;
+    let autoplayInterval = null;
     let isTransitioning = false;
     const autoplayDelay = 5000;
 
-    function showSlide(index: number, direction = 'next') {
+    function showSlide(index, direction) {
+        direction = direction || 'next';
         if (isTransitioning || index === currentSlide) return;
         
         isTransitioning = true;
@@ -545,25 +546,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Remove active from indicators and previews
-        indicators.forEach(indicator => indicator.classList.remove('active'));
-        previews.forEach(preview => preview.classList.remove('active'));
+        indicators.forEach(function(indicator) {
+            indicator.classList.remove('active');
+        });
+        previews.forEach(function(preview) {
+            preview.classList.remove('active');
+        });
         
         // Add active class to new slide
-        setTimeout(() => {
+        setTimeout(function() {
             if (slides[index]) {
                 slides[index].classList.add('active');
                 
                 // Trigger content animation
                 const contentWrapper = slides[index].querySelector('.content-wrapper');
-                if (contentWrapper && contentWrapper instanceof HTMLElement) {
+                if (contentWrapper) {
                     contentWrapper.style.transform = 'translateY(50px)';
                     contentWrapper.style.opacity = '0';
                     
-                    setTimeout(() => {
-                        if (contentWrapper instanceof HTMLElement) {
-                            contentWrapper.style.transform = 'translateY(0)';
-                            contentWrapper.style.opacity = '1';
-                        }
+                    setTimeout(function() {
+                        contentWrapper.style.transform = 'translateY(0)';
+                        contentWrapper.style.opacity = '1';
                     }, 100);
                 }
             }
@@ -590,7 +593,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startAutoplay() {
         stopAutoplay();
-        autoplayInterval = setInterval(() => {
+        autoplayInterval = setInterval(function() {
             if (!isTransitioning) {
                 nextSlide();
             }
@@ -606,7 +609,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function restartAutoplay() {
         stopAutoplay();
-        setTimeout(() => {
+        setTimeout(function() {
             const carouselHovered = document.querySelector('.hero-carousel:hover');
             if (!carouselHovered) {
                 startAutoplay();
@@ -616,7 +619,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listeners para botones de navegación
     if (nextBtn) {
-        nextBtn.addEventListener('click', (e) => {
+        nextBtn.addEventListener('click', function(e) {
             e.preventDefault();
             nextSlide();
             restartAutoplay();
@@ -624,7 +627,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (prevBtn) {
-        prevBtn.addEventListener('click', (e) => {
+        prevBtn.addEventListener('click', function(e) {
             e.preventDefault();
             prevSlide();
             restartAutoplay();
@@ -632,8 +635,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listeners para indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', (e) => {
+    indicators.forEach(function(indicator, index) {
+        indicator.addEventListener('click', function(e) {
             e.preventDefault();
             if (index !== currentSlide) {
                 showSlide(index);
@@ -643,8 +646,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Event listeners para previews
-    previews.forEach((preview, index) => {
-        preview.addEventListener('click', (e) => {
+    previews.forEach(function(preview, index) {
+        preview.addEventListener('click', function(e) {
             e.preventDefault();
             if (index !== currentSlide) {
                 showSlide(index);
@@ -654,7 +657,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Navegación por teclado
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowLeft') {
             e.preventDefault();
             prevSlide();
@@ -669,11 +672,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Pausar en hover
     const carousel = document.querySelector('.hero-carousel');
     if (carousel) {
-        carousel.addEventListener('mouseenter', () => {
+        carousel.addEventListener('mouseenter', function() {
             stopAutoplay();
         });
 
-        carousel.addEventListener('mouseleave', () => {
+        carousel.addEventListener('mouseleave', function() {
             startAutoplay();
         });
 
@@ -682,23 +685,21 @@ document.addEventListener('DOMContentLoaded', function() {
         let touchEndX = 0;
         let isSwiping = false;
 
-        carousel.addEventListener('touchstart', (e) => {
-            const touchEvent = e as TouchEvent;
-            if (touchEvent.touches && touchEvent.touches[0]) {
-                touchStartX = touchEvent.touches[0].clientX;
+        carousel.addEventListener('touchstart', function(e) {
+            if (e.touches && e.touches[0]) {
+                touchStartX = e.touches[0].clientX;
                 isSwiping = true;
                 stopAutoplay();
             }
         }, { passive: true });
 
-        carousel.addEventListener('touchmove', (e) => {
-            const touchEvent = e as TouchEvent;
-            if (isSwiping && touchEvent.touches && touchEvent.touches[0]) {
-                touchEndX = touchEvent.touches[0].clientX;
+        carousel.addEventListener('touchmove', function(e) {
+            if (isSwiping && e.touches && e.touches[0]) {
+                touchEndX = e.touches[0].clientX;
             }
         }, { passive: true });
 
-        carousel.addEventListener('touchend', (e) => {
+        carousel.addEventListener('touchend', function(e) {
             if (isSwiping) {
                 isSwiping = false;
                 handleSwipe();
@@ -725,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showSlide(0);
     
     // Iniciar autoplay después de un pequeño retraso
-    setTimeout(() => {
+    setTimeout(function() {
         startAutoplay();
     }, 1000);
 });

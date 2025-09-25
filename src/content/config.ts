@@ -9,8 +9,7 @@ const alojamiento = defineCollection({
     tipo: z.string(),
     ubicacion: z.string(),
     destacado: z.boolean(),
-    precio: z.number(),
-    moneda: z.string(),
+    
     duracion: z.string(),
     capacidad: z.number(),
     descripcion: z.string(),
@@ -25,8 +24,7 @@ const tours = defineCollection({
     // slug: z.string(),
     categoria: z.string(),
     destacado: z.boolean(),
-    precio: z.number(),
-    moneda: z.string(),
+    
     duracion: z.string(),
     incluye: z.string().optional(),
     guia: z.string().optional(),
@@ -42,8 +40,7 @@ const excursiones = defineCollection({
     // slug: z.string(),
     categoria: z.string(),
     destacado: z.boolean(),
-    precio: z.number(),
-    moneda: z.string(),
+    
     duracion: z.string(),
     grupo: z.string().optional(),
     descripcion: z.string(),
@@ -57,8 +54,7 @@ const servicios = defineCollection({
     title: z.string(),
     tipo: z.string().optional(),
     destacado: z.boolean().optional(),
-    precio: z.number().optional(),
-    moneda: z.string().optional(),
+    
     duracion: z.string().optional(),
     descripcion: z.string(),
     img: z.string().optional(),
@@ -72,8 +68,7 @@ const paquetesExcursiones = defineCollection({
     descripcion: z.string(),
     duracion: z.string(),
     incluye: z.string(),
-    precio: z.union([z.number(), z.string()]),
-    moneda: z.string(),
+    
     img: z.string(),
     idiomas: z.string().optional(),
     notas_precio: z.string().optional(),
@@ -88,8 +83,7 @@ const paquetesTours = defineCollection({
     descripcion: z.string(),
     duracion: z.string(),
     incluye: z.string(),
-    precio: z.union([z.number(), z.string()]), // Permite números o strings para rangos
-    moneda: z.string(),
+    
     img: z.string(),
     idiomas: z.string().optional(),
     notas_precio: z.string().optional(),

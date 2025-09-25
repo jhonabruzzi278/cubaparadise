@@ -4,8 +4,6 @@ slug: "casa-playa-este"
 tipo: "casa-en-la-playa"
 ubicacion: "Playas del Este, La Habana"
 destacado: true
-precio: 60
-moneda: USD
 duracion: "Flexible"
 capacidad: 5
 descripcion: "(muestra)"

@@ -39,10 +39,7 @@ const { Content } = await tour.render();
             <h6 class="text-muted">Categoría</h6>
             <p class="text-capitalize">{tour.data.categoria}</p>
           </div>
-          <div class="col-md-3">
-            <h6 class="text-muted">Precio</h6>
-            <p class="text-primary fw-bold">${tour.data.precio} {tour.data.moneda}</p>
-          </div>
+          
           {tour.data.guia && (
             <div class="col-md-3">
               <h6 class="text-muted">Guía</h6>

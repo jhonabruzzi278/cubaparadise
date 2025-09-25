@@ -1,11 +1,3 @@
-/**
- * TIPOS TYPESCRIPT SIMPLIFICADOS
- * Solo incluye interfaces realmente utilizadas en el proyecto
- */
-
-// ==============================================
-// TIPOS PARA CARDS Y COMPONENTES (realmente utilizados)
-// ==============================================
 
 export interface CardItem {
   title: string;
@@ -15,8 +7,6 @@ export interface CardItem {
   image?: string;
   categoria?: string;
   duracion?: string;
-  precio?: string;
-  moneda?: string;
   destacado?: boolean;
   tipo?: string;
 }
