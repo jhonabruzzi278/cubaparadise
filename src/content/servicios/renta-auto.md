@@ -1,11 +1,11 @@
 ---
 title: "Renta de Auto - Trato Presencial (muestra) "
 tipo: "servicio"
-destacado: true
+destacado: false
 
 duracion: "Flexible"
 descripcion: "(muestra)"
-img: "/img/cubacalle2.jpg"
+img: "/img/renta_autos.jpg"
 ---
 
 (muestra)

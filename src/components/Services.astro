@@ -3,8 +3,8 @@
 const services = [
     {
         icon: "hiking",
-        title: "Guías Turísticos",
-        description: "Explora Cuba con guías locales expertos en historia y cultura.",
+        title: "Excursiones",
+        description: "Explora Cuba con locales expertos en historia , cultura y fotografía.",
         link: "/excursiones"
     },
     {
@@ -18,6 +18,12 @@ const services = [
         title: "Alojamiento",
         description: "Encuentra casas particulares y hospedajes únicos en Cuba.",
         link: "/alojamiento"
+    },
+    {
+        icon: "music_note",
+        title: "Clases de Salsa",
+        description: "Aprende salsa cubana con instructores profesionales. Cursos para todos los niveles.",
+        link: "/servicios/clases-salsa"
     }
 ];
 ---
@@ -29,7 +35,7 @@ const services = [
     </div>
     <div class="row justify-content-center g-4">
         {services.map((service) => (
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-3">
                 <a href={service.link} class="service-item d-flex flex-column align-items-center text-center p-4">
                     <div class="icon-wrapper mb-3">
                         <span class="material-symbols-outlined">

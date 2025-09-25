@@ -1,45 +1,44 @@
 ---
-title: "Masaje Terapéutico - Relajación y Bienestar (muestra)"
+title: "Masaje Terapéutico"
 tipo: "servicio"
-destacado: true
+destacado: false
 duracion: "60-90 minutos"
-descripcion: "Masaje terapéutico de cuerpo completo combinado con estiramientos y quiropraxia para tu bienestar integral."
-img: "/img/naturaleza1.jpg"
+descripcion: "Masaje terapéutico de cuerpo completo combinado con estiramientos y quiropraxia para tu bienestar integral. Relajación profunda en Cuba."
+img: "/img/masaje.png"
 ---
 
-## Masaje Terapéutico Completo
+# Masaje Terapéutico
 
-Disfruta de una experiencia de relajación y bienestar con nuestro servicio de masaje terapéutico especializado.
+*Relajación y bienestar integral*
 
-### Servicios Incluidos:
+---
 
-**🌟 Masaje de Cuerpo Completo**
-- Técnicas de relajación profunda
-- Combinación de masaje sueco y terapéutico
+## 🌿 Bienestar Auténtico Cubano
 
-**🤲 Miembros Superiores**
-- Brazos, antebrazos y manos
-- Liberación de tensiones musculares
+Disfruta de una experiencia única de relajación con nuestros masajes terapéuticos especializados. Combinamos técnicas tradicionales con el ambiente tranquilo de la isla para ofrecerte el descanso que tu cuerpo necesita.
 
-**🦵 Miembros Inferiores** 
-- Piernas, pantorrillas y pies
-- Mejora de la circulación sanguínea
 
-**💆‍♀️ Zona Cervical**
-- Cuello y hombros
-- Alivio de tensiones por estrés
+---
 
-**🦶 Tratamiento Podal**
-- Reflexología en pies
-- Relajación completa
+## 🤲 Áreas de Tratamiento
 
-### Beneficios:
-- Reduce el estrés y la ansiedad
-- Mejora la circulación sanguínea
-- Alivia dolores musculares
-- Proporciona relajación profunda
-- Combina estiramientos y ajustes quiroprácticos
+**Cuerpo Completo** • Relajación integral  
+**Zona Cervical** • Alivio de tensiones  
+**Miembros** • Mejora de circulación  
+**Reflexología** • Tratamiento podal
 
-*Servicio disponible en la comodidad de tu alojamiento o en centro especializado.*
 
-(muestra)
+---
+
+## ✨ Beneficios
+
+- ✅ **Reduce el Estrés** - Relajación profunda garantizada
+- ✅ **Mejora Circulación** - Técnicas especializadas
+- ✅ **Alivia Tensiones** - Cuello, hombros y espalda
+- ✅ **Flexibilidad** - Estiramientos y ajustes quiroprácticos
+
+---
+
+
+
+
