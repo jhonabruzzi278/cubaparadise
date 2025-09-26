@@ -48,7 +48,7 @@ const image = "/img/playasdeleste.jpg";
                   )}
                 </div>
                 <div class="d-flex gap-2">
-                  <a href={`/tours/individuales/${tour.slug}`} class="btn btn-primary flex-grow-1">
+                  <a href={`/tours/individuales/${tour.id.split('/')[1]?.replace('.md', '') || tour.slug}`} class="btn btn-primary flex-grow-1">
                     Ver detalles
                   </a>
                   <a href={getWhatsAppUrl('tours', tour.data.title)} class="btn btn-success" target="_blank" rel="noopener noreferrer">
@@ -71,5 +71,5 @@ const image = "/img/playasdeleste.jpg";
     descripcion="Tours por Cuba con guías locales: La Habana histórica, Trinidad colonial, Viñales natural y cayos paradisíacos. Cultura, historia, naturaleza y diversión en experiencias únicas."
   />
 
-  <FeatureStar />
+  
 </DefaultLayout>

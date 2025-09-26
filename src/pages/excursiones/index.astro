@@ -47,7 +47,7 @@ const image = "/img/varadero.jpg";
                   )}
                 </div>
                 <div class="d-flex gap-2">
-                  <a href={`/excursiones/individuales/${excursion.slug}`} class="btn btn-success flex-grow-1">
+                  <a href={`/excursiones/individuales/${excursion.id.split('/')[1]?.replace('.md', '') || excursion.slug}`} class="btn btn-success flex-grow-1">
                     Ver detalles
                   </a>
                   <a href={getWhatsAppUrl('excursiones', excursion.data.title)} class="btn btn-success" target="_blank" rel="noopener noreferrer">
@@ -70,5 +70,5 @@ const image = "/img/varadero.jpg";
     icono="fa fa-mountain"
     descripcion="Paquetes de excursiones por la naturaleza cubana: Valle de Viñales, cascadas de Soroa, cayos vírgenes y aventuras eco-turísticas. Descubre la Cuba natural con guías especializados."
   />
-  <FeatureStar />
+  
 </DefaultLayout>
