@@ -1,3 +1,7 @@
+---
+import IconWhatsapp from "./IconWhatsapp.astro";
+---
+
 <!-- TopBar Start -->
 <div class="container-fluid bg-light pt-3 d-none d-lg-block">
   <div class="container">
@@ -5,11 +9,11 @@
       <div class="col-lg-8 text-center mb-2 mb-lg-0">
         <div class="d-inline-flex align-items-center justify-content-center flex-wrap">
           <a href="mailto:marlonbett@icloud.com" class="contact-link mb-0 mr-3" title="Enviar email">
-            <i class="fa fa-envelope mr-2"></i>marlonbett@icloud.com
+            <span class="material-symbols-outlined mr-2" style="font-size: 16px;">email</span>marlonbett@icloud.com
           </a>
           <p class="text-body px-2 mb-0">|</p>
           <a href="tel:+5356851846" class="contact-link mb-0 mr-4" title="Llamar">
-            <i class="fab fa-whatsapp mr-2"></i>+53 56851846
+            <IconWhatsapp class="mr-2" style="width: 20px; height: 20px; display: inline-block;" />+53 56851846
           </a>
           <div class="d-inline-flex align-items-center ml-3">
             <a
@@ -19,7 +23,7 @@
               title="Instagram"
               aria-label="Instagram"
             >
-              <i class="fab fa-instagram"></i>
+              <span class="material-symbols-outlined">photo_camera</span>
             </a>
             <a
             
@@ -29,7 +33,7 @@
               title="WhatsApp"
               aria-label="WhatsApp"
             >
-              <i class="fab fa-whatsapp"></i>
+              <IconWhatsapp style="width: 24px; height: 24px;" />
             </a>
           </div>
         </div>

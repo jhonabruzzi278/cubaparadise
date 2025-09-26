@@ -2,6 +2,8 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import { getWhatsAppUrl } from "../../../utils/whatsapp.ts";
+import IconWhatsapp from "../../../components/IconWhatsapp.astro";
 
 export const getStaticPaths = (async () => {
   const excursiones = await getCollection('excursiones');
@@ -48,7 +50,7 @@ const { Content } = await excursion.render();
           {excursion.data.destacado && (
             <div class="col-md-4">
               <h6 class="text-muted">Estado</h6>
-              <p><span class="badge bg-warning text-dark"><i class="fa fa-star me-1"></i>Destacado</span></p>
+              <p><span class="badge bg-warning text-dark"><span class="material-symbols-outlined me-1" style="font-size: 16px;">star</span>Destacado</span></p>
             </div>
           )}
         </div>
@@ -59,10 +61,11 @@ const { Content } = await excursion.render();
         
         <div class="mt-5">
           <div class="alert alert-info">
-            <h5><i class="fa fa-info-circle me-2"></i>¿Interesado en esta excursión?</h5>
+            <h5><span class="material-symbols-outlined me-2">info</span>¿Interesado en esta excursión?</h5>
             <p class="mb-3">Contáctanos para más información y reservas.</p>
-            <a href="/contact" class="btn btn-success" style="background:#7AB730;border:none;">
-              <i class="fab fa-whatsapp me-2"></i>Contactar ahora
+            <a href={getWhatsAppUrl('excursiones', excursion.data.title, excursion.data.whatsappMessage)} 
+               class="btn btn-success" style="background:#7AB730;border:none;" target="_blank" rel="noopener noreferrer">
+              <IconWhatsapp class="me-2" style="width: 20px; height: 20px; display: inline-block;" />Contactar ahora
             </a>
           </div>
         </div>

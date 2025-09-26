@@ -3,7 +3,9 @@ import DefaultLayout from "../../layouts/DefaultLayout.astro";
 import PaquetesCard from "../../components/PaquetesCard.astro";
 import HeaderStart from "../../components/HeaderStart.astro";
 import { getCollection } from "astro:content";
+import { getWhatsAppUrl } from "../../utils/whatsapp.ts";
 import FeatureStar from "../../components/FeatureStar.astro";
+import IconWhatsapp from "../../components/IconWhatsapp.astro";
 
 const excursionesIndividuales = await getCollection("excursiones");
 
@@ -36,11 +38,11 @@ const image = "/img/varadero.jpg";
                 <p class="card-text flex-grow-1 text-muted">{excursion.data.descripcion}</p>
                 <div class="mb-3">
                   <small class="text-muted">
-                    <i class="fas fa-clock me-1"></i> {excursion.data.duracion}
+                    <span class="material-symbols-outlined me-1" style="font-size: 16px;">schedule</span> {excursion.data.duracion}
                   </small>
                   {excursion.data.categoria && (
                     <small class="text-muted ms-3">
-                      <i class="fas fa-tag me-1"></i> {excursion.data.categoria}
+                      <span class="material-symbols-outlined me-1" style="font-size: 16px;">label</span> {excursion.data.categoria}
                     </small>
                   )}
                 </div>
@@ -48,8 +50,8 @@ const image = "/img/varadero.jpg";
                   <a href={`/excursiones/individuales/${excursion.slug}`} class="btn btn-success flex-grow-1">
                     Ver detalles
                   </a>
-                  <a href="/contact" class="btn btn-success" style="background:#25d366;border:none;">
-                    <i class="fab fa-whatsapp"></i>
+                  <a href={getWhatsAppUrl('excursiones', excursion.data.title)} class="btn btn-success" target="_blank" rel="noopener noreferrer">
+                    <IconWhatsapp style="width: 20px; height: 20px;" />
                   </a>
                 </div>
               </div>

@@ -8,5 +8,6 @@ duracion: "Flexible"
 capacidad: 5
 descripcion: "(muestra)"
 img: "/img/playasdeleste.jpg"
+whatsappMessage: "Hola! Me interesa la casa en Playas del Este. ¿Podrían darme información sobre disponibilidad, precios por noche y servicios incluidos?"
 ---
 (muestra)

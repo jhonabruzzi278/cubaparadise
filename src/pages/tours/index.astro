@@ -5,6 +5,8 @@ import PaquetesCard from "../../components/PaquetesCard.astro";
 import HeaderStart from "../../components/HeaderStart.astro";
 import FeatureStar from "../../components/FeatureStar.astro";
 import { getCollection } from "astro:content";
+import { getWhatsAppUrl } from "../../utils/whatsapp.ts";
+import IconWhatsapp from "../../components/IconWhatsapp.astro";
 
 const toursIndividuales = await getCollection("tours");
 
@@ -37,11 +39,11 @@ const image = "/img/playasdeleste.jpg";
                 <p class="card-text flex-grow-1 text-muted">{tour.data.descripcion}</p>
                 <div class="mb-3">
                   <small class="text-muted">
-                    <i class="fas fa-clock me-1"></i> {tour.data.duracion}
+                    <span class="material-symbols-outlined me-1" style="font-size: 16px;">schedule</span> {tour.data.duracion}
                   </small>
                   {tour.data.categoria && (
                     <small class="text-muted ms-3">
-                      <i class="fas fa-tag me-1"></i> {tour.data.categoria}
+                      <span class="material-symbols-outlined me-1" style="font-size: 16px;">label</span> {tour.data.categoria}
                     </small>
                   )}
                 </div>
@@ -49,8 +51,8 @@ const image = "/img/playasdeleste.jpg";
                   <a href={`/tours/individuales/${tour.slug}`} class="btn btn-primary flex-grow-1">
                     Ver detalles
                   </a>
-                  <a href="/contact" class="btn btn-success" style="background:#25d366;border:none;">
-                    <i class="fab fa-whatsapp"></i>
+                  <a href={getWhatsAppUrl('tours', tour.data.title)} class="btn btn-success" target="_blank" rel="noopener noreferrer">
+                    <IconWhatsapp style="width: 20px; height: 20px;" />
                   </a>
                 </div>
               </div>

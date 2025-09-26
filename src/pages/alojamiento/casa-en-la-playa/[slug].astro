@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import { getWhatsAppUrl } from "../../../utils/whatsapp.ts";
 
 export async function getStaticPaths() {
     const alojamientos = await getCollection("alojamiento");
@@ -47,7 +48,7 @@ const { Content } = await alojamiento.render();
           {alojamiento.data?.destacado && (
             <div class="col-md-4">
               <h6 class="text-muted">Estado</h6>
-              <p><span class="badge bg-warning text-dark"><i class="fa fa-star me-1"></i>Destacado</span></p>
+              <p><span class="badge bg-warning text-dark"><span class="material-symbols-outlined me-1" style="font-size: 16px;">star</span>Destacado</span></p>
             </div>
           )}
         </div>
@@ -58,10 +59,11 @@ const { Content } = await alojamiento.render();
         
         <div class="mt-5">
           <div class="alert alert-info">
-            <h5><i class="fa fa-info-circle me-2"></i>¿Interesado en este alojamiento?</h5>
+            <h5><span class="material-symbols-outlined me-2">info</span>¿Interesado en este alojamiento?</h5>
             <p class="mb-3">Contáctanos para más información y reservas.</p>
-            <a href="/contact" class="btn btn-success" style="background:#7AB730;border:none;">
-              <i class="fab fa-whatsapp me-2"></i>Contactar ahora
+            <a href={getWhatsAppUrl('alojamiento', alojamiento.data?.title, alojamiento.data?.whatsappMessage)} 
+               class="btn btn-success" style="background:#7AB730;border:none;" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined me-2">chat</span>Contactar ahora
             </a>
           </div>
         </div>

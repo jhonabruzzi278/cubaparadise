@@ -1,3 +1,7 @@
+---
+import IconWhatsapp from "./IconWhatsapp.astro";
+---
+
 <section id="contacto" aria-labelledby="contacto-title" class="container-fluid py-5">
   <div class="container py-5">
     <div class="text-center mb-5 pb-3">
@@ -28,20 +32,8 @@
                 />
                 <div id="nameHelp" class="form-text text-danger d-none">Por favor, introduce tu nombre (mínimo 2 caracteres).</div>
               </div>
-              <div class="col-12">
-                <label for="subject" class="form-label fw-bold">Tipo de Viaje</label>
-                <select class="form-select form-select-lg" id="subject" name="subject" aria-required="true" aria-describedby="subjectHelp" required>
-                  <option value="">Selecciona el tipo de viaje</option>
-                  <option value="Tours La Habana">🏛️ Tours por La Habana</option>
-                  <option value="Excursiones Viñales">🌄 Excursiones a Viñales</option>
-                  <option value="Tours Viñales Especializado">⭐ Tour Viñales Especializado</option>
-                  <option value="Alojamiento Cuba">🏠 Alojamiento en Cuba</option>
-                  <option value="Renta Autos">🚗 Renta de Autos</option>
-                  <option value="Paquete Completo">📦 Paquete Completo</option>
-                  <option value="Otro">❓ Otro (especificar en mensaje)</option>
-                </select>
-                <div id="subjectHelp" class="form-text text-danger d-none">Selecciona una opción.</div>
-              </div>
+              
+                
               <div class="col-12">
                 <label for="message" class="form-label fw-bold">Mensaje</label>
                 <textarea
@@ -59,10 +51,10 @@
               </div>
               <div class="col-12 text-center pt-3">
                 <button id="sendBtn" class="btn btn-whatsapp btn-lg px-4 py-3 fw-bold w-100" type="submit">
-                  <i class="fab fa-whatsapp me-2" aria-hidden="true"></i>Enviar por WhatsApp
+                  <IconWhatsapp class="me-2" style="width: 20px; height: 20px; display: inline-block;" aria-hidden="true" />Enviar por WhatsApp
                 </button>
                 <p class="text-muted mt-3 mb-0">
-                  <small><i class="fa fa-clock me-1"></i>Respuesta rápida garantizada • <i class="fa fa-shield-alt me-1"></i>100% Seguro</small>
+                  <small><span class="material-symbols-outlined me-1" style="font-size: 14px;">schedule</span>Respuesta rápida garantizada • <span class="material-symbols-outlined me-1" style="font-size: 14px;">security</span>100% Seguro</small>
                 </p>
               </div>
             </div>

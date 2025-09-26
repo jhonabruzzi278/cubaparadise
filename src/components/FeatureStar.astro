@@ -39,7 +39,7 @@ function getExcursionesUrl(entry: any) {
 }
 
 function getServiciosUrl(entry: any) {
-    return `/servicios`;
+    return `/servicios/${entry.slug || entry.id.replace('.md', '')}`;
 }
 ---
 
@@ -65,7 +65,7 @@ function getServiciosUrl(entry: any) {
                             <p class="bento-description">{featuredAlojamiento.data.descripcion || "Disfruta de un alojamiento único en Cuba con todas las comodidades que necesitas."}</p>
                             
                             <div class="bento-buttons">
-                                <span class="bento-category-btn bg-primary">Alojamiento</span>
+                                <a href="/alojamiento" class="bg-primary bento-details-btn ">Alojamiento</a>
                                 <a href={getAlojamientoUrl(featuredAlojamiento)} class="bento-details-btn">Detalles</a>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ function getServiciosUrl(entry: any) {
                             <p class="bento-description">{featuredTour.data.descripcion || "Descubre Cuba con este tour especialmente diseñado para ofrecerte una experiencia auténtica."}</p>
                             
                             <div class="bento-buttons">
-                                <span class="bento-category-btn bg-primary">Tour</span>
+                                <a href="/tours" class="bg-primary bento-details-btn ">Tour</a>
                                 <a href={getToursUrl(featuredTour)} class="bento-details-btn">Detalles</a>
                             </div>
                         </div>
@@ -105,7 +105,7 @@ function getServiciosUrl(entry: any) {
                             <p class="bento-description">{featuredExcursion.data.descripcion || "Una excursión perfectamente organizada para descubrir los tesoros naturales de Cuba."}</p>
                             
                             <div class="bento-buttons">
-                                <span class="bento-category-btn bg-primary">Excursión</span>
+                                <a href="/excursiones" class="bg-primary bento-details-btn">Excursión</a>
                                 <a href={getExcursionesUrl(featuredExcursion)} class="bento-details-btn">Detalles</a>
                             </div>
                         </div>
@@ -125,7 +125,7 @@ function getServiciosUrl(entry: any) {
                             <p class="bento-description">{featuredService.data.descripcion || "Servicio especializado para hacer tu experiencia en Cuba más cómoda y completa."}</p>
                             
                             <div class="bento-buttons">
-                                <span class="bento-category-btn bg-primary">Servicio</span>
+                                <a href="/servicios" class="bg-primary bento-category-btn">Servicio</a>
                                 <a href={getServiciosUrl(featuredService)} class="bento-details-btn">Detalles</a>
                             </div>
                         </div>

@@ -37,6 +37,10 @@ const catalogoItems = catalogo.map((item) => {
   else if (item.data.tipo === 'casa-en-la-playa') {
     link = `/alojamiento/casa-en-la-playa/${item.slug}`;
   }
+  // Para servicios, verificar si pertenece a la colección 'servicios'
+  else if (item.collection === 'servicios') {
+    link = `/servicios/${item.slug}`;
+  }
   else if (item.data.tipo === 'servicio') {
     link = `/servicios/${item.slug}`;
   }

@@ -1,7 +1,7 @@
 ---
 title: "Masaje Terapéutico"
 tipo: "servicio"
-destacado: false
+destacado: true
 duracion: "60-90 minutos"
 descripcion: "Masaje terapéutico de cuerpo completo combinado con estiramientos y quiropraxia para tu bienestar integral. Relajación profunda en Cuba."
 img: "/img/masaje.png"

@@ -1,10 +1,11 @@
 ---
 title: "Clases de Salsa Cubana"
-tipo: "servicio"
+tipo: "clases-salsa"
 destacado: false
 duracion: "1-2 horas"
 descripcion: "Aprende los auténticos ritmos de Cuba con nuestras clases de salsa, casino y rueda de casino. Profesores nativos y ambiente tropical garantizado."
 img: "/img/clases_casino.jpg"
+whatsappMessage: "Hola! Me interesa aprender salsa cubana. ¿Podrían darme información sobre las clases, precios y horarios disponibles?"
 ---
 
 

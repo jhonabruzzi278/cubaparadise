@@ -50,7 +50,7 @@ function generateRoute(item: CardItem): string {
     <!-- Mensaje de no hay elementos -->
     {items.length === 0 && (
       <div class="alert alert-warning text-center rounded-3">
-        <i class="fa fa-exclamation-triangle me-2"></i>
+        <span class="material-symbols-outlined me-2">warning</span>
         No hay elementos para mostrar.
       </div>
     )}
@@ -94,7 +94,7 @@ function generateRoute(item: CardItem): string {
                       {showBadges && item.destacado && (
                         <div class="position-absolute top-0 end-0 m-3">
                           <span class="badge bg-warning text-dark fw-bold">
-                            <i class="fa fa-star me-1"></i>Destacado
+                            <span class="material-symbols-outlined me-1" style="font-size: 16px;">star</span>Destacado
                           </span>
                         </div>
                       )}
@@ -110,7 +110,7 @@ function generateRoute(item: CardItem): string {
                     
                     <div class="mt-auto">
                       <a href={route} class="btn btn-primary w-100 fw-bold py-3">
-                        <i class="fa fa-eye me-2"></i>Ver Detalles
+                        <span class="material-symbols-outlined me-2">visibility</span>Ver Detalles
                       </a>
                     </div>
                   </div>

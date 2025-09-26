@@ -14,6 +14,7 @@ const alojamiento = defineCollection({
     capacidad: z.number(),
     descripcion: z.string(),
     img: z.string(),
+    whatsappMessage: z.string().optional(),
   }),
 });
 
@@ -30,6 +31,7 @@ const tours = defineCollection({
     guia: z.string().optional(),
     descripcion: z.string(),
     img: z.string(),
+    whatsappMessage: z.string().optional(),
   }),
 });
 
@@ -45,6 +47,7 @@ const excursiones = defineCollection({
     grupo: z.string().optional(),
     descripcion: z.string(),
     img: z.string(),
+    whatsappMessage: z.string().optional(),
   }),
 });
 
@@ -58,6 +61,7 @@ const servicios = defineCollection({
     duracion: z.string().optional(),
     descripcion: z.string(),
     img: z.string().optional(),
+    whatsappMessage: z.string().optional(),
   }),
 });
 
@@ -73,6 +77,7 @@ const paquetesExcursiones = defineCollection({
     idiomas: z.string().optional(),
     notas_precio: z.string().optional(),
     destacado: z.boolean().optional(),
+    whatsappMessage: z.string().optional(),
   }),
 });
 
@@ -88,6 +93,7 @@ const paquetesTours = defineCollection({
     idiomas: z.string().optional(),
     notas_precio: z.string().optional(),
     destacado: z.boolean().optional(),
+    whatsappMessage: z.string().optional(),
   }),
 });
 

@@ -15,7 +15,7 @@
                         <div class="slide-actions">
                             <a href="/tours" class="cta-btn primary">
                                 <span>Explorar</span>
-                                <i class="fa fa-arrow-right"></i>
+                                <span class="material-symbols-outlined">arrow_forward</span>
                             </a>
                             <a href="/contact" class="cta-btn secondary">
                                 <span>Más info</span>
@@ -39,7 +39,7 @@
                         <div class="slide-actions">
                             <a href="/tours" class="cta-btn primary">
                                 <span>Explorar</span>
-                                <i class="fa fa-arrow-right"></i>
+                                <span class="material-symbols-outlined">arrow_forward</span>
                             </a>
                             <a href="/contact" class="cta-btn secondary">
                                 <span>Más info</span>
@@ -63,7 +63,7 @@
                         <div class="slide-actions">
                             <a href="/tours" class="cta-btn primary">
                                 <span>Explorar</span>
-                                <i class="fa fa-arrow-right"></i>
+                                <span class="material-symbols-outlined">arrow_forward</span>
                             </a>
                             <a href="/contact" class="cta-btn secondary">
                                 <span>Más info</span>
@@ -87,7 +87,7 @@
                         <div class="slide-actions">
                             <a href="/tours" class="cta-btn primary">
                                 <span>Explorar</span>
-                                <i class="fa fa-arrow-right"></i>
+                                <span class="material-symbols-outlined">arrow_forward</span>
                             </a>
                             <a href="/contact" class="cta-btn secondary">
                                 <span>Más info</span>
@@ -101,10 +101,10 @@
         <!-- Navegación -->
         <div class="carousel-navigation">
             <button class="nav-btn prev" id="prevBtn" aria-label="Anterior">
-                <i class="fa fa-chevron-left"></i>
+                <span class="material-symbols-outlined">chevron_left</span>
             </button>
             <button class="nav-btn next" id="nextBtn" aria-label="Siguiente">
-                <i class="fa fa-chevron-right"></i>
+                <span class="material-symbols-outlined">chevron_right</span>
             </button>
         </div>
 
@@ -357,20 +357,18 @@
 .nav-btn {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+    background: transparent;
+    border: none;
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
     pointer-events: auto;
 }
 
 .nav-btn:hover {
-    background: rgba(122, 183, 48, 0.8);
-    border-color: #7AB730;
+    color: #7AB730;
     transform: scale(1.1);
 }
 

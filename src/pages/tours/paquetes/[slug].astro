@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import { getWhatsAppUrl } from "../../../utils/whatsapp.ts";
 
 export async function getStaticPaths() {
     const paquetes = await getCollection("tours-paquetes");
@@ -31,7 +32,10 @@ const { Content } = await paquete.render();
                     
                 </ul>
                 <div class="mt-4">
-                    <a href="/contact" class="btn btn-success btn-lg" style="background:#7AB730;border:none;">Solicitar información</a>
+                    <a href={getWhatsAppUrl('paquetes-tours', paquete.data.title, paquete.data.whatsappMessage)} 
+                       class="btn btn-success btn-lg" style="background:#7AB730;border:none;" target="_blank" rel="noopener noreferrer">
+                       Solicitar información
+                    </a>
                 </div>
             </div>
         </div>
