@@ -1,5 +1,5 @@
 ---
-title: "Casa en el campo Valle de Yumurí (muestra)"
+title: "Casa en el campo Valle de Yumurí "
 slug: "casa-campo-yumuri"
 tipo: "casa-en-el-campo"
 ubicacion: "Valle de Yumurí, Matanzas"

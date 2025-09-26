@@ -1,5 +1,5 @@
 ---
-title: "Renta de Auto - Trato Presencial (muestra) "
+title: "Renta de Auto - Trato Presencial  "
 tipo: "renta-auto"
 destacado: false
 duracion: "Flexible"

@@ -1,5 +1,5 @@
 ---
-title: "Casa en la Playa del Este (muestra)"
+title: "Casa en la Playa del Este "
 slug: "casa-playa-este"
 tipo: "casa-en-la-playa"
 ubicacion: "Playas del Este, La Habana"

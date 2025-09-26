@@ -1,5 +1,5 @@
 ---
-title: "Tour Habana Vieja (muestra)"
+title: "Tour Habana Vieja "
 categoria: "histórico"
 destacado: false
 
