@@ -4,7 +4,7 @@
 ---
 
 <header class="navbar-container">
-  <div class="container-lg">
+  <div class="container">
     
     <!-- Desktop Layout -->
     <div class="desktop-navbar">
@@ -81,6 +81,21 @@
   display: flex;
   gap: 2.5rem;
   align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .navbar-logo img {
+    height: 90px;
+    width: 90px;
+  }
+
+  .desktop-nav {
+    gap: 1.25rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
 }
 
 .nav-link {
@@ -179,7 +194,7 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .desktop-navbar {
     display: none;
   }

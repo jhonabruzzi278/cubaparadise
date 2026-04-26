@@ -1,46 +1,81 @@
-# Astro Starter Kit: Basics
+# Cuba Paradise
 
-```sh
-npm create astro@latest -- --template basics
-```
+Sitio web turistico desarrollado con Astro para promocionar y gestionar experiencias en Cuba: tours, excursiones, alojamiento y servicios complementarios.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Descripcion del Proyecto
 
-## 🚀 Project Structure
+**Cuba Paradise** es una web orientada a conversion para presentar una oferta turistica completa en un solo lugar. El proyecto organiza productos por categorias y facilita el contacto directo con potenciales clientes mediante WhatsApp.
 
-Inside of your Astro project, you'll see the following folders and files:
+## El Desafio
+
+- Unificar diferentes lineas de negocio turistico en una experiencia web clara.
+- Mostrar mucho contenido sin saturar la navegacion.
+- Mejorar la conversion con llamados a la accion y contacto inmediato.
+
+## La Solucion
+
+- Arquitectura de paginas por categoria y detalle usando Astro.
+- Contenido dinamico con colecciones para escalar nuevos productos facilmente.
+- Componentes reutilizables para mantener consistencia visual y tecnica.
+- Formularios e integraciones enfocadas en generar leads por WhatsApp.
+
+## Resultados
+
+- Plataforma lista para captar y calificar clientes potenciales.
+- Navegacion mas intuitiva entre tours, excursiones, alojamiento y servicios.
+- Mejor experiencia responsive en desktop y mobile.
+- Base tecnica mantenible para evolucionar el negocio digital.
+
+## Tecnologias
+
+- Astro
+- TypeScript / JavaScript
+- Bootstrap 5
+- Astro Content Collections
+- HTML5 + CSS3
+
+## Servicios
+
+- Desarrollo web turistico orientado a conversion
+- Estructuracion de catalogos y contenido comercial
+- Implementacion de SEO on-page
+- Integracion de WhatsApp para contacto y reservas
+- Optimizacion responsive y rendimiento
+
+## Estructura del Proyecto
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+|- public/
+|- src/
+|  |- components/
+|  |- content/
+|  |- layouts/
+|  |- pages/
+|  |- styles/
+|- astro.config.mjs
+|- package.json
+|- tsconfig.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Comandos
 
-## 🧞 Commands
+Todos los comandos se ejecutan desde la raiz del proyecto:
 
-All commands are run from the root of the project, from a terminal:
+| Comando | Accion |
+| --- | --- |
+| `npm install` | Instala dependencias |
+| `npm run dev` | Inicia el servidor local en `localhost:4321` |
+| `npm run build` | Genera la version de produccion en `./dist/` |
+| `npm run preview` | Previsualiza la build localmente |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Puesta en Marcha
 
-## 👀 Want to learn more?
+```bash
+npm install
+npm run dev
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Nota
+
+Este README esta optimizado para documentacion de portafolio y presentacion comercial del proyecto.

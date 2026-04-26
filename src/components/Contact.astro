@@ -32,6 +32,26 @@ import IconWhatsapp from "./IconWhatsapp.astro";
                 />
                 <div id="nameHelp" class="form-text text-danger d-none">Por favor, introduce tu nombre (mínimo 2 caracteres).</div>
               </div>
+
+              <div class="col-12">
+                <label for="subject" class="form-label fw-bold">Tipo de viaje</label>
+                <select
+                  class="form-control"
+                  id="subject"
+                  name="subject"
+                  aria-required="true"
+                  aria-describedby="subjectHelp"
+                  required
+                >
+                  <option value="" selected disabled>Selecciona una opción</option>
+                  <option value="Tour">Tour</option>
+                  <option value="Excursión">Excursión</option>
+                  <option value="Alojamiento">Alojamiento</option>
+                  <option value="Servicio">Servicio</option>
+                  <option value="Viaje personalizado">Viaje personalizado</option>
+                </select>
+                <div id="subjectHelp" class="form-text text-danger d-none">Selecciona el tipo de viaje.</div>
+              </div>
               
                 
               <div class="col-12">
@@ -63,7 +83,7 @@ import IconWhatsapp from "./IconWhatsapp.astro";
             document.addEventListener("DOMContentLoaded", () => {
               const form = document.getElementById("contactForm");
               const btn = document.getElementById("sendBtn");
-              const phone = "5356851846"; // WhatsApp destino
+               const phone = "5356851846";
 
               if (!form || !btn) return;
 
@@ -105,13 +125,13 @@ import IconWhatsapp from "./IconWhatsapp.astro";
 
               [nameEl, subjectEl, messageEl].forEach((el) => {
                 el?.addEventListener("input", () => validate());
+                el?.addEventListener("change", () => validate());
               });
 
               form.addEventListener("submit", (event) => {
                 event.preventDefault();
                 const { valid, name, subject, message } = validate();
                 if (!valid) {
-                  // Llevar foco al primer inválido
                   if (nameEl?.classList.contains("is-invalid")) nameEl.focus();
                   else if (subjectEl?.classList.contains("is-invalid")) subjectEl.focus();
                   else if (messageEl?.classList.contains("is-invalid")) messageEl.focus();

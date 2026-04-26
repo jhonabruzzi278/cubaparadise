@@ -1,18 +1,21 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
 import { getWhatsAppUrl } from "../../../utils/whatsapp.ts";
 
 export async function getStaticPaths() {
     const paquetes = await getCollection("tours-paquetes");
+    const getEntrySlug = (entry: { slug?: string; id: string }) =>
+        entry.slug || entry.id.split('/').pop()?.replace('.md', '') || '';
+
     return paquetes.map((paquete) => ({
-        params: { slug: paquete.slug },
+        params: { slug: getEntrySlug(paquete) },
         props: { paquete },
     }));
 }
 
 const { paquete } = Astro.props;
-const { Content } = await paquete.render();
+const { Content } = await render(paquete);
 ---
 
 <DefaultLayout title={paquete.data.title ?? "Tour Cuba Paradise"}>

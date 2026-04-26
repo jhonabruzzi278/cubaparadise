@@ -4,7 +4,7 @@
             <div class="row align-items-center g-4">
                 <div class="col-12 col-lg-6 order-2 order-lg-1">
                     <div class="image-container">
-                        <img class="main-image" src="/img/cascada.jpg" alt="Naturaleza Cuba - Cascadas">
+                        <img class="main-image" src="/img/cascada.jpg" alt="Naturaleza Cuba - Cascadas" loading="lazy" decoding="async" sizes="(max-width: 992px) 100vw, 50vw">
                         <div class="image-overlay"></div>
                     </div>
                 </div>
@@ -19,13 +19,13 @@
                         
                         <div class="gallery-mini">
                             <div class="gallery-item">
-                                <img src="/img/malecon.jpg" alt="Tours La Habana - Malecón">
+                                <img src="/img/malecon.jpg" alt="Tours La Habana - Malecón" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 25vw">
                                 <div class="gallery-overlay">
                                     <span>La Habana</span>
                                 </div>
                             </div>
                             <div class="gallery-item">
-                                <img src="/img/parque.jpg" alt="Excursiones Naturaleza Cuba">
+                                <img src="/img/parque.jpg" alt="Excursiones Naturaleza Cuba" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 25vw">
                                 <div class="gallery-overlay">
                                     <span>Naturaleza</span>
                                 </div>
@@ -135,7 +135,7 @@
 }
 
 .about-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: 700;
     color: #2c3e50;
     margin-bottom: 1.5rem;
@@ -159,7 +159,7 @@
 }
 
 .about-lead {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
     font-weight: 500;
     color: #495057;
     margin-bottom: 1.5rem;
@@ -170,7 +170,7 @@
     color: #6c757d;
     line-height: 1.7;
     margin-bottom: 2rem;
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
 }
 
 .gallery-mini {
@@ -236,11 +236,11 @@
     gap: 0.5rem;
     background-color: #7AB730;
     color: white;
-    padding: 0.875rem 2rem;
+    padding: 0.875rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
     transition: all 0.3s ease;
     border: none;
 }
@@ -294,8 +294,8 @@
     }
     
     .cta-button {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
+        width: 100%;
+        justify-content: center;
     }
 }
 

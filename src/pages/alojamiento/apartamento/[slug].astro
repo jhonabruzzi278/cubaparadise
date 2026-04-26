@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
 import { getWhatsAppUrl } from "../../../utils/whatsapp.ts";
 
@@ -8,14 +8,17 @@ export async function getStaticPaths() {
   const apartamentos = alojamientos.filter(
     (a) => a.data.tipo === "apartamento"
   );
+  const getEntrySlug = (entry: { slug?: string; id: string }) =>
+    entry.slug || entry.id.split('/').pop()?.replace('.md', '') || '';
+
   return apartamentos.map((alojamiento) => ({
-    params: { slug: alojamiento.slug },
+    params: { slug: getEntrySlug(alojamiento) },
     props: { alojamiento },
   }));
 }
 
 const { alojamiento } = Astro.props;
-const { Content } = await alojamiento.render();
+const { Content } = await render(alojamiento);
 ---
 
 <DefaultLayout 

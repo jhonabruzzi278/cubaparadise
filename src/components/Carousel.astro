@@ -3,7 +3,14 @@
         <div class="slides-wrapper">
             <div class="slide active">
                 <div class="slide-background">
-                    <img src="/img/Cuba.webp" alt="5ta Molinos" />
+                    <img
+                        src="/img/Cuba.webp"
+                        alt="5ta Molinos"
+                        loading="eager"
+                        fetchpriority="high"
+                        decoding="async"
+                        sizes="100vw"
+                    />
                     <div class="slide-overlay"></div>
                 </div>
                 <div class="slide-content">
@@ -27,7 +34,14 @@
 
             <div class="slide">
                 <div class="slide-background">
-                    <img src="/img/El_Capitolio_Havana_Cuba.jpg" alt="El Capitolio" />
+                    <img
+                        src="/img/El_Capitolio_Havana_Cuba.jpg"
+                        alt="El Capitolio"
+                        loading="lazy"
+                        fetchpriority="low"
+                        decoding="async"
+                        sizes="100vw"
+                    />
                     <div class="slide-overlay"></div>
                 </div>
                 <div class="slide-content">
@@ -51,7 +65,14 @@
 
             <div class="slide">
                 <div class="slide-background">
-                    <img src="/img/Cuba.webp" alt="Playa Canasí" />
+                    <img
+                        src="/img/Cuba.webp"
+                        alt="Playa Canasí"
+                        loading="lazy"
+                        fetchpriority="low"
+                        decoding="async"
+                        sizes="100vw"
+                    />
                     <div class="slide-overlay"></div>
                 </div>
                 <div class="slide-content">
@@ -75,7 +96,14 @@
 
             <div class="slide">
                 <div class="slide-background">
-                    <img src="/img/hotelnacional.jpg" alt="Hotel Nacional" />
+                    <img
+                        src="/img/hotelnacional.jpg"
+                        alt="Hotel Nacional"
+                        loading="lazy"
+                        fetchpriority="low"
+                        decoding="async"
+                        sizes="100vw"
+                    />
                     <div class="slide-overlay"></div>
                 </div>
                 <div class="slide-content">
@@ -120,28 +148,28 @@
         <div class="slide-preview d-none d-lg-block">
             <div class="preview-container">
                 <div class="preview-item active" data-slide="0">
-                    <img src="/img/Cuba.webp" alt="Preview 1" />
+                    <img src="/img/Cuba.webp" alt="Preview 1" loading="lazy" decoding="async" />
                     <div class="preview-content">
                         <h4>5ta Molinos</h4>
                         <span>Arquitectura</span>
                     </div>
                 </div>
                 <div class="preview-item" data-slide="1">
-                    <img src="/img/El_Capitolio_Havana_Cuba.jpg" alt="Preview 2" />
+                    <img src="/img/El_Capitolio_Havana_Cuba.jpg" alt="Preview 2" loading="lazy" decoding="async" />
                     <div class="preview-content">
                         <h4>El Capitolio</h4>
                         <span>Monumento</span>
                     </div>
                 </div>
                 <div class="preview-item" data-slide="2">
-                    <img src="/img/Cuba.webp" alt="Preview 3" />
+                    <img src="/img/Cuba.webp" alt="Preview 3" loading="lazy" decoding="async" />
                     <div class="preview-content">
                         <h4>Playa Canasí</h4>
                         <span>Naturaleza</span>
                     </div>
                 </div>
                 <div class="preview-item" data-slide="3">
-                    <img src="/img/hotelnacional.jpg" alt="Preview 4" />
+                    <img src="/img/hotelnacional.jpg" alt="Preview 4" loading="lazy" decoding="async" />
                     <div class="preview-content">
                         <h4>Hotel Nacional</h4>
                         <span>Historia</span>
@@ -157,7 +185,7 @@
 /* Hero Carousel Styles */
 .hero-carousel {
     position: relative;
-    height: 100vh;
+    height: clamp(560px, 92svh, 960px);
     overflow: hidden;
     background: #000;
 }
@@ -236,8 +264,9 @@
     text-align: center;
     color: white;
     z-index: 3;
+    width: min(100%, 900px);
     max-width: 800px;
-    padding: 0 2rem;
+    padding: 0 max(1rem, env(safe-area-inset-left)) 0 max(1rem, env(safe-area-inset-right));
 }
 
 .content-wrapper {
@@ -266,7 +295,7 @@
 }
 
 .slide-title {
-    font-size: 4rem;
+    font-size: clamp(2rem, 7vw, 4rem);
     font-weight: 800;
     margin-bottom: 0.5rem;
     line-height: 1.1;
@@ -274,7 +303,7 @@
 }
 
 .slide-subtitle {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     font-weight: 300;
     color: #7AB730;
     margin-bottom: 1.5rem;
@@ -283,9 +312,9 @@
 }
 
 .slide-description {
-    font-size: 1.2rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.2rem);
     line-height: 1.6;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     opacity: 0.9;
     max-width: 600px;
     margin-left: auto;
@@ -345,8 +374,8 @@
 .carousel-navigation {
     position: absolute;
     top: 50%;
-    left: 2rem;
-    right: 2rem;
+    left: clamp(0.5rem, 2vw, 2rem);
+    right: clamp(0.5rem, 2vw, 2rem);
     transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
@@ -355,13 +384,13 @@
 }
 
 .nav-btn {
-    width: 60px;
-    height: 60px;
+    width: clamp(44px, 5vw, 60px);
+    height: clamp(44px, 5vw, 60px);
     border-radius: 0;
     background: transparent;
     border: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     cursor: pointer;
     transition: all 0.3s ease;
     pointer-events: auto;
@@ -375,7 +404,7 @@
 /* Indicadores */
 .carousel-indicators {
     position: absolute;
-    bottom: 2rem;
+    bottom: clamp(0.75rem, 2vw, 2rem);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -384,8 +413,8 @@
 }
 
 .indicator {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.4);
     border: none;
@@ -405,8 +434,8 @@
 /* Preview de slides (desktop) */
 .slide-preview {
     position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: clamp(0.75rem, 2vw, 2rem);
+    right: clamp(0.75rem, 2vw, 2rem);
     z-index: 4;
 }
 
@@ -461,21 +490,28 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .slide-title {
-        font-size: 2.5rem;
+@media (max-width: 992px) {
+    .hero-carousel {
+        height: clamp(520px, 86svh, 820px);
     }
-    
-    .slide-subtitle {
-        font-size: 1.2rem;
-    }
-    
-    .slide-description {
-        font-size: 1rem;
-    }
-    
+
     .slide-content {
         padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-carousel {
+        height: clamp(500px, 78svh, 700px);
+    }
+
+    .slide-subtitle {
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .slide-description {
+        margin-bottom: 1.5rem;
     }
     
     .carousel-navigation {
@@ -492,27 +528,39 @@
     .slide-actions {
         flex-direction: column;
         align-items: center;
+        gap: 0.75rem;
     }
     
     .cta-btn {
         padding: 0.875rem 1.5rem;
         font-size: 0.9rem;
-        width: 200px;
+        width: min(100%, 240px);
         justify-content: center;
     }
 }
 
 @media (max-width: 576px) {
-    .slide-title {
-        font-size: 2rem;
+    .hero-carousel {
+        height: clamp(460px, 72svh, 620px);
     }
-    
-    .slide-description {
-        font-size: 0.9rem;
+
+    .slide-content {
+        top: 52%;
+    }
+
+    .slide-subtitle {
+        letter-spacing: 1.5px;
     }
     
     .carousel-indicators {
         bottom: 1rem;
+        gap: 0.75rem;
+    }
+
+    .nav-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
     }
 }
 </style>
@@ -520,6 +568,10 @@
 <script is:inline>
 // Carousel mejorado con JavaScript vanilla
 document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.hero-carousel');
+    if (!carousel || carousel.dataset.initialized === 'true') return;
+    carousel.dataset.initialized = 'true';
+
     const slides = document.querySelectorAll('.slide');
     const indicators = document.querySelectorAll('.indicator');
     const previews = document.querySelectorAll('.preview-item');
@@ -530,6 +582,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let autoplayInterval = null;
     let isTransitioning = false;
     const autoplayDelay = 5000;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function showSlide(index, direction) {
         direction = direction || 'next';
@@ -590,6 +643,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function startAutoplay() {
+        if (prefersReducedMotion || slides.length < 2) return;
         stopAutoplay();
         autoplayInterval = setInterval(function() {
             if (!isTransitioning) {
@@ -656,6 +710,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Navegación por teclado
     document.addEventListener('keydown', function(e) {
+        const activeElement = document.activeElement;
+        const isTyping = activeElement && (
+            activeElement.tagName === 'INPUT' ||
+            activeElement.tagName === 'TEXTAREA' ||
+            activeElement.getAttribute('contenteditable') === 'true'
+        );
+        if (isTyping) return;
+
         if (e.key === 'ArrowLeft') {
             e.preventDefault();
             prevSlide();
@@ -668,7 +730,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Pausar en hover
-    const carousel = document.querySelector('.hero-carousel');
     if (carousel) {
         carousel.addEventListener('mouseenter', function() {
             stopAutoplay();
@@ -719,8 +780,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            stopAutoplay();
+            return;
+        }
+        startAutoplay();
+    });
+
+    window.addEventListener('pagehide', function() {
+        stopAutoplay();
+    });
+
     // Inicializar
-    console.log('Inicializando carousel con', slides.length, 'slides');
     showSlide(0);
     
     // Iniciar autoplay después de un pequeño retraso

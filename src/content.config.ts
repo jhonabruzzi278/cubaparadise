@@ -1,15 +1,13 @@
-// src/content/config.ts
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const alojamiento = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: "**/*.md", base: "./src/content/alojamiento" }),
   schema: z.object({
     title: z.string(),
-    // slug: z.string(),
     tipo: z.string(),
     ubicacion: z.string(),
     destacado: z.boolean(),
-    
     duracion: z.string(),
     capacidad: z.number(),
     descripcion: z.string(),
@@ -19,13 +17,11 @@ const alojamiento = defineCollection({
 });
 
 const tours = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: "**/*.md", base: "./src/content/tours" }),
   schema: z.object({
     title: z.string(),
-    // slug: z.string(),
     categoria: z.string(),
     destacado: z.boolean(),
-    
     duracion: z.string(),
     incluye: z.string().optional(),
     guia: z.string().optional(),
@@ -36,13 +32,11 @@ const tours = defineCollection({
 });
 
 const excursiones = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: "**/*.md", base: "./src/content/excursiones" }),
   schema: z.object({
     title: z.string(),
-    // slug: z.string(),
     categoria: z.string(),
     destacado: z.boolean(),
-    
     duracion: z.string(),
     grupo: z.string().optional(),
     descripcion: z.string(),
@@ -52,12 +46,11 @@ const excursiones = defineCollection({
 });
 
 const servicios = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: "**/*.md", base: "./src/content/servicios" }),
   schema: z.object({
     title: z.string(),
     tipo: z.string().optional(),
     destacado: z.boolean().optional(),
-    
     duracion: z.string().optional(),
     descripcion: z.string(),
     img: z.string().optional(),
@@ -66,13 +59,12 @@ const servicios = defineCollection({
 });
 
 const paquetesExcursiones = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: "**/*.md", base: "./src/content/excursiones-paquetes" }),
   schema: z.object({
     title: z.string(),
     descripcion: z.string(),
     duracion: z.string(),
     incluye: z.string(),
-    
     img: z.string(),
     idiomas: z.string().optional(),
     notas_precio: z.string().optional(),
@@ -82,13 +74,12 @@ const paquetesExcursiones = defineCollection({
 });
 
 const paquetesTours = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: "**/*.md", base: "./src/content/tours-paquetes" }),
   schema: z.object({
     title: z.string(),
     descripcion: z.string(),
     duracion: z.string(),
     incluye: z.string(),
-    
     img: z.string(),
     idiomas: z.string().optional(),
     notas_precio: z.string().optional(),
@@ -97,12 +88,11 @@ const paquetesTours = defineCollection({
   }),
 });
 
-// declara solo colecciones que realmente tengan archivos:
 export const collections = {
   alojamiento,
   tours,
   excursiones,
   servicios,
-  'excursiones-paquetes': paquetesExcursiones,
-  'tours-paquetes': paquetesTours,
+  "excursiones-paquetes": paquetesExcursiones,
+  "tours-paquetes": paquetesTours,
 };

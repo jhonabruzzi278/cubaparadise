@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
 import { getWhatsAppUrl } from "../../../utils/whatsapp.ts";
 import IconWhatsapp from "../../../components/IconWhatsapp.astro";
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { excursion } = Astro.props;
-const { Content } = await excursion.render();
+const { Content } = await render(excursion);
 ---
 
 <DefaultLayout 
