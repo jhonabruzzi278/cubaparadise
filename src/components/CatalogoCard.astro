@@ -8,41 +8,54 @@ export interface Props {
 
 const { titulo = 'Catálogo completo de experiencias', catalogo = [] } = Astro.props;
 
+// Helper para obtener slug desde item (maneja caso donde slug no está definido)
+const getItemSlug = (item: any): string => {
+  // Si existe slug en el item, usarlo
+  if (item.slug) return item.slug;
+  // Si no, extraer del id (formato: "coleccion/nombre-archivo.md")
+  const idParts = item.id?.split('/');
+  const filename = idParts?.[idParts.length - 1] || '';
+  return filename.replace('.md', '');
+};
+
 // Transformar el catálogo al formato esperado por BaseCard
 const catalogoItems = catalogo.map((item) => {
+  // Obtener el slug del item
+  const itemSlug = getItemSlug(item);
+  
   // Determinar la ruta basándose en la colección de origen
   let link = '#';
   
   // Verificar si el item pertenece a tours-paquetes
   if (item.collection === 'tours-paquetes') {
-    link = `/tours/paquetes/${item.slug}`;
+    link = `/tours/paquetes/${itemSlug}`;
   }
   // Verificar si el item pertenece a excursiones-paquetes  
   else if (item.collection === 'excursiones-paquetes') {
-    link = `/excursiones/paquetes/${item.slug}`;
+    link = `/excursiones/paquetes/${itemSlug}`;
   }
   // Para otros tipos, usar la lógica anterior
   else if (item.data.categoria === 'tours') {
-    link = `/tours/paquetes/${item.slug}`;
+    link = `/tours/paquetes/${itemSlug}`;
   }
   else if (item.data.categoria === 'excursiones') {
-    link = `/excursiones/paquetes/${item.slug}`;
+    link = `/excursiones/paquetes/${itemSlug}`;
   }
   else if (item.data.tipo === 'apartamento') {
-    link = `/alojamiento/apartamento/${item.slug}`;
+    link = `/alojamiento/apartamento/${itemSlug}`;
   }
   else if (item.data.tipo === 'casa-en-el-campo') {
-    link = `/alojamiento/casa-en-el-campo/${item.slug}`;
+    link = `/alojamiento/casa-en-el-campo/${itemSlug}`;
   }
   else if (item.data.tipo === 'casa-en-la-playa') {
-    link = `/alojamiento/casa-en-la-playa/${item.slug}`;
+    link = `/alojamiento/casa-en-la-playa/${itemSlug}`;
   }
   // Para servicios, verificar si pertenece a la colección 'servicios'
   else if (item.collection === 'servicios') {
-    link = `/servicios/${item.slug}`;
+    link = `/servicios/${itemSlug}`;
   }
   else if (item.data.tipo === 'servicio') {
-    link = `/servicios/${item.slug}`;
+    link = `/servicios/${itemSlug}`;
   }
 
   return {

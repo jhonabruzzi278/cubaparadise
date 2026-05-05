@@ -1,137 +1,331 @@
 ---
-// Definición de servicios de forma dinámica
+// Servicios - Diseño Moderno con Cards Premium
 const services = [
     {
-        icon: "hiking",
+        icon: "landscape",
         title: "Excursiones",
-        description: "Explora Cuba con locales expertos en historia , cultura y fotografía.",
-        link: "/excursiones"
+        description: "Explora Cuba con locales expertos en historia, cultura y fotografía. Descubre rincones únicos.",
+        link: "/excursiones",
+        color: "#7AB730",
+        gradient: "linear-gradient(135deg, #7AB730 0%, #5a9625 100%)"
     },
     {
-        icon: "support_agent",
-        title: "Reservas de Tours",
-        description: "Reserva tours personalizados a los mejores destinos de Cuba.",
-        link: "/tours"
+        icon: "tour",
+        title: "Tours Guiados",
+        description: "Reserva tours personalizados a los mejores destinos de Cuba con guías especializados.",
+        link: "/tours",
+        color: "#3B82F6",
+        gradient: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)"
     },
     {
-        icon: "house",
+        icon: "villa",
         title: "Alojamiento",
-        description: "Encuentra casas particulares y hospedajes únicos en Cuba.",
-        link: "/alojamiento"
+        description: "Encuentra casas particulares y hospedajes únicos para una experiencia auténtica cubana.",
+        link: "/alojamiento",
+        color: "#F59E0B",
+        gradient: "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)"
     },
     {
-        icon: "music_note",
+        icon: "music_cast",
         title: "Clases de Salsa",
         description: "Aprende salsa cubana con instructores profesionales. Cursos para todos los niveles.",
-        link: "/servicios/clases-salsa"
+        link: "/servicios/clases-salsa",
+        color: "#EC4899",
+        gradient: "linear-gradient(135deg, #EC4899 0%, #DB2777 100%)"
     }
 ];
 ---
 
-<div class="container py-5">
-    <div class="text-center mb-4">
-        <h6 class="text-primary text-uppercase" style="letter-spacing: 2px;">Nuestros Servicios</h6>
-        <h2 class="fw-bold">Descubre lo que ofrecemos</h2>
-    </div>
-    <div class="row justify-content-center g-4">
-        {services.map((service) => (
-            <div class="col-md-6 col-lg-3">
-                <a href={service.link} class="service-item d-flex flex-column align-items-center text-center p-4">
-                    <div class="icon-wrapper mb-3">
-                        <span class="material-symbols-outlined">
-                            {service.icon}
-                        </span>
+<section class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">Nuestros Servicios</span>
+            <h2 class="section-title">Descubre lo que ofrecemos</h2>
+            <p class="section-description">
+                Experiencias únicas diseñadas para que vivas la auténtica Cuba con el mejor servicio y atención personalizada.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            {services.map((service, index) => (
+                <a href={service.link} class="service-card" style={`--card-color: ${service.color}; --card-gradient: ${service.gradient}; animation-delay: ${index * 0.1}s`}>
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon-bg" style={`background: ${service.gradient}`}></div>
+                        <span class="material-symbols-outlined card-icon">{service.icon}</span>
                     </div>
-                    <h5 class="fw-bold mb-2">{service.title}</h5>
-                    <p class="text-muted small">{service.description}</p>
+                    <div class="card-content">
+                        <h3 class="card-title">{service.title}</h3>
+                        <p class="card-description">{service.description}</p>
+                        <div class="card-cta">
+                            <span>Explorar</span>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
                 </a>
-            </div>
-        ))}
+            ))}
+        </div>
     </div>
-</div>
+</section>
 
 <style>
-/* Contenedor principal */
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-}
-
-/* Estilo de los servicios */
-.service-item {
-    background: #fff;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 300px;
-}
-
-.service-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Icono */
-.icon-wrapper {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #7AB730;
-    transition: color 0.3s ease;
-}
-
-.icon-wrapper .material-symbols-outlined {
-    font-size: 3rem;
-    color: inherit;
-}
-
-.service-item:hover .icon-wrapper {
-    color: #527a20;
-}
-
-/* Títulos y descripciones */
-h5 {
-    font-size: 1.25rem;
-    color: #333;
-}
-
-p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-    .service-item {
-        padding: 1.5rem;
-        max-width: 100%;
+    .services-section {
+        padding: 6rem 0;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        position: relative;
+        overflow: hidden;
     }
 
-    h5 {
-        font-size: 1.1rem;
+    .services-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(122, 183, 48, 0.3), transparent);
     }
 
-    p {
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .icon-wrapper {
-        width: 60px;
-        height: 60px;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        position: relative;
+        z-index: 1;
     }
 
-    h5 {
-        font-size: 1rem;
+    /* Header de sección */
+    .section-header {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 4rem;
     }
 
-    p {
-        font-size: 0.8rem;
+    .section-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #7AB730;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+        padding: 0.5rem 1rem;
+        background: rgba(122, 183, 48, 0.1);
+        border-radius: 50px;
+        border: 1px solid rgba(122, 183, 48, 0.2);
     }
-}
+
+    .section-title {
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+    }
+
+    .section-description {
+        font-size: 1.125rem;
+        color: #64748b;
+        line-height: 1.7;
+    }
+
+    /* Grid de servicios */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Card de servicio */
+    .service-card {
+        position: relative;
+        background: white;
+        border-radius: 24px;
+        padding: 2rem;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        overflow: hidden;
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+        border-color: transparent;
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-icon-wrapper {
+        position: relative;
+        width: 72px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-icon-bg {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        opacity: 0.15;
+        transition: all 0.4s ease;
+    }
+
+    .service-card:hover .card-icon-bg {
+        opacity: 0.25;
+        transform: scale(1.1);
+    }
+
+    .card-icon {
+        font-size: 2.25rem;
+        color: var(--card-color);
+        position: relative;
+        z-index: 1;
+        transition: transform 0.4s ease;
+    }
+
+    .service-card:hover .card-icon {
+        transform: scale(1.1);
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        flex: 1;
+    }
+
+    .card-title {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: #0f172a;
+        letter-spacing: -0.01em;
+    }
+
+    .card-description {
+        font-size: 0.9375rem;
+        color: #64748b;
+        line-height: 1.6;
+        flex: 1;
+    }
+
+    .card-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--card-color);
+        margin-top: auto;
+        transition: gap 0.3s ease;
+    }
+
+    .card-cta span:first-child {
+        position: relative;
+    }
+
+    .card-cta span:first-child::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--card-color);
+        transition: width 0.3s ease;
+    }
+
+    .service-card:hover .card-cta {
+        gap: 0.75rem;
+    }
+
+    .service-card:hover .card-cta span:first-child::after {
+        width: 100%;
+    }
+
+    .card-cta .material-symbols-outlined {
+        font-size: 1.25rem;
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .card-cta .material-symbols-outlined {
+        transform: translateX(4px);
+    }
+
+    .card-glow {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at center, var(--card-color) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        pointer-events: none;
+    }
+
+    .service-card:hover .card-glow {
+        opacity: 0.03;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .service-card {
+            padding: 1.75rem;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .services-section {
+            padding: 4rem 0;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .service-card {
+            padding: 1.5rem;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .card-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
+        }
+
+        .card-icon {
+            font-size: 1.75rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+        }
+    }
 </style>

@@ -9,8 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "@vercel/analytics": "^1.5.0",
     "astro": "^6.1.9",
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "typescript": "^5.9.3"
   }
 }

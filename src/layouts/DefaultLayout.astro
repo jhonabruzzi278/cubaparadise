@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import TopBar from "../components/TopBar.astro";
 import Navbar from "../components/Navbar.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 import Analytics from "@vercel/analytics/astro";
 import { ClientRouter } from "astro:transitions";
 import "../styles/cuba-paradise-optimized.css";
@@ -9,12 +10,18 @@ import "../styles/cuba-paradise-optimized.css";
 export interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: string;
 }
 
 const {
   title = "Cuba Paradise - Tours y Alojamiento en Cuba",
   description = "Descubre Cuba con nuestros tours, excursiones y alojamientos auténticos. Experiencias únicas en La Habana, Viñales y más destinos cubanos.",
+  image = "/img/cubaparadise.svg",
+  type = "website",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://cubaparadise.com");
 ---
 
 <!doctype html>
@@ -27,6 +34,34 @@ const {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site || "https://cubaparadise.com")} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Cuba Paradise" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.site || "https://cubaparadise.com")} />
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -74,6 +109,7 @@ const {
     </main>
 
     <Footer />
+    <WhatsAppFloat />
 
     <script src="/src/assets/navbar.js"></script>
   </body>

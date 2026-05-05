@@ -1,0 +1,101 @@
+---
+import IconWhatsapp from "./IconWhatsapp.astro";
+---
+
+<!-- Boton flotante WhatsApp sticky global -->
+<a 
+  href="https://wa.me/5356851846?text=¡Hola%20Cuba%20Paradise!%20Me%20interesa%20conocer%20más%20sobre%20sus%20servicios."
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+  id="whatsapp-sticky"
+>
+  <IconWhatsapp style="width: 32px; height: 32px;" />
+  <span class="whatsapp-text">Reserva aquí</span>
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideInUp 0.6s ease-out;
+  }
+
+  .whatsapp-float:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+    color: white;
+    text-decoration: none;
+  }
+
+  .whatsapp-float:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+
+  .whatsapp-text {
+    white-space: nowrap;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* En mobile solo mostrar icono */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      padding: 12px;
+      border-radius: 50%;
+      bottom: 20px;
+      right: 20px;
+    }
+    .whatsapp-text {
+      display: none;
+    }
+  }
+
+  /* Safe area para iPhone notch */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .whatsapp-float {
+      bottom: calc(24px + env(safe-area-inset-bottom));
+      right: calc(24px + env(safe-area-inset-right));
+    }
+  }
+</style>
+
+<script is:inline>
+  // Tracking GA4 evento clic WhatsApp sticky
+  document.addEventListener('DOMContentLoaded', function() {
+    const whatsappBtn = document.getElementById('whatsapp-sticky');
+    if (whatsappBtn && typeof gtag !== 'undefined') {
+      whatsappBtn.addEventListener('click', function() {
+        gtag('event', 'click_whatsapp_sticky', {
+          'event_category': 'conversion',
+          'event_label': 'Botón flotante WhatsApp',
+          'value': 1
+        });
+      });
+    }
+  });
+</script>

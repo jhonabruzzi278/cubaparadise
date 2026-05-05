@@ -2,41 +2,88 @@
 import IconWhatsapp from "./IconWhatsapp.astro";
 ---
 
-<section id="contacto" aria-labelledby="contacto-title" class="container-fluid py-5">
-  <div class="container py-5">
-    <div class="text-center mb-5 pb-3">
-      <h6 class="text-primary text-uppercase fw-bold" id="contacto-title" style="letter-spacing: 3px;">Contacto</h6>
-      <h1 class="display-5 fw-bold">Planifica tu Viaje a Cuba</h1>
-      <p class="lead text-muted">Contáctanos para organizar tu experiencia perfecta en Cuba</p>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-        <div class="contact-form bg-white rounded shadow p-3 p-md-4 p-lg-5">
-          <div id="success" class="visually-hidden" aria-live="polite"></div>
-          <form id="contactForm" novalidate>
-            <div class="row g-3">
-              <div class="col-12">
-                <label for="name" class="form-label fw-bold">Nombre Completo</label>
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="name"
-                  name="name"
-                  placeholder="Tu nombre completo"
-                  autocomplete="name"
-                  minlength="2"
-                  maxlength="80"
-                  aria-required="true"
-                  aria-describedby="nameHelp"
-                  required
-                />
-                <div id="nameHelp" class="form-text text-danger d-none">Por favor, introduce tu nombre (mínimo 2 caracteres).</div>
-              </div>
+<section id="contacto" class="contact-section">
+  <div class="container">
+    <div class="contact-wrapper">
+      <!-- Info lateral -->
+      <div class="contact-info">
+        <div class="info-header">
+          <span class="info-badge">Contacto</span>
+          <h2 class="info-title">Planifica tu Viaje a Cuba</h2>
+          <p class="info-description">
+            Estamos aquí para ayudarte a crear la experiencia cubana perfecta. Completa el formulario y te contactaremos en menos de 24 horas.
+          </p>
+        </div>
 
-              <div class="col-12">
-                <label for="subject" class="form-label fw-bold">Tipo de viaje</label>
+        <div class="info-features">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <div class="feature-content">
+              <h4>Respuesta Rápida</h4>
+              <p>Te respondemos en menos de 24 horas</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <span class="material-symbols-outlined">verified</span>
+            </div>
+            <div class="feature-content">
+              <h4>100% Seguro</h4>
+              <p>Reservas verificadas y garantizadas</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <span class="material-symbols-outlined">support_agent</span>
+            </div>
+            <div class="feature-content">
+              <h4>Atención Personalizada</h4>
+              <p>Adaptamos tu viaje a tus necesidades</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="contact-form-wrapper">
+        <div class="form-card">
+          <div class="form-header">
+            <h3 class="form-title">Solicita información</h3>
+            <p class="form-subtitle">Cuéntanos sobre tu viaje ideal</p>
+          </div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name" class="form-label">
+                <span class="material-symbols-outlined">person</span>
+                Nombre Completo
+              </label>
+              <input
+                type="text"
+                class="form-input"
+                id="name"
+                name="name"
+                placeholder="¿Cómo te llamas?"
+                autocomplete="name"
+                minlength="2"
+                maxlength="80"
+                aria-required="true"
+                aria-describedby="nameHelp"
+                required
+              />
+              <div id="nameHelp" class="form-error">Por favor, introduce tu nombre (mínimo 2 caracteres).</div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">
+                <span class="material-symbols-outlined">category</span>
+                Tipo de viaje
+              </label>
+              <div class="select-wrapper">
                 <select
-                  class="form-control"
+                  class="form-select"
                   id="subject"
                   name="subject"
                   aria-required="true"
@@ -44,118 +91,64 @@ import IconWhatsapp from "./IconWhatsapp.astro";
                   required
                 >
                   <option value="" selected disabled>Selecciona una opción</option>
-                  <option value="Tour">Tour</option>
-                  <option value="Excursión">Excursión</option>
-                  <option value="Alojamiento">Alojamiento</option>
-                  <option value="Servicio">Servicio</option>
-                  <option value="Viaje personalizado">Viaje personalizado</option>
+                  <option value="Tour">🎯 Tour</option>
+                  <option value="Excursión">🏔️ Excursión</option>
+                  <option value="Alojamiento">🏠 Alojamiento</option>
+                  <option value="Servicio">✨ Servicio</option>
+                  <option value="Viaje personalizado">🎨 Viaje personalizado</option>
                 </select>
-                <div id="subjectHelp" class="form-text text-danger d-none">Selecciona el tipo de viaje.</div>
+                <span class="select-arrow material-symbols-outlined">expand_more</span>
               </div>
-              
-                
-              <div class="col-12">
-                <label for="message" class="form-label fw-bold">Mensaje</label>
-                <textarea
-                  class="form-control"
-                  rows="4"
-                  id="message"
-                  name="message"
-                  placeholder="Cuéntanos sobre tu viaje ideal a Cuba: fechas, destinos de interés, número de personas, presupuesto aproximado, etc."
-                  minlength="10"
-                  maxlength="1000"
-                  aria-required="true"
-                  aria-describedby="messageHelp"
-                  required></textarea>
-                <div id="messageHelp" class="form-text text-danger d-none">Escribe un mensaje (mínimo 10 caracteres).</div>
+              <div id="subjectHelp" class="form-error">Selecciona el tipo de viaje.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">
+                <span class="material-symbols-outlined">chat</span>
+                Tu mensaje
+              </label>
+              <textarea
+                class="form-textarea"
+                rows="4"
+                id="message"
+                name="message"
+                placeholder="Cuéntanos: fechas, destinos de interés, número de personas, presupuesto aproximado..."
+                minlength="10"
+                maxlength="1000"
+                aria-required="true"
+                aria-describedby="messageHelp"
+                required
+              ></textarea>
+              <div id="messageHelp" class="form-error">Escribe un mensaje (mínimo 10 caracteres).</div>
+            </div>
+
+            <button id="sendBtn" class="submit-btn" type="submit">
+              <span class="btn-icon">
+                <IconWhatsapp style="width: 24px; height: 24px;" />
+              </span>
+              <span class="btn-text">Enviar por WhatsApp</span>
+              <span class="btn-arrow material-symbols-outlined">arrow_forward</span>
+            </button>
+          </form>
+
+          <div class="form-footer">
+            <div class="trust-badges">
+              <div class="trust-item">
+                <span class="material-symbols-outlined">lock</span>
+                <span>Seguro</span>
               </div>
-              <div class="col-12 text-center pt-3">
-                <button id="sendBtn" class="btn btn-whatsapp btn-lg px-4 py-3 fw-bold w-100" type="submit">
-                  <IconWhatsapp class="me-2" style="width: 20px; height: 20px; display: inline-block;" aria-hidden="true" />Enviar por WhatsApp
-                </button>
-                <p class="text-muted mt-3 mb-0">
-                  <small><span class="material-symbols-outlined me-1" style="font-size: 14px;">schedule</span>Respuesta rápida garantizada • <span class="material-symbols-outlined me-1" style="font-size: 14px;">security</span>100% Seguro</small>
-                </p>
+              <div class="trust-divider"></div>
+              <div class="trust-item">
+                <span class="material-symbols-outlined">speed</span>
+                <span>Rápido</span>
+              </div>
+              <div class="trust-divider"></div>
+              <div class="trust-item">
+                <span class="material-symbols-outlined">favorite</span>
+                <span>Personalizado</span>
               </div>
             </div>
-          </form>
-          <script is:inline>
-            document.addEventListener("DOMContentLoaded", () => {
-              const form = document.getElementById("contactForm");
-              const btn = document.getElementById("sendBtn");
-               const phone = "5356851846";
-
-              if (!form || !btn) return;
-
-              const getEl = (id) => document.getElementById(id);
-              const nameEl = getEl("name");
-              const subjectEl = getEl("subject");
-              const messageEl = getEl("message");
-              const nameHelp = getEl("nameHelp");
-              const subjectHelp = getEl("subjectHelp");
-              const messageHelp = getEl("messageHelp");
-
-              const toggleError = (el, helpEl, show) => {
-                if (!el || !helpEl) return;
-                helpEl.classList.toggle("d-none", !show);
-                el.classList.toggle("is-invalid", show);
-                el.setAttribute("aria-invalid", show ? "true" : "false");
-              };
-
-              const validate = () => {
-                let valid = true;
-                const name = (nameEl?.value || "").trim();
-                const subject = (subjectEl?.value || "").trim();
-                const message = (messageEl?.value || "").trim();
-
-                const nameOk = name.length >= 2;
-                toggleError(nameEl, nameHelp, !nameOk);
-                valid = valid && nameOk;
-
-                const subjectOk = subject.length > 0;
-                toggleError(subjectEl, subjectHelp, !subjectOk);
-                valid = valid && subjectOk;
-
-                const messageOk = message.length >= 10;
-                toggleError(messageEl, messageHelp, !messageOk);
-                valid = valid && messageOk;
-
-                return { valid, name, subject, message };
-              };
-
-              [nameEl, subjectEl, messageEl].forEach((el) => {
-                el?.addEventListener("input", () => validate());
-                el?.addEventListener("change", () => validate());
-              });
-
-              form.addEventListener("submit", (event) => {
-                event.preventDefault();
-                const { valid, name, subject, message } = validate();
-                if (!valid) {
-                  if (nameEl?.classList.contains("is-invalid")) nameEl.focus();
-                  else if (subjectEl?.classList.contains("is-invalid")) subjectEl.focus();
-                  else if (messageEl?.classList.contains("is-invalid")) messageEl.focus();
-                  form.reportValidity?.();
-                  return false;
-                }
-
-                const text = `¡Hola Cuba Paradise! \n\nMi nombre es: ${name}\nTipo de viaje: ${subject}\n\nMensaje:\n${message}\n\nGracias por su atención.`;
-                const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-
-                btn.setAttribute("disabled", "true");
-                btn.classList.add("disabled");
-                try {
-                  window.open(url, "_blank", "noopener,noreferrer");
-                } finally {
-                  setTimeout(() => {
-                    btn.removeAttribute("disabled");
-                    btn.classList.remove("disabled");
-                  }, 800);
-                }
-                return false;
-              });
-            });
-          </script>
+          </div>
         </div>
       </div>
     </div>
@@ -163,64 +156,475 @@ import IconWhatsapp from "./IconWhatsapp.astro";
 </section>
 
 <style>
-  /* Detalles visuales profesionales conservando el layout */
-  .contact-form {
-    border: 1px solid rgba(0,0,0,0.05);
+  .contact-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 50%, #f0f9ff 100%);
+    position: relative;
+    overflow: hidden;
   }
-  .form-control, .form-select {
-    border-radius: 0.75rem;
-    border-color: #e5e7eb;
-    padding: 0.9rem 1rem;
-  }
-  .form-control:focus, .form-select:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
-  }
-  .is-invalid {
-    border-color: #dc3545 !important;
-  }
-  .form-text.text-danger { font-size: 0.85rem; }
 
-  .btn-whatsapp {
-    background: #25D366;
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(122, 183, 48, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Info lateral */
+  .contact-info {
+    padding-top: 1rem;
+  }
+
+  .info-header {
+    margin-bottom: 3rem;
+  }
+
+  .info-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #7AB730;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(122, 183, 48, 0.1);
+    border-radius: 50px;
+    border: 1px solid rgba(122, 183, 48, 0.2);
+  }
+
+  .info-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .info-description {
+    font-size: 1.125rem;
+    color: #64748b;
+    line-height: 1.7;
+  }
+
+  /* Features */
+  .info-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .feature-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #7AB730 0%, #5a9625 100%);
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .feature-icon .material-symbols-outlined {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .feature-content h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+  }
+
+  .feature-content p {
+    font-size: 0.9375rem;
+    color: #64748b;
+  }
+
+  /* Formulario */
+  .contact-form-wrapper {
+    position: relative;
+  }
+
+  .form-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .form-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-subtitle {
+    font-size: 1rem;
+    color: #64748b;
+  }
+
+  /* Grupos de formulario */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-label .material-symbols-outlined {
+    font-size: 1.125rem;
+    color: #7AB730;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    background: #f9fafb;
+    transition: all 0.3s ease;
+    color: #1f2937;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: #7AB730;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(122, 183, 48, 0.1);
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: #9ca3af;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .select-wrapper {
+    position: relative;
+  }
+
+  .select-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #6b7280;
+    font-size: 1.25rem;
+  }
+
+  .form-error {
+    display: none;
+    font-size: 0.875rem;
+    color: #dc2626;
+    margin-top: 0.5rem;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .form-error::before {
+    content: 'error';
+    font-family: 'Material Symbols Outlined';
+    font-size: 1rem;
+  }
+
+  .form-input.is-invalid,
+  .form-select.is-invalid,
+  .form-textarea.is-invalid {
+    border-color: #dc2626;
+    background: #fef2f2;
+  }
+
+  .form-input.is-invalid + .form-error,
+  .form-select.is-invalid ~ .form-error,
+  .form-textarea.is-invalid + .form-error {
+    display: flex;
+  }
+
+  /* Botón de envío */
+  .submit-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
     border: none;
-    max-width: 420px;
-    margin-inline: auto;
-    color: #0b3d2e;
-    transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
-  }
-  .btn-whatsapp:hover { filter: brightness(0.95); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25); }
-  .btn-whatsapp:active { transform: translateY(0); box-shadow: none; }
-  .btn-whatsapp.disabled, .btn-whatsapp[disabled] { opacity: .7; cursor: not-allowed; }
-
-  /* Tipografías fluidas para títulos y lead */
-  #contacto h1 { font-size: clamp(1.6rem, 4.5vw, 2.5rem); line-height: 1.2; }
-  #contacto .lead { font-size: clamp(0.95rem, 2.5vw, 1.125rem); }
-
-  /* Tablet */
-  @media (max-width: 992px) {
-    #contacto { padding-top: 3rem !important; padding-bottom: 3rem !important; }
-    #contacto .container { padding-left: 1rem !important; padding-right: 1rem !important; }
-    #contacto .text-center { margin-bottom: 2rem !important; }
-    #contacto .contact-form { padding: 1.25rem 1rem !important; }
-    #contacto .form-control, #contacto .form-select { padding: 0.85rem 0.95rem; }
-    #contacto .btn-whatsapp.btn-lg { padding: 0.95rem 1.1rem !important; font-size: 1.05rem; }
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    margin-top: 0.5rem;
   }
 
-  /* Móvil */
-  @media (max-width: 768px) {
-    #contacto h1 { font-size: 1.55rem; }
-    #contacto .lead { font-size: 0.95rem; }
-    #contacto .text-center { margin-bottom: 1.5rem !important; }
-    #contacto .contact-form { padding: 1rem !important; }
-    #contacto .form-control, #contacto .form-select { padding: 0.8rem 0.9rem; font-size: 1rem; border-radius: 0.65rem; }
-    #contacto .btn-whatsapp.btn-lg { padding: 0.85rem 1rem !important; font-size: 1rem; }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
   }
 
-  /* Móvil pequeño */
-  @media (max-width: 480px) {
-    #contacto h1 { font-size: 1.45rem; }
-    #contacto .lead { font-size: 0.92rem; }
-    #contacto .btn-whatsapp.btn-lg { padding: 0.8rem 0.95rem !important; font-size: 0.98rem; }
+  .submit-btn:active {
+    transform: translateY(0);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .submit-btn:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Footer del formulario */
+  .form-footer {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .trust-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  .trust-item .material-symbols-outlined {
+    font-size: 1rem;
+    color: #7AB730;
+  }
+
+  .trust-divider {
+    width: 4px;
+    height: 4px;
+    background: #d1d5db;
+    border-radius: 50%;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .contact-wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info {
+      text-align: center;
+    }
+
+    .info-features {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-section {
+      padding: 4rem 0;
+    }
+
+    .form-card {
+      padding: 1.75rem;
+    }
+
+    .form-title {
+      font-size: 1.375rem;
+    }
+
+    .feature-item {
+      padding: 1rem;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+    }
   }
 </style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
+    const btn = document.getElementById("sendBtn");
+    const phone = "5356851846";
+
+    if (!form || !btn) return;
+
+    const getEl = (id) => document.getElementById(id);
+    const nameEl = getEl("name");
+    const subjectEl = getEl("subject");
+    const messageEl = getEl("message");
+    const nameHelp = getEl("nameHelp");
+    const subjectHelp = getEl("subjectHelp");
+    const messageHelp = getEl("messageHelp");
+
+    const toggleError = (el, helpEl, show) => {
+      if (!el || !helpEl) return;
+      helpEl.style.display = show ? "flex" : "none";
+      el.classList.toggle("is-invalid", show);
+      el.setAttribute("aria-invalid", show ? "true" : "false");
+    };
+
+    const validate = () => {
+      let valid = true;
+      const name = (nameEl?.value || "").trim();
+      const subject = (subjectEl?.value || "").trim();
+      const message = (messageEl?.value || "").trim();
+
+      const nameOk = name.length >= 2;
+      toggleError(nameEl, nameHelp, !nameOk);
+      valid = valid && nameOk;
+
+      const subjectOk = subject.length > 0;
+      toggleError(subjectEl, subjectHelp, !subjectOk);
+      valid = valid && subjectOk;
+
+      const messageOk = message.length >= 10;
+      toggleError(messageEl, messageHelp, !messageOk);
+      valid = valid && messageOk;
+
+      return { valid, name, subject, message };
+    };
+
+    [nameEl, subjectEl, messageEl].forEach((el) => {
+      el?.addEventListener("input", () => validate());
+      el?.addEventListener("change", () => validate());
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const { valid, name, subject, message } = validate();
+      if (!valid) {
+        if (nameEl?.classList.contains("is-invalid")) nameEl.focus();
+        else if (subjectEl?.classList.contains("is-invalid")) subjectEl.focus();
+        else if (messageEl?.classList.contains("is-invalid")) messageEl.focus();
+        form.reportValidity?.();
+        return false;
+      }
+
+      const text = `¡Hola Cuba Paradise! \n\nMi nombre es: ${name}\nTipo de viaje: ${subject}\n\nMensaje:\n${message}\n\nGracias por su atención.`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+      btn.setAttribute("disabled", "true");
+      btn.classList.add("disabled");
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'submit_contact_form', {
+          'event_category': 'conversion',
+          'event_label': subject,
+          'value': 1
+        });
+      }
+
+      try {
+        window.open(url, "_blank", "noopener,noreferrer");
+      } finally {
+        setTimeout(() => {
+          btn.removeAttribute("disabled");
+          btn.classList.remove("disabled");
+        }, 800);
+      }
+      return false;
+    });
+  });
+</script>

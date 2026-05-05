@@ -1,265 +1,515 @@
-
 ---
-// Navbar Component - Cuba Paradise
+// Navbar Component - Cuba Paradise - Con menú hamburguesa mobile
 ---
 
-<header class="navbar-container">
+<header class="navbar-container" id="navbar">
   <div class="container">
     
     <!-- Desktop Layout -->
     <div class="desktop-navbar">
-      <!-- Logo -->
       <a href="/" class="navbar-logo">
         <img src="/img/cubaparadise.svg" alt="Cuba Paradise">
+        <div class="logo-text">
+          <span class="logo-title">Cuba Paradise</span>
+          <span class="logo-subtitle">Tours & Experiencias</span>
+        </div>
       </a>
 
-      <!-- Desktop Navigation -->
       <nav class="desktop-nav">
-        <a href="/" class="nav-link">Inicio</a>
-        <a href="/about" class="nav-link">Acerca de</a>
-        <a href="/alojamiento" class="nav-link">Alojamiento</a>
-        <a href="/excursiones" class="nav-link">Excursiones</a>
-        <a href="/tours" class="nav-link">Tours</a>
-        <a href="/servicios" class="nav-link">Servicios</a>
-        <a href="/contact" class="nav-link">Contacto</a>
+        <a href="/" class="nav-link" data-nav="home">Inicio</a>
+        <a href="/about" class="nav-link" data-nav="about">Nosotros</a>
+        <a href="/alojamiento" class="nav-link" data-nav="alojamiento">Alojamiento</a>
+        <a href="/excursiones" class="nav-link" data-nav="excursiones">Excursiones</a>
+        <a href="/tours" class="nav-link" data-nav="tours">Tours</a>
+        <a href="/servicios" class="nav-link" data-nav="servicios">Servicios</a>
+        <a href="/contact" class="nav-link nav-cta" data-nav="contact">Contacto</a>
       </nav>
     </div>
 
-    <!-- Mobile Layout -->
+    <!-- Mobile Layout con Hamburger -->
     <div class="mobile-navbar">
-      <!-- Solo navegación horizontal compacta - sin logo -->
-      <nav class="mobile-nav">
-        <a href="/" class="mobile-link">Inicio</a>
-        <a href="/about" class="mobile-link">Acerca de</a>
-        <a href="/alojamiento" class="mobile-link">Alojamiento</a>
-        <a href="/excursiones" class="mobile-link">Excursiones</a>
-        <a href="/tours" class="mobile-link">Tours</a>
-        <a href="/servicios" class="mobile-link">Servicios</a>
-        <a href="/contact" class="mobile-link">Contacto</a>
-      </nav>
+      <a href="/" class="mobile-logo">
+        <img src="/img/cubaparadise.svg" alt="Cuba Paradise">
+        <span class="mobile-logo-text">Cuba Paradise</span>
+      </a>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </div>
 
   </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="/" class="mobile-menu-logo">
+        <img src="/img/cubaparadise.svg" alt="Cuba Paradise">
+        <span>Cuba Paradise</span>
+      </a>
+      <button class="mobile-menu-close" id="closeMenuBtn" aria-label="Cerrar menú">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu-nav">
+      <a href="/" class="mobile-menu-link" data-nav="home">
+        <span class="material-symbols-outlined">home</span>
+        Inicio
+      </a>
+      <a href="/tours" class="mobile-menu-link" data-nav="tours">
+        <span class="material-symbols-outlined">tour</span>
+        Tours
+      </a>
+      <a href="/excursiones" class="mobile-menu-link" data-nav="excursiones">
+        <span class="material-symbols-outlined">landscape</span>
+        Excursiones
+      </a>
+      <a href="/alojamiento" class="mobile-menu-link" data-nav="alojamiento">
+        <span class="material-symbols-outlined">villa</span>
+        Alojamiento
+      </a>
+      <a href="/servicios" class="mobile-menu-link" data-nav="servicios">
+        <span class="material-symbols-outlined">concierge</span>
+        Servicios
+      </a>
+      <a href="/about" class="mobile-menu-link" data-nav="about">
+        <span class="material-symbols-outlined">info</span>
+        Nosotros
+      </a>
+    </nav>
+
+    <div class="mobile-menu-footer">
+      <a href="/contact" class="mobile-menu-cta">
+        <span class="material-symbols-outlined">chat</span>
+        Contactar
+      </a>
+      <div class="mobile-menu-contact">
+        <a href="tel:+5356851846">+53 56851846</a>
+        <a href="mailto:marlonbett@icloud.com">marlonbett@icloud.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay backdrop -->
+  <div class="menu-backdrop" id="menuBackdrop"></div>
 </header>
 
 <style>
-/* NAVBAR MINIMALISTA PULIDO */
-.navbar-container {
-  background: white;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: box-shadow 0.3s ease;
-}
+  /* NAVBAR CON GLASSMORPHISM */
+  .navbar-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-.navbar-container:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-}
+  .navbar-container.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  }
 
-/* DESKTOP LAYOUT */
-.desktop-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 0;
-}
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
 
-.navbar-logo img {
-  height: 120px;
-  width: 120px;
-  transition: all 0.4s ease;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
+  /* DESKTOP LAYOUT */
+  .desktop-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    gap: 2rem;
+  }
 
-.navbar-logo:hover img {
-  transform: scale(1.05) rotate(2deg);
-  filter: drop-shadow(0 4px 8px rgba(122, 183, 48, 0.3));
-}
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
 
-.desktop-nav {
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
-}
+  .navbar-logo:hover {
+    transform: scale(1.02);
+  }
 
-@media (max-width: 1200px) {
   .navbar-logo img {
-    height: 90px;
-    width: 90px;
+    height: 56px;
+    width: 56px;
+    filter: drop-shadow(0 2px 8px rgba(122, 183, 48, 0.2));
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .logo-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+  }
+
+  .logo-subtitle {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #7AB730;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   .desktop-nav {
-    gap: 1.25rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
   }
 
   .nav-link {
-    font-size: 0.95rem;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.3s ease;
+    padding: 0.625rem 1rem;
+    border-radius: 8px;
+    letter-spacing: -0.01em;
   }
-}
 
-.nav-link {
-  color: #2c3e50;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 0.5rem 0;
-  letter-spacing: 0.5px;
-}
+  .nav-link:hover {
+    color: #7AB730;
+    background: rgba(122, 183, 48, 0.08);
+  }
 
-.nav-link:hover {
-  color: #7AB730;
-  text-decoration: none;
-  transform: translateY(-1px);
-}
+  .nav-link.active {
+    color: #7AB730;
+    background: rgba(122, 183, 48, 0.12);
+    font-weight: 600;
+  }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 3px;
-  bottom: -2px;
-  left: 50%;
-  background: linear-gradient(90deg, #7AB730, #5a9625);
-  transition: all 0.4s ease;
-  border-radius: 2px;
-}
+  .nav-cta {
+    background: linear-gradient(135deg, #7AB730 0%, #5a9625 100%);
+    color: white !important;
+    font-weight: 600;
+    padding: 0.625rem 1.25rem;
+    margin-left: 0.5rem;
+    box-shadow: 0 4px 14px rgba(122, 183, 48, 0.35);
+  }
 
-.nav-link:hover::after {
-  width: 100%;
-  left: 0;
-}
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(122, 183, 48, 0.45);
+  }
 
-/* MOBILE LAYOUT - ULTRA MINIMALISTA */
-.mobile-navbar {
-  display: none;
-  padding: 1rem 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-}
-
-.mobile-nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.75rem;
-  overflow-x: auto;
-  padding: 0.75rem 0;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.mobile-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.mobile-link {
-  color: #495057;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 0.75rem 1.25rem;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  border: 2px solid transparent;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  letter-spacing: 0.3px;
-}
-
-.mobile-link:hover,
-.mobile-link:active {
-  color: white;
-  background: linear-gradient(135deg, #7AB730 0%, #5a9625 100%);
-  border-color: #7AB730;
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(122, 183, 48, 0.4);
-}
-
-/* HOME link destacado */
-.mobile-link[href="/"] {
-  background: linear-gradient(135deg, #7AB730 0%, #5a9625 100%);
-  color: white;
-  font-weight: 700;
-}
-
-.mobile-link[href="/"]:hover {
-  background: linear-gradient(135deg, #5a9625 0%, #7AB730 100%);
-  transform: translateY(-2px) scale(1.05);
-}
-
-/* RESPONSIVE */
-@media (max-width: 992px) {
-  .desktop-navbar {
+  /* MOBILE NAVBAR */
+  .mobile-navbar {
     display: none;
-  }
-  
-  .mobile-navbar {
-    display: block;
-  }
-  
-  .navbar-container {
-    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-  }
-}
-
-@media (max-width: 480px) {
-  .mobile-link {
-    font-size: 0.85rem;
-    padding: 0.6rem 1rem;
-  }
-  
-  .mobile-nav {
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-  }
-  
-  .mobile-navbar {
     padding: 0.75rem 0;
+    justify-content: space-between;
+    align-items: center;
   }
-}
 
-/* SMOOTH TRANSITIONS Y ACCESIBILIDAD */
-* {
-  -webkit-tap-highlight-color: transparent;
-}
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
 
-.navbar-logo {
-  text-decoration: none;
-  display: block;
-}
+  .mobile-logo img {
+    height: 44px;
+    width: 44px;
+  }
 
-/* Efecto de carga suave */
-.mobile-nav {
-  animation: slideIn 0.6s ease-out;
-}
+  .mobile-logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+  }
 
-@keyframes slideIn {
-  from {
+  /* Hamburger Button */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: rgba(122, 183, 48, 0.1);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    gap: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger:hover {
+    background: rgba(122, 183, 48, 0.2);
+  }
+
+  .hamburger-line {
+    width: 22px;
+    height: 2.5px;
+    background: #1a1a1a;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+
+  .hamburger.active .hamburger-line:nth-child(2) {
     opacity: 0;
-    transform: translateY(-10px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-/* Focus states para accesibilidad */
-.nav-link:focus,
-.mobile-link:focus {
-  outline: 2px solid #7AB730;
-  outline-offset: 3px;
-  border-radius: 4px;
-}
+  .hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  /* Mobile Menu Overlay */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 380px;
+    height: 100vh;
+    background: white;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-menu.active {
+    right: 0;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-menu-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .mobile-menu-logo img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .mobile-menu-logo span {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .mobile-menu-close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-menu-nav {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+  }
+
+  .mobile-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-link:hover,
+  .mobile-menu-link.active {
+    background: rgba(122, 183, 48, 0.1);
+    color: #7AB730;
+  }
+
+  .mobile-menu-link .material-symbols-outlined {
+    font-size: 1.5rem;
+    color: #7AB730;
+  }
+
+  .mobile-menu-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mobile-menu-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+  }
+
+  .mobile-menu-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .mobile-menu-contact a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  /* Backdrop */
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 992px) {
+    .desktop-navbar {
+      display: none;
+    }
+    
+    .mobile-navbar {
+      display: flex;
+    }
+  }
+
+  /* Accesibilidad */
+  .nav-link:focus-visible,
+  .mobile-menu-link:focus-visible {
+    outline: 2px solid #7AB730;
+    outline-offset: 2px;
+  }
+
+  /* Animación */
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .navbar-container {
+    animation: slideDown 0.5s ease-out;
+  }
 </style>
 
 <script>
-// Navbar minimalista - sin JavaScript necesario
-// Todo es CSS puro y responsive
+  // Efecto scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // Hamburger Menu
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuBackdrop = document.getElementById('menuBackdrop');
+
+  function openMenu() {
+    hamburgerBtn?.classList.add('active');
+    hamburgerBtn?.setAttribute('aria-expanded', 'true');
+    mobileMenu?.classList.add('active');
+    menuBackdrop?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    hamburgerBtn?.classList.remove('active');
+    hamburgerBtn?.setAttribute('aria-expanded', 'false');
+    mobileMenu?.classList.remove('active');
+    menuBackdrop?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  hamburgerBtn?.addEventListener('click', openMenu);
+  closeMenuBtn?.addEventListener('click', closeMenu);
+  menuBackdrop?.addEventListener('click', closeMenu);
+
+  // Cerrar menú al hacer click en un link
+  document.querySelectorAll('.mobile-menu-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Link activo
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('.nav-link, .mobile-menu-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+      link.classList.add('active');
+    }
+  });
 </script>
