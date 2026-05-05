@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import HeaderStart from "../../../components/HeaderStart.astro";
 import { getWhatsAppUrl } from "../../../utils/whatsapp.ts";
 
 export async function getStaticPaths() {
@@ -18,36 +19,582 @@ const { paquete } = Astro.props;
 const { Content } = await render(paquete);
 ---
 
-<DefaultLayout title={paquete.data.title ?? "Tour Cuba Paradise"}>
-    <section class="container py-5">
-        <div class="row">
-            <div class="col-md-6">
-                <img src={paquete.data.img} alt={paquete.data.title} class="img-fluid rounded mb-4" style="max-height:340px;object-fit:cover;width:100%;" />
+<DefaultLayout 
+  title={`${paquete.data?.title} - Cuba Paradise`}
+  description={paquete.data?.descripcion}
+>
+  <HeaderStart 
+    page={paquete.data?.title}
+    image={paquete.data?.img}
+    subtitle={paquete.data?.descripcion}
+  />
+
+  <section class="paquete-detail">
+    <div class="container">
+      <div class="detail-grid">
+        <!-- Main Content -->
+        <div class="main-content">
+          <!-- Info Cards -->
+          <div class="info-cards">
+            <div class="info-card">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Duración</span>
+                <span class="info-value">{paquete.data?.duracion}</span>
+              </div>
             </div>
-            <div class="col-md-6">
-                <h1 class="mb-3">{paquete.data.title}</h1>
-                <p class="lead">{paquete.data.descripcion}</p>
-                <ul class="list-unstyled mb-3">
-                    <li><strong>Duración:</strong> {paquete.data.duracion}</li>
-                    <li><strong>Incluye:</strong> {paquete.data.incluye}</li>
-                    
-                    {paquete.data.idiomas && <li><strong>Idiomas disponibles:</strong> {paquete.data.idiomas}</li>}
-                    
-                </ul>
-                <div class="mt-4">
-                    <a href={getWhatsAppUrl('paquetes-tours', paquete.data.title, paquete.data.whatsappMessage)} 
-                       class="btn btn-success btn-lg" style="background:#7AB730;border:none;" target="_blank" rel="noopener noreferrer">
-                       Solicitar información
-                    </a>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Incluye</span>
+                <span class="info-value">{paquete.data?.incluye}</span>
+              </div>
+            </div>
+
+            {paquete.data?.idiomas && (
+              <div class="info-card">
+                <div class="info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  </svg>
                 </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-12">
-                <div class="content">
-                    <Content />
+                <div class="info-content">
+                  <span class="info-label">Idiomas</span>
+                  <span class="info-value">{paquete.data.idiomas}</span>
                 </div>
+              </div>
+            )}
+
+            {paquete.data?.destacado && (
+              <div class="info-card featured">
+                <div class="info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </div>
+                <div class="info-content">
+                  <span class="info-label">Estado</span>
+                  <span class="info-value">Destacado</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- Content -->
+          <div class="content-wrapper">
+            <div class="content">
+              <Content />
             </div>
+          </div>
         </div>
-    </section>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="contact-card">
+            <div class="card-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <h3>Reserva tu paquete</h3>
+            </div>
+            <p class="card-description">
+              Consulta disponibilidad de fechas y precios para tu grupo. 
+              Te responderemos con toda la información.
+            </p>
+            <a 
+              href={getWhatsAppUrl('paquetes-tours', paquete.data?.title, paquete.data?.whatsappMessage)} 
+              class="contact-btn"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              Consultar disponibilidad
+            </a>
+            <div class="contact-features">
+              <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span>Respuesta en 24h</span>
+              </div>
+              <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span>Mejor precio garantizado</span>
+              </div>
+              <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span>Todo incluido</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="help-card">
+            <h4>¿Preguntas sobre el paquete?</h4>
+            <p>Te ayudamos con información sobre el itinerario, alojamiento y más.</p>
+            <a href="/contact" class="help-link">
+              <span>Ver contacto</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
 </DefaultLayout>
+
+<style>
+  .paquete-detail {
+    padding: 4rem 5%;
+    background: #fafafa;
+    min-height: 60vh;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Info Cards */
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .info-card.featured {
+    border-color: rgba(122, 183, 48, 0.3);
+    background: linear-gradient(135deg, white 0%, rgba(122, 183, 48, 0.05) 100%);
+  }
+
+  .info-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(122, 183, 48, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .info-icon svg {
+    color: #7AB730;
+    width: 24px;
+    height: 24px;
+  }
+
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .info-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #0a0a0a;
+  }
+
+  /* Content */
+  .content-wrapper {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .content :global(h1) {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0a0a0a;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .content :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0a0a0a;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(122, 183, 48, 0.2);
+  }
+
+  .content :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .content :global(p) {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+
+  .content :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .content :global(li) {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .content :global(li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237AB730' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .content :global(strong) {
+    color: #0a0a0a;
+    font-weight: 600;
+  }
+
+  /* Tablas */
+  .content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .content :global(thead) {
+    background: rgba(122, 183, 48, 0.1);
+  }
+
+  .content :global(th) {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #0a0a0a;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid rgba(122, 183, 48, 0.3);
+  }
+
+  .content :global(td) {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: #444;
+    font-size: 0.95rem;
+  }
+
+  .content :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .content :global(tr:hover) {
+    background: rgba(122, 183, 48, 0.02);
+  }
+
+  /* Blockquotes */
+  .content :global(blockquote) {
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, rgba(122, 183, 48, 0.05) 0%, rgba(122, 183, 48, 0.1) 100%);
+    border-left: 4px solid #7AB730;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+  }
+
+  .content :global(blockquote p) {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .content :global(blockquote p:last-child) {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #888;
+    font-style: normal;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 100px;
+  }
+
+  .contact-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-header svg {
+    width: 28px;
+    height: 28px;
+    color: #7AB730;
+    flex-shrink: 0;
+  }
+
+  .card-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0a0a0a;
+    margin: 0;
+  }
+
+  .card-description {
+    font-size: 0.9375rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: #7AB730;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-btn:hover {
+    background: #6aa525;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(122, 183, 48, 0.3);
+  }
+
+  .contact-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #555;
+  }
+
+  .feature svg {
+    width: 18px;
+    height: 18px;
+    color: #7AB730;
+    flex-shrink: 0;
+  }
+
+  .help-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .help-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0a0a0a;
+    margin-bottom: 0.5rem;
+  }
+
+  .help-card p {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .help-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: #7AB730;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: gap 0.3s ease;
+  }
+
+  .help-link:hover {
+    gap: 0.625rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .detail-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .paquete-detail {
+      padding: 2rem 1.5rem;
+    }
+
+    .info-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .info-card {
+      padding: 1rem;
+    }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .info-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .content-wrapper {
+      padding: 1.5rem;
+    }
+
+    .content :global(h1) {
+      font-size: 1.5rem;
+    }
+
+    .content :global(h2) {
+      font-size: 1.25rem;
+    }
+
+    .sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+      padding: 1.5rem;
+    }
+
+    .card-header svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .paquete-detail {
+      padding: 1.5rem 1rem;
+    }
+
+    .info-cards {
+      gap: 0.75rem;
+    }
+
+    .content-wrapper {
+      padding: 1.25rem;
+    }
+
+    .contact-card {
+      padding: 1.25rem;
+    }
+  }
+</style>
